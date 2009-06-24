@@ -1,0 +1,34 @@
+##GENERIC HIBERNATE CONNECTION SETTINGS
+hibernate.connection.driver_class=com.mysql.jdbc.Driver
+hibernate.connection.url=jdbc:mysql://127.0.0.1:3306/DBNAME?jdbcCompliantTruncation=false
+hibernate.connection.username=USERNAME
+hibernate.connection.password=PASSWORD
+hibernate.dialect=org.hibernate.dialect.MySQLDialect
+hibernate.show_sql=false
+#hibernate.hbm2ddl.auto=auto
+
+##COMMONS DBCP
+#Maximum number of checked-out database connections
+hibernate.dbcp.maxActive=8
+#Maximum number of idle database connections for connection pool
+hibernate.dbcp.maxIdle=8
+#Maximum idle time for connections in connection pool (expressed in ms).Set to -1 to turn off
+hibernate.dbcp.maxWait=-1
+#Validate connection when borrowing connection from pool (defaults to true)
+hibernate.dbcp.testOnBorrow=true 
+#Validate connection when returning connection to pool (optional, true, or false)
+hibernate.dbcp.testOnReturn=true
+#Query to execute for connection validation (optional, requires either hibernate.dbcp.testOn Borrow or hibernate.dbcp.testOnReturn)
+hibernate.dbcp.validationQuery=SELECT 1+1
+
+##MAIL SETTINGS
+smtp.host=
+smtp.password=
+mail.from=
+#default address to which job notifications will get sent if no value is set on the job itself
+mail.to=
+
+##OTHER SETTINGS
+sysexec.logpath=/opt/java/tomcat/webapps/citrine/logs/
+sysexec.logpattern=%d{ISO8601} %m%n
+sysexec.tailbytes=5000
