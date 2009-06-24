@@ -3,10 +3,11 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Upgraded to antlr 2.7.7.
 - Upgraded to log4j 1.2.15.
-- Upgraded to commons-io 1.4.
-- Upgraded to commons-lang 2.4.
-- Upgraded to commons-logging 1.1.1.
-- Upgraded to commons-pool 1.4.
+- Upgraded to commons-io 1.4, commons-lang 2.4, commons-logging 1.1.1, commons-pool 1.4.
+- Upgraded to hibernate 3.2.6, hibernate-annotations 3.3.1, hibernate-tools 3.2.4.
+- Upgraded to mysql connector 5.1.7.
+- Upgraded to Spring 2.5.6.
+- Upgraded to Javamail 1.4.1.
 - Moved to Google code.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

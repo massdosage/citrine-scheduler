@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="location" value="classpath:citrine.properties" />
+  </bean>
+
+  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <property name="host" value="${smtp.host}" />
+    <property name="password" value="${smtp.password}" />
+  </bean>
+
+  <bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+    <property name="from" value="${mail.from}" />
+    <property name="to" value="${mail.to}" />
+  </bean>
+
+  <bean id="emailNotifier" class="fm.last.citrine.notification.EMailNotifier">
+    <property name="mailSender" ref="mailSender" />
+    <property name="templateMessage" ref="templateMessage" />
+  </bean>
+
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <property name="driverClassName" value="${hibernate.connection.driver_class}" />
+    <property name="url" value="${hibernate.connection.url}" />
+    <property name="username" value="${hibernate.connection.username}" />
+    <property name="password" value="${hibernate.connection.password}" />
+    <property name="maxActive" value="${hibernate.dbcp.maxActive}" />
+    <property name="maxIdle" value="${hibernate.dbcp.maxIdle}" />
+    <property name="maxWait" value="${hibernate.dbcp.maxWait}" />
+
+    <property name="testOnBorrow" value="${hibernate.dbcp.testOnBorrow}" />
+    <property name="testOnReturn" value="${hibernate.dbcp.testOnReturn}" />
+    <property name="validationQuery" value="${hibernate.dbcp.validationQuery}" />
+  </bean>
+
+  <bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" lazy-init="true">
+    <property name="dataSource" ref="dataSource" />
+    <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration" />
+    <property name="configLocation" value="classpath:hibernate.cfg.xml" />
+  </bean>
+
+  <bean id="transactionManager" name="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    <property name="sessionFactory" ref="mySessionFactory" />
+  </bean>
+
+  <!-- DAO's -->
+  <bean id="taskDAO" class="fm.last.citrine.dao.TaskDAO">
+    <property name="sessionFactory" ref="mySessionFactory" />
+  </bean>
+
+  <bean id="taskRunDAO" class="fm.last.citrine.dao.TaskRunDAO">
+    <property name="sessionFactory" ref="mySessionFactory" />
+    <property name="maxTaskRunResults" value="100" />
+  </bean>
+
+  <bean id="scheduler" class="org.quartz.impl.StdSchedulerFactory" factory-method="getDefaultScheduler" />
+
+  <bean id="schedulerManager" class="fm.last.citrine.scheduler.SchedulerManager" destroy-method="shutdown">
+    <constructor-arg index="0" ref="scheduler" />
+    <constructor-arg index="1" value="fm.last.citrine.jobs.BeanJob" />
+    <property name="triggerListener" ref="triggerListener" />
+  </bean>
+
+  <bean id="sysExecObserver" class="fm.last.citrine.jobs.syscommand.RollingFileExecutorObserver" scope="prototype">
+    <property name="conversionPattern" value="${sysexec.logpattern}" />
+    <property name="baseLogPath" value="${sysexec.logpath}" />
+    <property name="tailBytes" value="${sysexec.tailbytes}" />
+  </bean>
+
+  <bean id="sysExecutor" class="fm.last.syscommand.SysCommandExecutor" scope="prototype" />
+
+  <!-- Task beans -->
+  <bean id="adminJob" class="fm.last.citrine.jobs.AdminJob">
+    <property name="logFileManager" ref="logFileManager" />
+    <property name="taskRunManager" ref="taskRunManager" />
+  </bean>
+
+  <bean id="failJob" class="fm.last.citrine.jobs.FailJob" scope="prototype" />
+
+  <bean id="nullJob" class="fm.last.citrine.jobs.NullJob" scope="prototype" />
+
+  <bean id="sysExecJob" class="fm.last.citrine.jobs.SystemExecJob" scope="prototype">
+    <property name="executor" ref="sysExecutor" />
+    <property name="observer" ref="sysExecObserver" />
+  </bean>
+
+  <bean id="waitJob" class="fm.last.citrine.jobs.WaitJob" scope="prototype" />
+
+  <!-- Managers -->
+  <bean id="logFileManager" class="fm.last.citrine.service.LogFileManagerImpl">
+    <property name="baseLogPath" value="${sysexec.logpath}" />
+  </bean>
+
+  <bean id="taskManager" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager" ref="transactionManager" />
+    <property name="target" ref="taskManagerTarget" />
+    <property name="transactionAttributes">
+      <props>
+        <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="save*">PROPAGATION_REQUIRED</prop>
+        <prop key="remove*">PROPAGATION_REQUIRED</prop>
+        <prop key="delete*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="taskManagerTarget" class="fm.last.citrine.service.TaskManagerImpl" init-method="scheduleTasks">
+    <constructor-arg index="0" ref="taskDAO" />
+    <constructor-arg index="1" ref="schedulerManager" />
+    <property name="taskRunDAO" ref="taskRunDAO" />
+  </bean>
+
+  <bean id="taskRunManager" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager" ref="transactionManager" />
+    <property name="target" ref="taskRunManagerTarget" />
+    <property name="transactionAttributes">
+      <props>
+        <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="isRunning*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="shutdown*">PROPAGATION_REQUIRED</prop>
+        <prop key="save*">PROPAGATION_REQUIRED</prop>
+        <prop key="remove*">PROPAGATION_REQUIRED</prop>
+        <prop key="delete*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="taskRunManagerTarget" class="fm.last.citrine.service.TaskRunManagerImpl" destroy-method="shutdown">
+    <constructor-arg index="0" ref="taskRunDAO" />
+    <property name="taskDAO" ref="taskDAO" />
+    <property name="notifier" ref="emailNotifier" />
+    <property name="taskManager" ref="taskManager" />
+    <property name="schedulerManager" ref="schedulerManager" />
+  </bean>
+
+  <bean id="triggerListener" class="fm.last.citrine.scheduler.NonConcurrentJobTriggerListener">
+    <property name="taskManager" ref="taskManager" />
+    <property name="taskRunManager" ref="taskRunManager" />
+  </bean>
+
+</beans>

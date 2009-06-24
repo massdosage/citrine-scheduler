@@ -1,1 +1,10 @@
 - modify javadoc generation to contain Apache license.
+- controller tests.
+----
+
+To specify threads per group:
+
+Create custom thread pool (might be able to extend their SimpleThreadPool) where instead of having global number of 
+threads, we have number per job group. There is then a way to override the threadpool implementation quartz uses:
+
+http://www.opensymphony.com/quartz/wikidocs/ConfigThreadPool.html
