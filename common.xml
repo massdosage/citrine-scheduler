@@ -76,6 +76,9 @@
   <!-- classpath used for compiling test classes, override this if you need extra entries to compile your tests -->
   <path id="test-compile-classpath">
     <path refid="compile-classpath" />
+    <fileset dir="${lib.dir}">
+      <include name="test.jar" />
+    </fileset>
   </path>
 
   <!-- base classpath used when running tests -->
@@ -85,8 +88,11 @@
     <pathelement location="${cobertura.classes.dir}" />
     <pathelement location="${classes.dir}" />
     <path refid="compile-classpath" />
+    <fileset refid="lib.fileset" />
+    <fileset dir="${lib.dir}">
+      <include name="test.jar" />
+    </fileset>
   </path>
-
 
   <!-- extra classpath that can be used when running tests, override this if you need extra entries to run your tests -->
   <path id="additional-test-classpath" />
