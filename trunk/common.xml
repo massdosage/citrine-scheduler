@@ -68,30 +68,22 @@
   <!-- classpath used for compiling -->
   <path id="compile-classpath">
     <fileset refid="lib.fileset" />
-    <fileset dir="${lib.dir}">
-      <include name="junit.jar" />
-    </fileset>
   </path>
 
   <!-- classpath used for compiling test classes, override this if you need extra entries to compile your tests -->
   <path id="test-compile-classpath">
     <path refid="compile-classpath" />
     <fileset dir="${lib.dir}">
-      <include name="test.jar" />
+      <include name="junit*.jar" />
     </fileset>
   </path>
 
   <!-- base classpath used when running tests -->
   <path id="test-classpath">
     <pathelement location="${test.conf.dir}" />
-    <!--  put instrumented classes higher up in classpath so they will be used if available -->
-    <pathelement location="${cobertura.classes.dir}" />
     <pathelement location="${classes.dir}" />
     <path refid="compile-classpath" />
     <fileset refid="lib.fileset" />
-    <fileset dir="${lib.dir}">
-      <include name="test.jar" />
-    </fileset>
   </path>
 
   <!-- extra classpath that can be used when running tests, override this if you need extra entries to run your tests -->
@@ -141,10 +133,12 @@
 
     <junit printsummary="yes" failureproperty="testfailed" showoutput="true" fork="true">
       <sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.datafile}" />
+      
       <classpath refid="additional-test-classpath" />
       <classpath location="${cobertura.classes.dir}" />
       <classpath refid="test-classpath" />
       <classpath location="${lib.dir}/cobertura.jar" />
+      <classpath location="${lib.dir}/junit-junit.jar" />
 
       <formatter type="xml" usefile="true" />
 
