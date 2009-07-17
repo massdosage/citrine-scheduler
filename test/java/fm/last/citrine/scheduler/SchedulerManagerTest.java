@@ -31,7 +31,6 @@ import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.springframework.test.annotation.DirtiesContext;
 
@@ -61,9 +60,6 @@ public class SchedulerManagerTest extends BaseSpringTestCase {
 
   @Resource
   private TaskRunManager taskRunManager;
-
-  @Resource
-  private Scheduler scheduler;
 
   private String defaultTimerSchedule = "0 15 10 ? * 6L 3002-3005"; // a timer schedule string that should never run
 

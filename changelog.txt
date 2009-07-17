@@ -1,6 +1,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 4.0.0 (TBA)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Upgraded to quartz 1.6.5.
 - Upgraded to antlr 2.7.7.
 - Upgraded to log4j 1.2.15.
 - Upgraded to commons-io 1.4, commons-lang 2.4, commons-logging 1.1.1, commons-pool 1.4.
