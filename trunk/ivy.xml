@@ -13,6 +13,7 @@
 
   <configurations>
     <conf name="adapter" extends="core" description="Spring Integration Adapters" />
+    <conf name="all" description="All Quartz classes in one jar file" />
     <conf name="aop" extends="core, beans" description="Spring AOP" />
     <conf name="beans" extends="core" description="Spring Beans" />
     <conf name="context" extends="beans, aop" description="Spring Context" />
@@ -33,6 +34,7 @@
   </publications>
 
   <dependencies>
+    <dependency org="com.opensymphony" name="quartz" rev="1.6.5" conf="all"/>
     <dependency org="com.puppycrawl" name="checkstyle" rev="5.0" />
     <dependency org="org.dom4j" name="dom4j" rev="1.6.1" transitive="false" />
     <dependency org="javax.persistence" name="persistence-api" rev="1.0" transitive="false" />
@@ -52,6 +54,7 @@
     <dependency org="org.hibernate" name="hibernate-annotations" rev="3.3.1" transitive="false" />
     <dependency org="org.hibernate" name="hibernate-commons-annotations" rev="3.0.0" transitive="false" />
     <dependency org="org.hibernate" name="hibernate-tools" rev="3.2.4" transitive="false" />
+    <dependency org="joda.org" name="joda-time" rev="1.6" />
     <dependency org="org.junit" name="junit" rev="4.4" transitive="false" />
     <dependency org="org.objectweb.asm" name="asm" rev="1.5.3" conf="default" transitive="false" />
     <dependency org="com.mysql" name="mysql-connector-java" rev="5.1.7" transitive="false" />
@@ -64,11 +67,6 @@
     <!--  see http://code.google.com/p/ivyroundup/wiki/ManuallyDownloadedSoftware for below -->
     <dependency org="javax.mail" name="javamail" rev="1.4.1" transitive="false" />
     <dependency org="javax.transaction" name="jta" rev="1.1" transitive="false" />
-
-    <!--
-      < MISSING dependency org="joda.org" name="joda-time" rev="1.6" /> < MISSING dependency org="opensymphony"
-      name="quartz" rev="1.6.4" /> < MISSING dependency org="p6spy.com" name="p6spy" rev="2003-12-30" />
-    -->
 
   </dependencies>
 </ivy-module>
