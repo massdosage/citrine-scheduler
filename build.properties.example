@@ -1,18 +1,20 @@
 ### IVY PROPERTIES ###
 #the current version of your application (used when publishing)
-version=0.1
-#the path to where ivysvnresolver is checked out to
-ivysettings.dir=/home/USER/workspace/ivysvnresolver-trunk
-#user name for connecting to svn
-svn.user.name=
+version=3.3.1
+publish.overwrite=false
+
+svn.user.name=adrian
 #password for subversion
 #svn.user.password=
 #or path to private keyfile
-#ssh.keyfile=
+ssh.keyfile=/home/adrian/.ssh/id_rsa
+
+war.deploy.dir=/opt/java/tomcat/webapps
 
 ### JUNIT PROPERTIES ###
 #only set this property if you want to limit what unit tests are run from ant
-#junit.includes=**/*ExampleTest.java
+#junit.includes=**/*SchedulerManagerTest.java
 
-#location to copy war file to
-war.deploy.dir
+#ivy.skip.retrieve=true
+
+ivysettings.dir=.
