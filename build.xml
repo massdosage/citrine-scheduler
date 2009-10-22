@@ -149,10 +149,6 @@
         <include name="${war.file}"/>
       </tarfileset>
       
-      <tarfileset prefix="${ant.project.name}" dir="${bin.dir}" mode="755" includes="*.sh"/>
-      
-      <tarfileset prefix="${ant.project.name}" dir="${build.dir}" includes="*.ddl"/>
-      
       <tarfileset prefix="${ant.project.name}" dir="${sql.src.dir}" includes="*.sql"/>
       
       <tarfileset prefix="${ant.project.name}" dir="${conf.dir}">
