@@ -118,11 +118,17 @@ public class TaskFormController extends SimpleFormController {
   public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command,
       BindException errors) {
     TaskDTO taskDTO = (TaskDTO) command;
+    Task oldTask = taskManager.get(taskDTO.getTask().getId());
     if (request.getParameter(PARAM_DELETE) != null) {
       // task from web doesn't have parent/child relationships, so retrieve it from db before deleting
-      taskManager.delete(taskManager.get(taskDTO.getTask().getId()));
+      taskManager.delete(oldTask);
     } else {
-      taskManager.save(taskDTO.getTask());
+      // taskManager.save(taskDTO.getTask());
+      Task newTask = taskDTO.getTask();
+      if (oldTask != null) {
+        newTask.setChildTasks(oldTask.getChildTasks());
+      }
+      taskManager.save(newTask);
     }
     return new ModelAndView(new RedirectView(getSuccessView(taskDTO.getSelectedGroupName())));
   }
