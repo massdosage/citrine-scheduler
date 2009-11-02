@@ -266,8 +266,10 @@ public class Task {
 
   public void setChildTasks(Set<Task> children) {
     childTasks.clear();
-    for (Task child : children) {
-      addChildTask(child);
+    if (children != null) {
+      for (Task child : children) {
+        addChildTask(child);
+      }
     }
   }
 
