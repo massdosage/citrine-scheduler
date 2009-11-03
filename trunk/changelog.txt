@@ -10,6 +10,7 @@
 - Upgraded to Spring 2.5.6.
 - Upgraded to Javamail 1.4.1.
 - Moved to Google code.
+- Fixed bug where editing a task cleared it's subtasks
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 3.3.1 (2009-06-09 09:57:03)
