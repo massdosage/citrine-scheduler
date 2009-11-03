@@ -123,7 +123,6 @@ public class TaskFormController extends SimpleFormController {
       // task from web doesn't have parent/child relationships, so retrieve it from db before deleting
       taskManager.delete(oldTask);
     } else {
-      // taskManager.save(taskDTO.getTask());
       Task newTask = taskDTO.getTask();
       if (oldTask != null) {
         newTask.setChildTasks(oldTask.getChildTasks());
