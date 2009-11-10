@@ -23,26 +23,26 @@
   <property name="sql.src.dir" location="${src.dir}/sql"/>
   
   <fileset dir="${lib.dir}" id="lib.fileset">
-    <include name="antlr*.jar"/>
-    <include name="aop*.jar"/>
-    <include name="asm*.jar"/>
-    <include name="cglib*.jar"/>
-    <include name="commons-*.jar"/>
-    <include name="context*.jar"/>
-    <include name="displaytag*.jar"/>
-    <include name="dom4j*.jar"/>
-    <include name="freemarker*.jar"/>
-    <include name="hibernate*.jar"/>
-    <include name="joda-time*.jar"/>
-    <include name="jstl*.jar"/>
-    <include name="jta*.jar"/>
-    <include name="log4j*.jar"/>
+    <include name="*antlr*.jar"/>
+    <include name="*aop*.jar"/>
+    <include name="*asm*.jar"/>
+    <include name="*cglib*.jar"/>
+    <include name="*commons-*.jar"/>
+    <include name="*context*.jar"/>
+    <include name="*displaytag*.jar"/>
+    <include name="*dom4j*.jar"/>
+    <include name="*freemarker*.jar"/>
+    <include name="*hibernate*.jar"/>
+    <include name="*joda-time*.jar"/>
+    <include name="*jstl*.jar"/>
+    <include name="*jta*.jar"/>
+    <include name="*log4j*.jar"/>
     <include name="*mail*.jar"/>
-    <include name="mysql*.jar"/>
-    <include name="persistence-api*.jar"/>
-    <include name="quartz*.jar"/>
-    <include name="spring*.jar"/>
-    <include name="standard*.jar"/>
+    <include name="*mysql*.jar"/>
+    <include name="*persistence-api*.jar"/>
+    <include name="*quartz*.jar"/>
+    <include name="*spring*.jar"/>
+    <include name="*standard*.jar"/>
   </fileset>
   
   <path id="additional-test-classpath">
