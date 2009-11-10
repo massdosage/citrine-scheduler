@@ -1,6 +1,9 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-4.0.0 (TBA)
+4.0.0 (2009-11-09 12:02:24)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Moved to Google code.
+- Fixed bug where editing a task cleared its subtasks
+- Moved to using ivy roundup.
 - Upgraded to quartz 1.6.5.
 - Upgraded to antlr 2.7.7.
 - Upgraded to log4j 1.2.15.
@@ -9,8 +12,6 @@
 - Upgraded to mysql connector 5.1.7.
 - Upgraded to Spring 2.5.6.
 - Upgraded to Javamail 1.4.1.
-- Moved to Google code.
-- Fixed bug where editing a task cleared it's subtasks
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 3.3.1 (2009-06-09 09:57:03)

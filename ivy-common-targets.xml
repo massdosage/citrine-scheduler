@@ -20,16 +20,18 @@
   <property name="publish.status" value="release" />
   <!-- whether a publish should be allowed to overwrite an existing publication -->
   <property name="publish.overwrite" value="false" />
-  <!-- the name of the file under ${ivysettings.dir} which contains the ivy settings -->
-  <property name="ivysettings.file.name" value="ivysettings.xml" />
+  <!-- the name of the file under ${ivy.settings.dir} which contains the ivy settings -->
+  <property name="ivy.settings.file.name" value="ivysettings.xml" />
+  <!-- the name of the file containing the ivy dependencies -->
+  <property name="ivy.file.name" value="ivy.xml" />
 
   <target name="clean-cache" if="ivy.clean.cache">
     <ivy:cleancache />
   </target>
 
   <target name="ivy-init" description="Initialise ivy by loading ivysettings.xml" unless="ivy.initialised">
-    <ivy:settings file="${ivysettings.dir}/${ivysettings.file.name}" />
-    <ivy:resolve file="ivy.xml" />
+    <ivy:settings file="${ivy.settings.dir}/${ivy.settings.file.name}" />
+    <ivy:resolve file="${ivy.file.name}" />
     <property name="ivy.initialised" value="true" />
   </target>
 

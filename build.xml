@@ -11,7 +11,7 @@
 <project basedir="." default="build" name="citrine">
   
   <import file="common.xml"/>
-  <import file="${ivysettings.dir}/ivy-common-targets.xml"/>
+  <import file="${ivy.commontargets.dir}/ivy-common-targets.xml"/>
   <property name="hibernate.properties" location="${conf.dir}/citrine.properties"/>
   <property name="hibernate.conf.file" location="${conf.dir}/hibernate.cfg.xml"/>
 

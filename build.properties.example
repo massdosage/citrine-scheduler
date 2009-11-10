@@ -17,4 +17,9 @@ war.deploy.dir=/opt/java/tomcat/webapps
 
 #ivy.skip.retrieve=true
 
+#folder containing ivysettings.xml, default uses ivy roundup, change if you have your own repository
 ivysettings.dir=.
+#folder containing ivy-common-targets.xml
+ivy.commontargets.dir=.
+#below file contains ivy dependencies as layed out in ivy roundup, change if you need a different layout
+ivy.file.name=ivy.xml
