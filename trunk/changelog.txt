@@ -16,7 +16,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 3.3.1 (2009-06-09 09:57:03)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- Made Log File Cleaner and AdminJob instead of shell script.
+- Made Log File Cleaner an AdminJob instead of shell script.
 - Removed link from Status field to log file view in TaskRuns view for running task.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
