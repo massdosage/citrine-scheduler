@@ -234,6 +234,7 @@
         <fileset dir="${lib.dir}">
           <include name="antlr.jar" />
           <include name="checkstyle*.jar" />
+          <include name="collections*.jar" />
           <include name="commons-beanutils*.jar" />
           <include name="commons-logging*.jar" />
         </fileset>
