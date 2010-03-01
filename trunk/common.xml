@@ -137,7 +137,7 @@
       <classpath refid="additional-test-classpath" />
       <classpath location="${cobertura.classes.dir}" />
       <classpath refid="test-classpath" />
-      <classpath location="${lib.dir}/cobertura.jar" />
+      <classpath location="${lib.dir}/cobertura-cobertura.jar" />
       <classpath location="${lib.dir}/junit-junit.jar" />
 
       <formatter type="xml" usefile="true" />
