@@ -232,7 +232,7 @@
     <taskdef resource="checkstyletask.properties">
       <classpath>
         <fileset dir="${lib.dir}">
-          <include name="antlr.jar" />
+          <include name="antlr*.jar" />
           <include name="checkstyle*.jar" />
           <include name="collections*.jar" />
           <include name="commons-beanutils*.jar" />
