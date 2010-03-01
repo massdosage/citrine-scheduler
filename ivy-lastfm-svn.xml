@@ -11,24 +11,6 @@
 <ivy-module version="1.0">
   <info organisation="lastfm" module="citrine-scheduler" />
 
-  <configurations>
-    <conf name="adapter" extends="core" description="Spring Integration Adapters" />
-    <conf name="all" description="All Quartz classes in one jar file" />
-    <conf name="aop" extends="core, beans" description="Spring AOP" />
-    <conf name="beans" extends="core" description="Spring Beans" />
-    <conf name="context" extends="beans, aop" description="Spring Context" />
-    <conf name="complete" description="All of BeanUtils" />
-    <conf name="core" description="Spring/ASM Core" />
-    <conf name="jdbc" extends="beans, tx" description="Spring JDBC" />
-    <conf name="mail" extends="adapter" description="Spring Integration Mail Support" />
-    <conf name="orm" extends="jdbc, web" description="Spring ORM" />
-    <conf name="test" extends="core, context, jdbc, web" description="Spring Test" />
-    <conf name="tx" extends="core, aop, context" description="Spring Transaction" />
-    <conf name="web" extends="context" description="Spring Web" />
-    <conf name="webmvc" extends="web" description="Spring Web MVC" />
-    <conf name="default" description="Everything" />
-  </configurations>
-
   <publications>
     <artifact name="citrine" ext="war" />
   </publications>
@@ -37,6 +19,7 @@
     <dependency org="opensymphony" name="quartz" rev="1.6.5" />
     <dependency org="sf.net" name="checkstyle" rev="5.0" />
     <dependency org="metastuff" name="dom4j" rev="1.6.1" transitive="false" />
+    <dependency org="javax" name="jstl" rev="1.1.2" transitive="false" />
     <dependency org="javax" name="persistence-api" rev="1.0" transitive="false" />
     <dependency org="javax" name="servlet" rev="2.5" transitive="false" />
     <dependency org="antlr" name="antlr" rev="2.7.7" transitive="false" />
