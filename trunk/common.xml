@@ -51,7 +51,7 @@
   <property name="ssh.keyfile" value="${user.home}/.ssh/id_rsa" />
 
   <!-- the following you almost certainly want to override yourself -->
-  <property name="deploy.dir" location="/opt/java/tomcat/webapps" />
+  <property name="deploy.dir" location="/usr/local/tomcat/webapps" />
   <property name="ear.deploy.dir" value="${deploy.dir}" />
   <property name="jar.deploy.dir" value="${deploy.dir}" />
   <property name="war.deploy.dir" value="${deploy.dir}" />

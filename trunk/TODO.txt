@@ -8,3 +8,22 @@ Create custom thread pool (might be able to extend their SimpleThreadPool) where
 threads, we have number per job group. There is then a way to override the threadpool implementation quartz uses:
 
 http://www.opensymphony.com/quartz/wikidocs/ConfigThreadPool.html
+
+
+
+
+
+-----
+Add these instructions to Wiki:
+
+To setup from scratch
+
+1. Install tomcat.
+2. Copy citrine.properties.example to citrine.properties and set DB, e-mail etc as necessary
+3. ant generate-ddl
+4. run build/tasks.ddl against the database
+5. update citrine.properties to reflect the database you have just created
+6. copy citrine.properties to somewhere on TOMCAT_HOME classpath (TOMCAT_HOME/lib/ in 6.0.24)
+7. ant deploy (deploys to /usr/local/tomcat/webapps, override this by setting deploy.dir property in build.properties)
+8. If stack trace complaining about "hibernate dialect must be explicitly set", look higher up in trace, probably a db auth issue
+9. Go to http://localhost:8080/citrine/ in a browser.
