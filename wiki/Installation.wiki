@@ -1,0 +1,5 @@
+#summary How to install Citrine
+
+= Installing Citrine =
+
+*TODO: Steps installing from .war - tomcat, database etc*
