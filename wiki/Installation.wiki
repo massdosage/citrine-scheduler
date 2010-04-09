@@ -11,7 +11,7 @@ The steps below will describe how to use these files to get up and running with 
 == Prerequisites ==
  # Java 6.x installed.
  # Tomcat 6.x installed to $TOMCAT_HOME.
- # MySql 5.x installed.
+ # !MySql 5.x installed.
 
 == Setting up the Citrine database ==
 The steps below are for !MySql (currently the only supported DB).
