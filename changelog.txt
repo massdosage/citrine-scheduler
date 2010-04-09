@@ -2,6 +2,7 @@
 TBA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Upgraded to javamail 1.4.3.
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=9 (add DDL to zip).
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 4.0.0 (2009-11-09 12:02:24)
