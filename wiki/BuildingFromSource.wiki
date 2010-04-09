@@ -1,13 +1,11 @@
 #summary How to build Citrine from source.
 
-= Introduction =
+= Building Citrine From Source =
 
 This page describes the steps needed to get Citrine set up for development and covers checking out the code and building it from source. Once you get Citrine to build successfully the next step is to get onto the UnitTestSetup.
 
-= Details =
-
-==Checkout the latest code from SVN==
-If you want to modify the source code based on the current trunk version you should follow the instructions on the [http://code.google.com/p/citrine-scheduler/source/checkout source] page. If you do not have SVN commit rights you can still check out the code and create and submit a patch with your changes.
+==Checkout the latest code from Subversion==
+If you want to modify the source code based on the current trunk version you should follow the instructions on the [http://code.google.com/p/citrine-scheduler/source/checkout source] page. If you do not have Subversion commit rights you can still check out the code and create and submit a patch with your changes.
 
 ==Building from source==
 Citrine uses [http://ant.apache.org/ivy Ivy] to manage the 3rd party libraries it uses. By default the Citrine build will retrieve all required 3rd party libraries from [http://code.google.com/p/ivyroundup/ Ivy Roundup]. Certain libraries cannot be automatically downloaded so they must be downloaded manually. Follow the instructions [http://code.google.com/p/ivyroundup/wiki/ManuallyDownloadedSoftware here] to download *javamail 1.4.3* and *jta 1.1*. You can download other versions of these packages but will need to change ivy.xml to reflect these different version numbers. 
