@@ -1,0 +1,5 @@
+#summary How to set up and configure an environment for running the unit tests.
+
+= Unit testing =
+
+*TODO: Describe setting up test db, test.properties etc*
