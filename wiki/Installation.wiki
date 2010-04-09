@@ -1,24 +1,42 @@
 #summary How to install Citrine
 
 = Installing Citrine =
-
-*TODO: Steps installing from .war - tomcat, database etc*
+These instructions cover installing Citrine for production use from a Binary Release downloaded from [http://code.google.com/p/citrine-scheduler/downloads/list here]. Unpack the .tgz file which should contain the following files:
+ * citrine.war - the Citrine web application.
+ * citrine-ddl-mysql.sql - SQL DDL for creating the Citrine database.
+ * base_data.sql - SQL which loads various default values into Citrine.
+ * citrine.properties.example - Example Citrine configuration file.
+The steps below will describe how to use these files to get up and running with Citrine.
 
 == Prerequisites ==
+ # Java 6.x installed.
  # Tomcat 6.x installed to $TOMCAT_HOME.
  # MySql 5.x installed.
 
 == Setting up the Citrine database ==
-
-3. ant generate-ddl
-4. run build/tasks.ddl against the database
+The steps below are for !MySql (currently the only supported DB).
+  # Create a database, this example will use the name "citrine" but you can call it whatever you want.
+{{{
+create database citrine;
+}}}
+  # Load the SQL DDL file that will create the necessary tables.
+{{{
+mysql -u username citrine < citrine-ddl-mysql.sql
+}}}
+  # If necessary create a user that can read and write from all the tables in the citrine database that will be used in production. We will assume the user is called "produser" and their password is "prodpassword".
 
 == Setting up Citrine ==
 
-2. Copy citrine.properties.example to citrine.properties and set DB, e-mail etc as necessary
-5. update citrine.properties to reflect the database you have just created
-6. copy citrine.properties to somewhere on TOMCAT_HOME classpath (TOMCAT_HOME/lib/ in 6.0.24)
+  # Copy citrine.properties.example to somewhere on Tomcat's classpath (e.g. TOMCAT_HOME/lib/ for versions 6.02x) and rename it to citrine.properties.
+  # Edit citrine.properties.
+  # Set the property "hibernate.connection.url" and set the host, port and database name that you added above.
+  # Set the property "hibernate.connection.username" to the username you added above.
+  # Set the property "hibernate.connection.password" to the password you added above.
+  # Set the property "sysexec.logpath" to TOMCAT_HOME/webapps/citrine/logs (replace TOMCAT_HOME with the *full* path to wherever you installed Tomcat).
+  # Start Tomcat.
+  # Copy citrine.war to TOMCAT_HOME/webapps
+  # Go to http://localhost:8080/citrine/ in a browser and you should see the Citrine home page.
 
-7. ant deploy (deploys to /usr/local/tomcat/webapps, override this by setting deploy.dir property in build.properties)
-8. If stack trace complaining about "hibernate dialect must be explicitly set", look higher up in trace, probably a db auth issue
-9. Go to http://localhost:8080/citrine/ in a browser.
+== Troubleshooting ==
+The first place to look for errors is in the log files under TOMCAT_HOME/logs/. Usually errors will be in a file called catalina.out, but depending on where in the process things went wrong various other files in the logs folder might contain clues.
+ * If the logs contain a stack trace complaining about "hibernate dialect must be explicitly set" look higher up in trace for the actual cause which 9 times out of 10 is  a database authentication issue (e.g. wrong user name or password).
