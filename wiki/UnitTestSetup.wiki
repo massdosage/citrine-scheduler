@@ -13,7 +13,6 @@ The steps below are for !MySql (currently the only supported DB).
   # Create a unit test database, this example will use the name "citrine_unittest" but you can call it whatever you want.
 {{{
 create database citrine_unittest;
-use citrine_unittest;
 }}}
   # Load the SQL DDL file that will create the necessary tables. Run the following command from the root of the Citrine project checkout
 {{{
