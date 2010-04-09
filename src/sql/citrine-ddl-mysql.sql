@@ -1,5 +1,3 @@
-alter table task_child_task drop foreign key FK3A35B5C2831F2EC2;
-alter table task_child_task drop foreign key FK3A35B5C27809EE9F;
 drop table if exists task_child_task;
 drop table if exists task_runs;
 drop table if exists tasks;
