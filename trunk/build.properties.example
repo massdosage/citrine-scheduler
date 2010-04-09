@@ -1,25 +1,31 @@
 ### IVY PROPERTIES ###
-#the current version of your application (used when publishing)
-version=3.3.1
-publish.overwrite=false
+## The version number of Citrine, used when publishing
+#version=
+## Whether to overwrite an existing publication or not. 
+#publish.overwrite=false
+## Whether to skip retrieving Ivy artifacts.
+#ivy.skip.retrieve=false
+## Folder containing ivysettings.xml, default uses Ivy roundup, change only if you have your own repository
+ivysettings.dir=.
+# Folder containing ivy-common-targets.xml
+ivy.commontargets.dir=.
+# Below file contains ivy dependencies as layed out in ivy roundup, change if you need a different layout
+ivy.file.name=ivy.xml
 
-svn.user.name=adrian
-#password for subversion
+### IVYSVN PROPERTIES (only needed if IvySvn is being used instead of default Ivy Roundup (http://code.google.com/p/ivysvn/) ###
+## Subversion User name 
+#svn.user.name=adrian
+## Subversion password
 #svn.user.password=
-#or path to private keyfile
-ssh.keyfile=/home/adrian/.ssh/id_rsa
-
-war.deploy.dir=/opt/java/tomcat/webapps
+## or path to private keyfile
+#ssh.keyfile=/home/USER/.ssh/id_rsa
 
 ### JUNIT PROPERTIES ###
-#only set this property if you want to limit what unit tests are run from ant
+# Only set this property if you want to limit which unit tests are run from ant
 #junit.includes=**/*SchedulerManagerTest.java
 
-#ivy.skip.retrieve=true
+### CITRINE BUILD PROPERTIES
+## Local path to deploy .wawr file to
+#war.deploy.dir=/usr/local/tomcat/webapps
 
-#folder containing ivysettings.xml, default uses ivy roundup, change if you have your own repository
-ivysettings.dir=.
-#folder containing ivy-common-targets.xml
-ivy.commontargets.dir=.
-#below file contains ivy dependencies as layed out in ivy roundup, change if you need a different layout
-ivy.file.name=ivy.xml
+

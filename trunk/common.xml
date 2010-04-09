@@ -45,8 +45,10 @@
   <property name="tgz.file" value="${ant.project.name}.tgz" />
 
   <!-- override the following if you install ivy/ant elsewhere or your svn auth details are different -->
-  <property name="ivy.settings.dir" location="${ant.home}/lib" />
+  <property name="ivy.settings.dir" location="." />
+  <property name="ivy.commontargets.dir" location="." />
   <import file="${ivy.commontargets.dir}/ivy-common-targets.xml" />
+  
   <property name="svn.user.name" value="${user.name}" />
   <property name="ssh.keyfile" value="${user.home}/.ssh/id_rsa" />
 
