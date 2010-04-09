@@ -1,0 +1,5 @@
+#summary How to use Citrine.
+
+= Usage =
+
+*TODO: Sections describing the various things one can do - setting up new tasks, deleting, viewing task runs etc.*
