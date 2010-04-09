@@ -3,3 +3,22 @@
 = Installing Citrine =
 
 *TODO: Steps installing from .war - tomcat, database etc*
+
+== Prerequisites ==
+# Tomcat 6.x installed to $TOMCAT_HOME.
+# MySql 5.x installed.
+
+== Setting up the Citrine database ==
+
+3. ant generate-ddl
+4. run build/tasks.ddl against the database
+
+== Setting up Citrine ==
+
+2. Copy citrine.properties.example to citrine.properties and set DB, e-mail etc as necessary
+5. update citrine.properties to reflect the database you have just created
+6. copy citrine.properties to somewhere on TOMCAT_HOME classpath (TOMCAT_HOME/lib/ in 6.0.24)
+
+7. ant deploy (deploys to /usr/local/tomcat/webapps, override this by setting deploy.dir property in build.properties)
+8. If stack trace complaining about "hibernate dialect must be explicitly set", look higher up in trace, probably a db auth issue
+9. Go to http://localhost:8080/citrine/ in a browser.
