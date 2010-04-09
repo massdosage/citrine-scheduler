@@ -1,5 +1,44 @@
 #summary How to set up and configure an environment for running the unit tests.
 
-= Unit testing =
+=Unit testing=
+This page assumes you have already followed the steps described in BuildingFromSource and can successfully build the citrine.war file.
 
-*TODO: Describe setting up test db, test.properties etc*
+==Create a test database==
+The steps below are for MySql (currently the only supported DB).
+  # Create a unit test database, this example will use the name "citrine_unittest" but you can call it whatever you want.
+{{{
+create database citrine_unittest;
+use citrine_unittest;
+}}}
+  # Load the SQL DDL file that will create the necessary tables. Run the following command from the root of the Citrine project checkout
+{{{
+mysql -u username citrine_unittest < src/sql/citrine-ddl-mysql.sql
+}}}
+  # If necessary create a user that can read and write from all the tables in the citrine_unittest database that will be used by the unit tests. We will assume the user is called "testuser" and their password is "testpassword".
+
+==Set the Citrine properties==
+To run the unit tests you need to create a test Citrine configuration file.
+  # Copy src/conf/citrine.properties.example to test/conf/citrine.properties.
+  # Edit test/conf/citrine.properties.
+  # Set the property "hibernate.connection.url" and set the host, port and database name that you added above.
+  # Set the property "hibernate.connection.username" to the username you added above.
+  # Set the property "hibernate.connection.password" to the password you added above.
+  # Set the property "sysexec.logpath" to some folder the tests have write access to (e.g. "/tmp/citrine/")
+
+==Run the unit tests==
+Run the tests via Ant:
+{{{
+ant test
+}}}
+which will output the test results to 
+{{{
+build/junit/junit-noframes.html
+}}}
+To get a coverage report run:
+{{{
+ant cobertura
+}}}
+which will output the coverage report to
+{{{
+build/cobertura/report/index.html
+}}}
