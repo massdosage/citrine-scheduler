@@ -1,0 +1,25 @@
+#summary How to build Citrine from source.
+
+= Introduction =
+
+This page describes the steps needed to get Citrine set up for development and covers checking out the code and building it from source. 
+
+
+= Details =
+
+==Checkout the latest code from SVN==
+If you want to modify the source code based on the current trunk version you should follow the instructions on the [http://code.google.com/p/citrine-scheduler/source/checkout source] page. If you do not have SVN commit rights you can still check out the code and create and submit a patch with your changes.
+
+==Building from source==
+Once you have got the source you need to do the following:
+
+# Copy `ivysettings.xml.example` to `ivysettings.xml` and modify it to suit your setup.  # Copy `build.properties.example` to `build.properties` and set the values according to your setup.
+# Run 
+{{{
+ant -Dskip.retrieve=true -Dversion=0 install
+}}} 
+*(TODO - does above still work? and why do we need version? and skipping retrieve? and maybe build would be better to describe, install can be described separately)*
+which will compile the Java source code, build `ivysvnresolver.jar` into `build/dist` and then copy this, `ivysettings.xml`, `ivy-common-targets.xml` and the required 3rd party libraries to your `ANT_HOME/lib` folder.
+
+
+TODO: Link to unit testing page from here
