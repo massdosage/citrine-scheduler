@@ -1,0 +1,3 @@
+#summary Configuring Citrine.
+
+*TODO: Describe various configuration options*
