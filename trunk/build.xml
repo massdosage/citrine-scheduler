@@ -69,7 +69,7 @@
       </classpath>
 
       <annotationconfiguration propertyfile="${hibernate.properties}" configurationfile="${hibernate.conf.file}" />
-      <hbm2ddl export="${db.export}" drop="true" outputfilename="tasks.ddl" haltonerror="false" />
+      <hbm2ddl export="${db.export}" drop="true" outputfilename="citrine.ddl" haltonerror="false" />
     </hibernatetool>
   </target>
 
