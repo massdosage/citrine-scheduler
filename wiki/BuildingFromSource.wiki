@@ -2,8 +2,7 @@
 
 = Introduction =
 
-This page describes the steps needed to get Citrine set up for development and covers checking out the code and building it from source. 
-
+This page describes the steps needed to get Citrine set up for development and covers checking out the code and building it from source. Once you get Citrine to build successfully the next step is to get onto the UnitTestSetup.
 
 = Details =
 
@@ -20,6 +19,8 @@ ant build-war
 to compile all the classes and build the Citrine.war file ready for deployment.
 
 ==Customising the build==
+
+===Modifying build properties===
 Various aspects of the build can be configured. To do this copy the file in the project root folder
 {{{
 build.properties.example
@@ -30,6 +31,8 @@ build.properties
 }}}
 This file is commented and explains the various properties that are commonly changed.
 
-
-
-TODO: Link to unit testing page from here
+===Skipping retrieval of Ivy artifacts===
+If you are doing many build operations and you know the 3rd party libraries aren't changing you can speed up the build by skipping the Ivy retrieval like so:
+{{{
+ant -Divy.skip.retrieve=true -Divy.initialised=true build-war
+}}}
