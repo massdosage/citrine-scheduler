@@ -1,5 +1,27 @@
 #summary How to use Citrine.
 
-= Usage =
+*TODO: this is just a skeleton, needs to be filled out*
+= Tasks =
+- everything under the Tasks Overview
 
-*TODO: Sections describing the various things one can do - setting up new tasks, deleting, viewing task runs etc.*
+== Create a new Task ==
+
+== Edit an existing Task ==
+
+== Run a Task ==
+- various colours while a task runs, what they mean etc.
+
+== View Task Run results ==
+- success, stack, error, logs etc.
+
+
+= Task Run Logs =
+- from main menu
+== View the logs for all Task Runs ==
+
+=== HTML view ===
+
+=== Raw view ===
+
+= Administering Citrine =
+- various items on this sub-screen.
