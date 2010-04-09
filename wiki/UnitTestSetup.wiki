@@ -3,6 +3,11 @@
 =Unit testing=
 This page assumes you have already followed the steps described in BuildingFromSource and can successfully build the citrine.war file.
 
+== Prerequisites ==
+ # MySql 5.x installed.
+ # Java 6.x installed.
+ # Ant >=1.6 installed.
+
 ==Create a test database==
 The steps below are for MySql (currently the only supported DB).
   # Create a unit test database, this example will use the name "citrine_unittest" but you can call it whatever you want.
