@@ -28,7 +28,7 @@
   <property name="build.dir" location="build" />
   <property name="classes.dir" location="${build.dir}/classes" />
   <property name="javadoc.dir" location="${build.dir}/javadoc" />
-  <property name="javadoc.includes" value="fm/last/**/*" />
+  <property name="javadoc.includes" value="fm/last/**/*.java" />
   <property name="dist.dir" location="${build.dir}/dist" />
   <property name="junit.report.dir" location="${build.dir}/junit" />
   <property name="checkstyle.report.dir" value="${build.dir}/checkstyle" />
@@ -57,7 +57,7 @@
   <property name="ear.deploy.dir" value="${deploy.dir}" />
   <property name="jar.deploy.dir" value="${deploy.dir}" />
   <property name="war.deploy.dir" value="${deploy.dir}" />
-  <property name="findbugs.home.dir" location="/opt/java/findbugs/" />
+  <property name="findbugs.home.dir" location="/usr/local/findbugs" />
 
   <!-- override this fileset to include extra files in the jar that gets built by build-jar -->
   <fileset dir="." includes="${jar.file.includes}" id="jar-fileset" />
@@ -132,8 +132,10 @@
 
     <property name="junit.includes" value="**/*Test.java" />
     <property name="junit.excludes" value="nothing.by.default" />
+    <property name="junit.fork" value="true" />
+    <property name="junit.forkmode" value="perTest" />
 
-    <junit printsummary="yes" failureproperty="testfailed" showoutput="true" fork="true">
+    <junit printsummary="yes" failureproperty="testfailed" showoutput="true" fork="${junit.fork}" forkmode="${junit.forkmode}">
       <sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.datafile}" />
       
       <classpath refid="additional-test-classpath" />
@@ -164,13 +166,12 @@
     <tstamp>
       <format property="YEAR" pattern="yyyy" />
     </tstamp>
-    <javadoc destdir="${javadoc.dir}" author="true" version="true" use="true" windowtitle="${ant.project.name} API"
-      classpathref="compile-classpath">
+    <javadoc destdir="${javadoc.dir}" author="true" version="true" use="true" windowtitle="${ant.project.name} API" classpathref="compile-classpath">
       <fileset dir="${java.src.dir}" defaultexcludes="yes">
         <include name="${javadoc.includes}" />
       </fileset>
       <bottom>
-        <![CDATA[<i>Copyright &#169; ${YEAR} Last.fm. All Rights Reserved.</i>]]>
+        Copyright ${YEAR} Last.fm. All Rights Reserved.
       </bottom>
     </javadoc>
   </target>
@@ -255,7 +256,7 @@
   </target>
 
   <target name="findbugs" depends="build">
-    <echo message="${findbugs.home.dir}" />
+    <echo message="Running findbugs from ${findbugs.home.dir}" />
     <taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" classpath="${findbugs.home.dir}/lib/findbugs-ant.jar" />
 
     <property name="findbugs.report.htmlfile" value="${findbugs.report.dir}/findbugs-report.html" />
