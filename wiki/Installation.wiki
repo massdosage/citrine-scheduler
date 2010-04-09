@@ -25,7 +25,7 @@ mysql -u username citrine < citrine-ddl-mysql.sql
 }}}
   # If necessary create a user that can read and write from all the tables in the citrine database that will be used in production. We will assume the user is called "produser" and their password is "prodpassword".
 
-== Setting up Citrine ==
+== Configuring Citrine ==
 
   # Copy citrine.properties.example to somewhere on Tomcat's classpath (e.g. TOMCAT_HOME/lib/ for versions 6.02x) and rename it to citrine.properties.
   # Edit citrine.properties.
@@ -33,6 +33,8 @@ mysql -u username citrine < citrine-ddl-mysql.sql
   # Set the property "hibernate.connection.username" to the username you added above.
   # Set the property "hibernate.connection.password" to the password you added above.
   # Set the property "sysexec.logpath" to TOMCAT_HOME/webapps/citrine/logs (replace TOMCAT_HOME with the *full* path to wherever you installed Tomcat).
+
+== Starting Citrine ==
   # Start Tomcat.
   # Copy citrine.war to TOMCAT_HOME/webapps
   # Go to http://localhost:8080/citrine/ in a browser and you should see the Citrine home page.
