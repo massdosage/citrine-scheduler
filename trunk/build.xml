@@ -88,7 +88,7 @@
     <sql classpathref="compile-classpath" driver="${hibernate.connection.driver_class}" url="${hibernate.connection.url}" userid="${hibernate.connection.username}" password="${hibernate.connection.password}" src="${test.data.dir}/test_data.sql" />
   </target>
 
-  <target name="build-war" depends="generate-ddl">
+  <target name="build-war" depends="build-jar">
 
     <war destfile="${dist.dir}/${war.file}" webxml="${conf.dir}/web.xml">
       <manifest>
