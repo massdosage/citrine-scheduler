@@ -29,6 +29,6 @@ mail.from=
 mail.to=
 
 ##OTHER SETTINGS
-sysexec.logpath=/opt/java/tomcat/webapps/citrine/logs/
+sysexec.logpath=/user/local/tomcat/webapps/citrine/logs/
 sysexec.logpattern=%d{ISO8601} %m%n
 sysexec.tailbytes=5000
