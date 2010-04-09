@@ -11,7 +11,13 @@ This page describes the steps needed to get Citrine set up for development and c
 If you want to modify the source code based on the current trunk version you should follow the instructions on the [http://code.google.com/p/citrine-scheduler/source/checkout source] page. If you do not have SVN commit rights you can still check out the code and create and submit a patch with your changes.
 
 ==Building from source==
-By default the Citrine build will retrieve all required 3rd party libraries from [http://code.google.com/p/ivyroundup/ Ivy Roundup]. Certain libraries cannot be automatically downloaded so they must be downloaded manually. Follow the instructions [http://code.google.com/p/ivyroundup/wiki/ManuallyDownloadedSoftware here] to download *javamail* and *jta*. 
+Citrine uses [http://ant.apache.org/ivy Ivy] to manage the 3rd party libraries it uses. By default the Citrine build will retrieve all required 3rd party libraries from [http://code.google.com/p/ivyroundup/ Ivy Roundup]. Certain libraries cannot be automatically downloaded so they must be downloaded manually. Follow the instructions [http://code.google.com/p/ivyroundup/wiki/ManuallyDownloadedSoftware here] to download *javamail 1.4.3* and *jta 1.1*. You can download other versions of these packages but will need to change ivy.xml to reflect these different version numbers. 
+
+You should then be able to run
+{{{
+ant build-war
+}}}
+to compile all the classes and build the Citrine.war file ready for deployment.
 
 ==Customising the build==
 Various aspects of the build can be configured. To do this copy the file in the project root folder
@@ -24,13 +30,6 @@ build.properties
 }}}
 This file is commented and explains the various properties that are commonly changed.
 
-# Copy `ivysettings.xml.example` to `ivysettings.xml` and modify it to suit your setup.  # Copy `build.properties.example` to `build.properties` and set the values according to your setup.
-# Run 
-{{{
-ant -Dskip.retrieve=true -Dversion=0 install
-}}} 
-*(TODO - does above still work? and why do we need version? and skipping retrieve? and maybe build would be better to describe, install can be described separately)*
-which will compile the Java source code, build `ivysvnresolver.jar` into `build/dist` and then copy this, `ivysettings.xml`, `ivy-common-targets.xml` and the required 3rd party libraries to your `ANT_HOME/lib` folder.
 
 
 TODO: Link to unit testing page from here
