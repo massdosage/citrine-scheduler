@@ -5,8 +5,8 @@
 *TODO: Steps installing from .war - tomcat, database etc*
 
 == Prerequisites ==
-# Tomcat 6.x installed to $TOMCAT_HOME.
-# MySql 5.x installed.
+ # Tomcat 6.x installed to $TOMCAT_HOME.
+ # MySql 5.x installed.
 
 == Setting up the Citrine database ==
 
