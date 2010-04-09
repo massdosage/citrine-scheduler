@@ -1,4 +1,5 @@
 #summary How to install Citrine
+#labels Featured
 
 = Installing Citrine =
 These instructions cover installing Citrine for production use from a Binary Release downloaded from [http://code.google.com/p/citrine-scheduler/downloads/list here]. Unpack the .tgz file which should contain the following files:
