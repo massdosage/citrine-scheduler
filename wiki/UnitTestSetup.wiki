@@ -16,7 +16,7 @@ mysql -u username citrine_unittest < src/sql/citrine-ddl-mysql.sql
 }}}
   # If necessary create a user that can read and write from all the tables in the citrine_unittest database that will be used by the unit tests. We will assume the user is called "testuser" and their password is "testpassword".
 
-==Set the Citrine properties==
+==Configure Citrine for testing==
 To run the unit tests you need to create a test Citrine configuration file.
   # Copy src/conf/citrine.properties.example to test/conf/citrine.properties.
   # Edit test/conf/citrine.properties.
