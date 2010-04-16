@@ -24,6 +24,10 @@ create database citrine;
 {{{
 mysql -u username citrine < citrine-ddl-mysql.sql
 }}}
+  # Load the base SQL file that will create the default admin tasks.
+{{{
+mysql -u username citrine < base_data.sql
+}}}
   # If necessary create a user that can read and write from all the tables in the citrine database that will be used in production. We will assume the user is called "produser" and their password is "prodpassword".
 
 == Configuring Citrine ==
