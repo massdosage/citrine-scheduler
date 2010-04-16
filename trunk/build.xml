@@ -137,7 +137,7 @@
   </target>
 
   <target name="build-tgz" depends="build-war" description="Builds a .tgz file containing the app war file and DB creation scripts">
-    <tar destfile="${dist.dir}/${tgz.file}" compression="gzip">
+    <tar destfile="${dist.dir}/${ant.project.name}-${version}.tgz" compression="gzip">
       <tarfileset prefix="${ant.project.name}" dir="${dist.dir}">
         <include name="${war.file}" />
       </tarfileset>
@@ -148,6 +148,12 @@
         <include name="*.properties.example" />
       </tarfileset>
     </tar>
+  </target>
+
+  <target name="upload" depends="build">
+    <taskdef classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask" classpath="${lib.dir}/ant-googlecode.jar" name="gcupload" />
+    <gcupload username="${google.username}" password="${google.password}" projectname="citrine-scheduler" filename="${dist.dir}/${ant.project.name}-${version}.tgz" targetfilename="${ant.project.name}-${version}.tgz" summary="Citrine ${version} Binary Release" labels="Featured, Type-Archive, OpSys-All" />
+    <!--gcupload username="${google.username}" password="${google.password}" projectname="citrine-scheduler" filename="${dist.dir}/${ant.project.name}.war" targetfilename="${ant.project.name}.war" summary="${version} War Release" labels="Type-Package, OpSys-All" /-->
   </target>
 
   <!-- deploys just the jsp, html etc to an already deployed web-app, useful during development -->
