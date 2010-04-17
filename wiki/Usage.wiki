@@ -40,9 +40,9 @@ full/path/to/script.sh
 
 To edit an existing task, click the task name. You will be brought to the webform containing the details for the task. This webform is the same as appears in the *Create New Task*.
 
-=== Disable an existing Task===
+== Disable an existing Task==
 
-To edit an existing task, click the task name. You will be brought to the webform containing the details for the task. This webform is the same as appears in the *Create New Task*.
+To disable an existing task, click the task name as if editing the task. You will be brought to the webform containing the details for the task. This webform is the same as appears in the *Create New Task*.
 
 Untick the 'Enabled' box. 
 
