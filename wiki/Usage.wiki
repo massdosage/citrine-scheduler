@@ -7,8 +7,7 @@ The tasks page is where all tasks are created, edited, run, viewed, or deleted
 
 To create a new Citrine task, click the '''Create New Task''' link. You will be brought to a webform for creating the task.
 
-The fields are:
-
+The fields are (Fields in *bold* are required fields):
   * *Name* - create a descriptive name
   * Description - Create a description of what the task is meant to do and when it is meant to run
   * Timer Schedule - Set the times that the task is meant to run. These times are written in chron format. Click the *?* to view the [http://www.quartz-scheduler.org/docs/tutorials/crontrigger.html chron trigger tutorial]
@@ -27,6 +26,8 @@ full/path/to/script.sh
   * Notify on failure - If ticked, an email will be sent to notification recipients when the task fails.
 
 == Edit an existing Task ==
+
+To edit an existing task, click the task name. You will be brought to the webform containing the details for the task.
 
 == Run a Task ==
 - various colours while a task runs, what they mean etc.
