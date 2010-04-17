@@ -6,7 +6,7 @@ The tasks page is where all tasks are created, edited, run, viewed, or deleted
 
 == Create a new Task ==
 
-To create a new Citrine task, click the '''Create New Task''' link. You will be brought to a webform for creating the task.
+To create a new Citrine task, click the 'Create New Task' link. You will be brought to a webform for creating the task.
 
 The fields are (Fields in *bold* are required fields):
   * *Name* - create a descriptive name
@@ -22,13 +22,12 @@ full/path/to/script.sh
   * Enabled - If ticked, this task will run. If unticked, the task will not be run.
   * Stop On Error - If ticked, should the task fail it will NOT trigger tasks that would run at its completion. If unticked, should this parent task fail, its children tasks will still run.
   * Error if Running - If ticked, should an instance of this task exist, it will raise an error and will not run the task. If unticked, it will run another instance of the task.
-  * Notification Recipients - Enter a comma-separated list of email addresses of persons who should be notified. (These email addresses will need to be set up, an error will be raised if any email address is entered that has not already been set up.) 
+  * Notification Recipients - Enter a comma-separated list of email addresses of persons who should be notified. 
+    * NB: Before notifications can be set up, MAIL SETTINGS in the TOMCAT_HOME/lib/citrine.properties file needs to be set up.
   * Notify on success - If ticked, an email will be sent to notification recipients when the task is completed successfully.
   * Notify on failure - If ticked, an email will be sent to notification recipients when the task fails.
 
 === Create a child task ===
-
-
 
   # Create a parent task and the child task as stand-alone tasks.
   # Open the task webform of the parent task.
@@ -65,11 +64,10 @@ Different colours denote the status of the task:
   * Tan - aborted (example: A task takes 5 minutes and is set to run once a minute but the 'Error if Running' box is ticked in the task webform)
   * Dark tan (orange) - interrupted (example: The server has lost power and all tasks in the process of running were interrupted) 		
 
-= Task Run Logs =		
-*TODO: this is just a skeleton, needs to be filled out*		
-- from main menu		
-== View the logs for all Task Runs ==		
-=== HTML view ===		
-=== Raw view ===		
+= Task Run Logs =	
+The Task Run Logs allows you to view the logs for all Task Runs. There are two different ways to view the logs: 
+  * HTML view - view the logs formatted in HTML		
+  * Raw view - view the raw log files in the browser
+
 = Administering Citrine =		
 - various items on this sub-screen.
