@@ -1,4 +1,5 @@
 #summary How to set up and configure an environment for running the unit tests.
+<wiki:toc max_depth="2" />
 
 =Unit testing=
 This page assumes you have already followed the steps described in BuildingFromSource and can successfully build the citrine.war file.
