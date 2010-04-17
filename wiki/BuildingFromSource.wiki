@@ -1,4 +1,5 @@
 #summary How to build Citrine from source.
+<wiki:toc max_depth="2" />
 
 = Building Citrine From Source =
 
