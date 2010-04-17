@@ -1,6 +1,18 @@
 #summary Configuring Citrine.
 <wiki:toc max_depth="2" />
 
-*TODO: Describe various configuration options*
-
 The configuration file for Citrine can be found in TOMCAT_HOME/lib/citrine.properties.war
+
+= Generic Hibernate Connection Settings =
+
+= Commons DBCP =
+
+= Mail Settings =
+These settings must be set in order to use email notifications for tasks. 
+
+  * stmp.host - 
+  * stmp.password -
+  * mail.from - email sender for all email notifications
+  * mail.to - default email that all email notifications will be sent to if no other email addresses are entered when creating/editing a task.
+
+= Other Settings =
