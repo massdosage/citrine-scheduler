@@ -52,4 +52,13 @@ Different colours denote the status of the task:
   * Light blue - cancelling
   * Dark blue - cancelled
   * Tan - aborted (example: A task takes 5 minutes and is set to run once a minute but the 'Error if Running' box is ticked in the task webform)
-  * Dark tan (orange) - interrupted (example: The server has lost power and all tasks in the process of running were interrupted) 
+  * Dark tan (orange) - interrupted (example: The server has lost power and all tasks in the process of running were interrupted) 		
+
+= Task Run Logs =		
+*TODO: this is just a skeleton, needs to be filled out*		
+- from main menu		
+== View the logs for all Task Runs ==		
+=== HTML view ===		
+=== Raw view ===		
+= Administering Citrine =		
+- various items on this sub-screen.
