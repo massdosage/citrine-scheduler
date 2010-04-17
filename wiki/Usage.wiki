@@ -27,7 +27,13 @@ full/path/to/script.sh
 
 == Edit an existing Task ==
 
-To edit an existing task, click the task name. You will be brought to the webform containing the details for the task.
+To edit an existing task, click the task name. You will be brought to the webform containing the details for the task. This webform is the same as appears in the *Create New Task*.
+
+=== Disable an existing Task===
+
+To edit an existing task, click the task name. You will be brought to the webform containing the details for the task. This webform is the same as appears in the *Create New Task*.
+
+Untick the 'Enabled' box. 
 
 == Run a Task ==
 - various colours while a task runs, what they mean etc.
