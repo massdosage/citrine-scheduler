@@ -26,6 +26,17 @@ full/path/to/script.sh
   * Notify on success - If ticked, an email will be sent to notification recipients when the task is completed successfully.
   * Notify on failure - If ticked, an email will be sent to notification recipients when the task fails.
 
+=== Create a child task ===
+
+
+
+  # Create a parent task and the child task as stand-alone tasks.
+  # Open the task webform of the parent task.
+  # Click the 'Manage Child Tasks' at the bottom left of the page
+  # Tick the boxes of all the child tasks.
+   * NB: A child task must be in the same group as the parent. Available children will not include those which are already set as children of the parents. The parent task cannot also be its own child or grandchild.
+  # Click the 'Update' button to confirm your selection. You will be redirected to the Tasks Overview list.
+
 == Edit an existing Task ==
 
 To edit an existing task, click the task name. You will be brought to the webform containing the details for the task. This webform is the same as appears in the *Create New Task*.
