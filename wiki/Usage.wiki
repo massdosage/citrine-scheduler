@@ -67,7 +67,7 @@ Different colours denote the status of the task:
 = Task Run Logs =	
 The Task Run Logs allows you to view the logs for all Task Runs. There are two different ways to view the logs: 
   * HTML view - view the logs formatted in HTML		
-  * Raw view - view the raw log files in the browser
+  * Raw view - view the raw log files in the browser or open in a text editor depending on the browser settings.
 
 = Administering Citrine =		
 - various items on this sub-screen.
