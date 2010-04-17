@@ -8,6 +8,8 @@ The tasks page is where all tasks are created, edited, run, viewed, or deleted
 
 To create a new Citrine task, click the 'Create New Task' link. You will be brought to a webform for creating the task.
 
+http://citrine-scheduler.googlecode.com/files/edit_details.png
+
 The fields are (Fields in *bold* are required fields):
   * *Name* - create a descriptive name
   * Description - Create a description of what the task is meant to do and when it is meant to run
@@ -54,6 +56,8 @@ You will be directed to the Task Runs page for that task. See the section on *Vi
 == View Task Run results ==
 
 To view the Task Run results from the Tasks Overview page, click the 'Tasks Run' link in the Task Runs column for the task you want to view.
+
+http://citrine-scheduler.googlecode.com/files/tasks_overview.png
 
 Different colours denote the status of the task:
   * Yellow - currently running
