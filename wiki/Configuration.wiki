@@ -1,3 +1,6 @@
 #summary Configuring Citrine.
+<wiki:toc max_depth="2" />
 
 *TODO: Describe various configuration options*
+
+The configuration file for Citrine can be found in TOMCAT_HOME/lib/citrine.properties.war
