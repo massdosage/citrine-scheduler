@@ -4,15 +4,21 @@
 The configuration file for Citrine can be found in TOMCAT_HOME/lib/citrine.properties.war
 
 = Generic Hibernate Connection Settings =
+Refer to http://wiki.apache.org/commons/DBCP/Hibernate for more information on these settings.
 
 = Commons DBCP =
+Refer to the comments in the document and http://commons.apache.org/dbcp/ for more information.
 
 = Mail Settings =
 These settings must be set in order to use email notifications for tasks. 
-
-  * smtp.host - 
-  * smtp.password -
+This assumes that you have a mail server set up. 
+  * smtp.host - hostname or ip address of the mail server
+  * smtp.password - password needed to log onto the server to send email
   * mail.from - email sender for all email notifications
   * mail.to - default email that all email notifications will be sent to if no other email addresses are entered when creating/editing a task.
 
 = Other Settings =
+
+  * sysexec.logpath MUST be FULL_PATH_TO/TOMCAT_HOME/webapps/citrine/logs/
+  * sysexec.logpattern is written in log4j format. For more information, see http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html
+  * sysexec.tailbytes is the last X bytes of the log when the log is viewed in HTML view.
