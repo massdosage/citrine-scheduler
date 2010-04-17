@@ -4,7 +4,7 @@
 The configuration file for Citrine can be found in TOMCAT_HOME/lib/citrine.properties.war
 
 = Generic Hibernate Connection Settings =
-Refer to http://wiki.apache.org/commons/DBCP/Hibernate for more information on these settings.
+Refer to http://www.hibernate.org/ for more information on these settings.
 
 = Commons DBCP =
 Refer to the comments in the document and http://commons.apache.org/dbcp/ for more information.
