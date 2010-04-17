@@ -1,4 +1,5 @@
 #summary How to use Citrine.
+<wiki:toc max_depth="2" />
 
 = Tasks =
 The tasks page is where all tasks are created, edited, run, viewed, or deleted
@@ -36,10 +37,21 @@ To edit an existing task, click the task name. You will be brought to the webfor
 Untick the 'Enabled' box. 
 
 == Run a Task ==
-- various colours while a task runs, what they mean etc.
+In the 'Actions' column on the Tasks Overview page, click the "Start" link.
+You will be directed to the Task Runs page for that task.
+
+Different colours denote the status of the task:
+  * Yellow - currently running
+  * Green - successfully completed
+  * Red - failed
+  * Light blue - cancelling
+  * Dark blue - cancelled
+  * Tan - aborted (example: A task takes 5 minutes and is set to run once a minute but the 'Error if Running' box is ticked in the task webform)
+  * Dark tan (orange) - interrupted (example: The server has lost power and all tasks in the process of running were interrupted) 
 
 == View Task Run results ==
 - success, stack, error, logs etc.
+
 
 
 = Task Run Logs =
