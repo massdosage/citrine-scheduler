@@ -23,7 +23,7 @@ full/path/to/script.sh
   * Stop On Error - If ticked, should the task fail it will NOT trigger tasks that would run at its completion. If unticked, should this parent task fail, its children tasks will still run.
   * Error if Running - If ticked, should an instance of this task exist, it will raise an error and will not run the task. If unticked, it will run another instance of the task.
   * Notification Recipients - Enter a comma-separated list of email addresses of persons who should be notified. 
-    * NB: Before notifications can be set up, MAIL SETTINGS in the TOMCAT_HOME/lib/citrine.properties file needs to be set up.
+    * NB: Before notifications can be set up, MAIL SETTINGS in the TOMCAT_HOME/lib/citrine.properties file needs to be edited and settings included. 
   * Notify on success - If ticked, an email will be sent to notification recipients when the task is completed successfully.
   * Notify on failure - If ticked, an email will be sent to notification recipients when the task fails.
 
