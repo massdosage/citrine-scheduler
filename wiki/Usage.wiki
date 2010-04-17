@@ -27,7 +27,7 @@ full/path/to/script.sh
   * Notify on success - If ticked, an email will be sent to notification recipients when the task is completed successfully.
   * Notify on failure - If ticked, an email will be sent to notification recipients when the task fails.
 
-=== Create a child task ===
+== Create a child task ==
 
   # Create a parent task and the child task as stand-alone tasks.
   # Open the task webform of the parent task.
