@@ -18,23 +18,29 @@ The steps below will describe how to use these files to get up and running with 
 The steps below are for !MySql (currently the only supported DB).
   # Create a database, this example will use the name "citrine" but you can call it whatever you want.
 {{{
-create database citrine;
+$ mysql -u USERNAME
+mysql> create database citrine;
+mysql> exit;
 }}}
-  # Load the SQL DDL file that will create the necessary tables.
+  # Load the SQL DDL file that will create the necessary tables. Change directory to the folder that the Citrene files are in.
 {{{
-mysql -u username citrine < citrine-ddl-mysql.sql
+$ mysql -u USERNAME citrine < citrine-ddl-mysql.sql
 }}}
   # Load the base SQL file that will create the default admin tasks.
 {{{
-mysql -u username citrine < base_data.sql
+$ mysql -u USERNAME citrine < base_data.sql
 }}}
   # If necessary create a user that can read and write from all the tables in the citrine database that will be used in production. We will assume the user is called "produser" and their password is "prodpassword".
 
 == Configuring Citrine ==
 
-  # Copy citrine.properties.example to somewhere on Tomcat's classpath (e.g. TOMCAT_HOME/lib/ for versions 6.02x) and rename it to citrine.properties.
+  # Copy citrine.properties.example to somewhere on Tomcat's classpath (e.g. TOMCAT_HOME/lib/ for versions 6.02x) 
+  # Rename citrine.properties.example to citrine.properties.
   # Edit citrine.properties.
-  # Set the property "hibernate.connection.url" and set the host, port and database name that you added above.
+  # Set the property "hibernate.connection.url" and set the host, port and database name that you added above. 
+{{{
+jdbc:mysql://127.0.0.1:3306/citrine?jdbcCompliantTruncation=false
+}}}
   # Set the property "hibernate.connection.username" to the username you added above.
   # Set the property "hibernate.connection.password" to the password you added above.
   # Set the property "sysexec.logpath" to TOMCAT_HOME/webapps/citrine/logs (replace TOMCAT_HOME with the *full* path to wherever you installed Tomcat).
