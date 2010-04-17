@@ -1,10 +1,30 @@
 #summary How to use Citrine.
 
-*TODO: this is just a skeleton, needs to be filled out*
 = Tasks =
-- everything under the Tasks Overview
+The tasks page is where all tasks are created, edited, run, viewed, or deleted
 
 == Create a new Task ==
+
+To create a new Citrine task, click the '''Create New Task''' link. You will be brought to a webform for creating the task.
+
+The fields are:
+
+  * *Name* - create a descriptive name
+  * Description - Create a description of what the task is meant to do and when it is meant to run
+  * Timer Schedule - Set the times that the task is meant to run. These times are written in chron format. Click the *?* to view the [http://www.quartz-scheduler.org/docs/tutorials/crontrigger.html chron trigger tutorial]
+  * Command - Enter the command that should be run when the task is triggered. This would typically be a shell script which would look like:
+{{{
+full/path/to/script.sh
+}}}
+  * Bean Name - (Will be removed. Default to sysExecJob.)
+  * Priority - (Under Construction - not yet implemented in the backend.)
+  * *Group Name* - Create a group or assign this task to a group.
+  * Enabled - If ticked, this task will run. If unticked, the task will not be run.
+  * Stop On Error - If ticked, should the task fail it will NOT trigger tasks that would run at its completion. If unticked, should this parent task fail, its children tasks will still run.
+  * Error if Running - If ticked, should an instance of this task exist, it will raise an error and will not run the task. If unticked, it will run another instance of the task.
+  * Notification Recipients - Enter a comma-separated list of email addresses of persons who should be notified. (These email addresses will need to be set up, an error will be raised if any email address is entered that has not already been set up.) 
+  * Notify on success - If ticked, an email will be sent to notification recipients when the task is completed successfully.
+  * Notify on failure - If ticked, an email will be sent to notification recipients when the task fails.
 
 == Edit an existing Task ==
 
@@ -16,6 +36,7 @@
 
 
 = Task Run Logs =
+*TODO: this is just a skeleton, needs to be filled out*
 - from main menu
 == View the logs for all Task Runs ==
 
