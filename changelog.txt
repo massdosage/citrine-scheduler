@@ -1,6 +1,6 @@
 TBA
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=13 (add Apache license to javadoc footer).
-
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=21 (Add Apache 2.0 license to root of project and add to .tgz)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 4.0.1 (2010-04-16)
