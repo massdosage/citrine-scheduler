@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Last.fm
+ * Copyright 2010 Last.fm
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ public final class RequestUtils {
    * 
    * @param request Request.
    * @param paramName The name of the parameter.
-   * @param Whether the parameter is required or not.
+   * @param required Whether the parameter is required or not.
    * @return The value of the parameter as a Long, or null if the parameter was not set and required is false.
    * @throws ServletException If the parameter was not set on the request and required is true.
    */

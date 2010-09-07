@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Last.fm
+ * Copyright 2010 Last.fm
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -119,7 +119,7 @@ public class TaskController extends MultiActionController {
    * 
    * @param request
    * @param response
-   * @return
+   * @return A ModelAndView to render.
    * @throws Exception
    */
   public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -135,7 +135,7 @@ public class TaskController extends MultiActionController {
    * 
    * @param request
    * @param response
-   * @return
+   * @return A ModelAndView to render.
    * @throws Exception
    */
   public ModelAndView run(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -154,7 +154,7 @@ public class TaskController extends MultiActionController {
    * 
    * @param request
    * @param response
-   * @return
+   * @return A ModelAndView to render.
    * @throws Exception
    */
   public ModelAndView reset(HttpServletRequest request, HttpServletResponse response) throws Exception {

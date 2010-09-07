@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Last.fm
+ * Copyright 2010 Last.fm
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -101,7 +101,7 @@ public class StringUtils extends org.apache.commons.lang.StringUtils {
    * Strips "non-printable" whitespace (carriage returns, tabs, linefeeds etc.) from the passed string.
    * 
    * @param input Input String.
-   * @return
+   * @return The string with non-printable whitespace removed.
    */
   public static String removeNonPrintableWhitespace(String input) {
     if (input != null) {

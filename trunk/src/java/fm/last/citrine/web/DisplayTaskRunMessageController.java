@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Last.fm
+ * Copyright 2010 Last.fm
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ public class DisplayTaskRunMessageController extends MultiActionController {
    * 
    * @param request
    * @param response
-   * @return
+   * @return A ModelAndView to render.
    * @throws Exception
    */
   public ModelAndView displayStack(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -74,7 +74,7 @@ public class DisplayTaskRunMessageController extends MultiActionController {
    * 
    * @param request
    * @param response
-   * @return
+   * @return A ModelAndView to render.
    * @throws Exception
    */
   public ModelAndView displaySysOut(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -89,7 +89,7 @@ public class DisplayTaskRunMessageController extends MultiActionController {
    * 
    * @param request
    * @param response
-   * @return
+   * @return A ModelAndView to render.
    * @throws Exception
    */
   public ModelAndView displaySysErr(HttpServletRequest request, HttpServletResponse response) throws Exception {
