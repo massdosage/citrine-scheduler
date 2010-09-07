@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Last.fm
+ * Copyright 2010 Last.fm
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ public interface LogFileManager {
   /**
    * Deletes all log files older than the passed date.
    * 
-   * @param before DateTime to delete log files before.
+   * @param deleteBefore DateTime to delete log files before.
    * @throws IOException If an error occurs deleting the log files.
    */
   public void deleteBefore(DateTime deleteBefore) throws IOException;
