@@ -139,13 +139,16 @@
   <target name="build-tgz" depends="build-war" description="Builds a .tgz file containing the app war file and DB creation scripts">
     <tar destfile="${dist.dir}/${ant.project.name}-${version}.tgz" compression="gzip">
       
-      <tarfileset prefix="${ant.project.name}" dir="${sql.src.dir}" includes="*.sql" />
+      <tarfileset prefix="${ant.project.name}/sql" dir="${sql.src.dir}" includes="*.sql" preserveLeadingSlashes="true"/>
       
       <tarfileset prefix="${ant.project.name}" dir="${dist.dir}">
         <include name="${war.file}" />
       </tarfileset>
 
-      <tarfileset prefix="${ant.project.name}" dir="${basedir}" includes="LICENSE.txt" />
+      <tarfileset prefix="${ant.project.name}" dir="${basedir}">
+        <include name="LICENSE*.txt" />
+        <include name="changelog*.txt" />
+      </tarfileset>
 
       <tarfileset prefix="${ant.project.name}" dir="${conf.dir}">
         <include name="*.properties.example" />
