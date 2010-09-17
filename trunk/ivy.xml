@@ -23,7 +23,7 @@
     <dependency org="javax.persistence" name="persistence-api" rev="1.0" transitive="false" />
     <dependency org="javax.servlet" name="servletapi" rev="2.5" transitive="false" />
     <dependency org="org.antlr" name="antlr" rev="2.7.7" transitive="false" />
-    <dependency org="org.apache.log4j" name="log4j" rev="1.2.15" conf="*&gt;default" />
+    <dependency org="org.apache.log4j" name="log4j" rev="1.2.15" conf="*-&gt;default" />
     <dependency org="org.apache.commons" name="commons-beanutils" rev="1.8.0" conf="*-&gt;complete" transitive="false" />
     <dependency org="org.apache.commons" name="commons-collections" rev="3.2" transitive="false" />
     <dependency org="org.apache.commons" name="commons-dbcp" rev="1.2.2" transitive="false" />
