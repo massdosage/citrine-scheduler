@@ -108,7 +108,7 @@
           <td align="right">
             <input type="submit" value="Save" name="update"/>
             <c:if test="${not empty taskDTO.task.id && taskDTO.task.id != 0}">
-              <input type="submit" value="Delete" name="delete"/>
+              <input type="submit" value="Delete" name="delete" onClick="return confirm('Are you sure you want to delete this task?')"/>
             </c:if>
             <input type="submit" value="Cancel" name="cancel"/>
           </td>
