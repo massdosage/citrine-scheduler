@@ -1,4 +1,5 @@
 TBA
+- Minor change to add missing "/" on sysexec.logpath if not specified. 
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=13 (add Apache license to javadoc footer).
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=21 (Add Apache 2.0 license to root of project and add to .tgz)
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=20 (Add changelog to tgz, contributed by benjsec)

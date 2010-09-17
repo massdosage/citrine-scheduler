@@ -87,6 +87,8 @@ public class RollingFileExecutorObserver implements SysExecutorObserver {
    */
   private int tailBytes = 0;
 
+  private static final String FILE_SEPARATOR = System.getProperty("file.separator");
+
   public RollingFileExecutorObserver() {
   }
 
@@ -182,6 +184,9 @@ public class RollingFileExecutorObserver implements SysExecutorObserver {
   }
 
   public void setBaseLogPath(String baseLogPath) {
+    if (!baseLogPath.endsWith(FILE_SEPARATOR)) {
+      baseLogPath += FILE_SEPARATOR;
+    }
     this.baseLogPath = baseLogPath;
   }
 
