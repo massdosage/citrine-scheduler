@@ -57,3 +57,6 @@ If you install it somewhere else then modify your build.properties file to point
 {{{
 findbugs.home.dir=/some/other/path/findbugs
 }}}
+
+===Cobertura and JUnit===
+These are discussed in more detail under UnitTestSetup.
