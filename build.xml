@@ -214,7 +214,7 @@
   </target>
 
   <target name="init-integration">
-    <copy file="${hudson.conf.dir}/citrine.properties.hudson" tofile="${test.conf.dir}/citrine.properties" verbose="true" />
+    <copy file="${test.conf.dir}/citrine.properties.hudson" tofile="${test.conf.dir}/citrine.properties" verbose="true" />
     <copy file="${test.conf.dir}/log4j.xml.hudson" tofile="${test.conf.dir}/log4j.xml" verbose="true" />
   </target>
 
