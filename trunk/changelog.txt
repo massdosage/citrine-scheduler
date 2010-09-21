@@ -1,4 +1,7 @@
 TBA
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=29 (size of thread pool is now configurable)
+  TODO: above requires all quartz props added to citrine.props, need to document this as part of upgrade from 4.0.1
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=32 (reading from an empty sys out/err stream generates an exception)
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=30 (upgraded to Quartz 1.8.3)
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=15 (got cobertura working using roundup repository)
 - Upgraded to cglib 2.2, asm 3.1, checkstyle 5.1, cobertura 1.9.3, commons-pool 1.5.4, commons-dbcp 1.3

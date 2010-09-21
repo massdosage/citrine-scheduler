@@ -25,7 +25,6 @@ import org.apache.log4j.Logger;
 
 import fm.last.syscommand.SysCommandExecutor.OutputType;
 
-
 /**
  * A Thread implementation that reads asynchronously from an InputStream. Callers *must* call setRunning(false) when
  * they are done with this, otherwise it will continue to try reading from the stream indefinitely.
@@ -80,13 +79,14 @@ public class AsyncStreamReader extends Thread {
       bufferedReader = new BufferedReader(inputStreamReader);
       String line = null;
       while (running) {
-        while ((line = bufferedReader.readLine()) != null) {
+        while ((line = readLine(bufferedReader)) != null) {
           if (OutputType.OUT.equals(outputType)) {
             observer.sysOut(line);
           } else {
             observer.sysErr(line);
           }
         }
+
         if (line == null) {
           // no ouput from process, this happens with process streams, after a wait
           // there might actually be some more, i.e. null does not necessarily mean stream is empty
@@ -100,6 +100,20 @@ public class AsyncStreamReader extends Thread {
     } finally {
       IOUtils.closeQuietly(bufferedReader);
       IOUtils.closeQuietly(inputStreamReader);
+    }
+  }
+
+  private String readLine(BufferedReader bufferedReader) throws IOException {
+    try {
+      return bufferedReader.readLine();
+    } catch (IOException e) {
+      // see http://code.google.com/p/citrine-scheduler/issues/detail?id=32 - ugly but no known alternative
+      if (e.getMessage().contains("Bad file descriptor")) {
+        log.warn("Nothing to read from stream, returning null");
+        return null;
+      } else {
+        throw e;
+      }
     }
   }
 
