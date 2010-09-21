@@ -35,3 +35,25 @@ If you are doing many build operations and you know the 3rd party libraries aren
 {{{
 ant -Divy.skip.retrieve=true -Divy.initialised=true build-war
 }}}
+
+==Additional build targets==
+
+===Checkstyle===
+To generate a [http://checkstyle.sourceforge.net/ Checkstyle] report (which checks that the code is properly formatted etc.) run 
+{{{
+ant checkstyle
+}}}
+the report will be generated in 
+{{{
+build/checkstyle/
+}}}
+
+===Findbugs===
+To generate a [http://findbugs.sourceforge.net/ FingBugs] report you first need to download it and install it to 
+{{{
+/usr/local/findbugs
+}}}
+If you install it somewhere else then modify your build.properties file to point to the location:
+{{{
+findbugs.home.dir=/some/other/path/findbugs
+}}}
