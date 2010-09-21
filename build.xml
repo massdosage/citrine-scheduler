@@ -41,6 +41,7 @@
     <include name="*mysql*.jar" />
     <include name="*persistence-api*.jar" />
     <include name="*quartz*.jar" />
+    <include name="*slf4j*.jar" />
     <include name="*spring*.jar" />
     <include name="*standard*.jar" />
   </fileset>
