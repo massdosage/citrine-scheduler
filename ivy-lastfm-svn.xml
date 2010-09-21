@@ -38,17 +38,18 @@
     <dependency org="javax" name="servlet" rev="2.5" transitive="false" />
     <dependency org="javax" name="transaction" rev="1.1" transitive="false" />
     <dependency org="joda.org" name="joda-time" rev="1.6" />
-    <dependency org="junit.org" name="junit" rev="4.4" transitive="false" />
     <dependency org="metastuff" name="dom4j" rev="1.6.1" transitive="false" />
     <dependency org="mysql" name="mysql-connector-java" rev="5.1.7" transitive="false" />
     <dependency org="objectweb" name="asm" rev="3.1" conf="default" transitive="false" />
     <dependency org="opensymphony" name="quartz" rev="1.6.5" />
-    <dependency org="sf.net" name="cglib" rev="2.2" transitive="false" conf="*-&gt;dist"/>
+    <dependency org="sf.net" name="cglib" rev="2.2" transitive="false" conf="*-&gt;dist" />
     <dependency org="sf.net" name="displaytag" rev="1.2" />
     <dependency org="spring" name="spring" conf="default" rev="2.5.6" transitive="false" />
     <dependency org="spring" name="spring-web" conf="default" rev="2.5.6" transitive="false" />
 
     <!-- build dependencies -->
+    <dependency org="googlecode" name="ant-googlecode" rev="0.0.2" />
+    <dependency org="junit.org" name="junit" rev="4.4" transitive="false" />
     <dependency org="sf.net" name="checkstyle" rev="5.1" />
     <dependency org="sf.net" name="cobertura" rev="1.9.3" />
   </dependencies>

@@ -50,8 +50,9 @@
 
     <!-- build dependencies -->
     <dependency org="com.puppycrawl" name="checkstyle" rev="5.1" />
+    <dependency org="net.bluecow" name="ant-googlecode" rev="0.0.2" />
+    <dependency org="net.sourceforge.cobertura" name="cobertura" rev="1.9.3" transitive="true" conf="*-&gt;default" />
     <dependency org="org.junit" name="junit" rev="4.4" transitive="false" />
-    <dependency org="net.sourceforge.cobertura" name="cobertura" rev="1.9.3" transitive="true" conf="*-&gt;default"/>
 
   </dependencies>
 </ivy-module>
