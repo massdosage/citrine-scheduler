@@ -28,4 +28,10 @@ ivy.file.name=ivy.xml
 ## Local path to deploy .wawr file to
 #war.deploy.dir=/usr/local/tomcat/webapps
 
+### GOOGLE CODE PROPERTIES (only needed to upload new versions of Citrine to google code project home)
+##googlecode username
+#gc.username=USERNAME
+##googlecode password (available via googlecode profile page)
+#gc.password=PASSWORD
+
 

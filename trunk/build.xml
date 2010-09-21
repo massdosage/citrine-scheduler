@@ -89,7 +89,6 @@
   </target>
 
   <target name="build-war" depends="build-jar">
-
     <war destfile="${dist.dir}/${war.file}" webxml="${conf.dir}/web.xml">
       <manifest>
         <attribute name="Build-Version" value="${version}" />
@@ -160,16 +159,22 @@
   </target>
 
   <!-- builds the source zip file -->
-  <target name="build-src-tgz" depends="compile">
+  <target name="build-src-tgz" depends="build-jar">
     <tar destfile="${dist.dir}/${ant.project.name}-${version}-src.tgz" compression="gzip">
       <zipfileset dir="${basedir}" excludes="build/**/*, build, .*, build.properties, ivy-lastfm-svn.xml, .settings/**/*, src/conf/citrine.properties, test/conf/*.properties, test/conf/log4j.xml" prefix="${ant.project.name}-${version}-src" />
     </tar>
   </target>
 
   <target name="upload" depends="build">
-    <taskdef classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask" classpath="${lib.dir}/ant-googlecode.jar" name="gcupload" />
-    <gcupload username="${google.username}" password="${google.password}" projectname="citrine-scheduler" filename="${dist.dir}/${ant.project.name}-${version}.tgz" targetfilename="${ant.project.name}-${version}.tgz" summary="Citrine ${version} Binary Release" labels="Featured, Type-Archive, OpSys-All" />
-    <!--gcupload username="${google.username}" password="${google.password}" projectname="citrine-scheduler" filename="${dist.dir}/${ant.project.name}.war" targetfilename="${ant.project.name}.war" summary="${version} War Release" labels="Type-Package, OpSys-All" /-->
+    <taskdef classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask" name="gcupload">
+      <classpath>
+        <fileset dir="${lib.dir}">
+          <include name="ant-googlecode*.jar" />
+        </fileset>
+      </classpath>
+    </taskdef>
+    <gcupload username="${gc.username}" password="${gc.password}" projectname="citrine-scheduler" filename="${dist.dir}/${ant.project.name}-${version}.tgz" targetfilename="${ant.project.name}-${version}.tgz" summary="Citrine ${version} Binary Release" labels="Featured, Type-Archive, OpSys-All" />
+    <gcupload username="${gc.username}" password="${gc.password}" projectname="citrine-scheduler" filename="${dist.dir}/${ant.project.name}-${version}-src.tgz" targetfilename="${ant.project.name}-${version}-src.tgz" summary="${version} Source Release" labels="Featured, Type-Source, OpSys-All" />
   </target>
 
   <!-- deploys just the jsp, html etc to an already deployed web-app, useful during development -->
