@@ -5,12 +5,21 @@
 
 This page describes the steps needed to get Citrine set up for development and covers checking out the code and building it from source. Once you get Citrine to build successfully the next step is to get onto the UnitTestSetup.
 
-==Checkout the latest code from Subversion==
+==Obtaining the source==
+You have two options for obtaining the source code for Citrine, either checking it out from Subversion or by downloading a source release.
+
+===Checkout the latest code from Subversion===
 If you want to modify the source code based on the current trunk version you should follow the instructions on the [http://code.google.com/p/citrine-scheduler/source/checkout source] page. If you do not have Subversion commit rights you can still check out the code and create and submit a patch with your changes.
 
-==Building from source==
-Citrine uses [http://ant.apache.org/ivy Ivy] to manage the 3rd party libraries it uses. By default the Citrine build will retrieve all required 3rd party libraries from [http://code.google.com/p/ivyroundup/ Ivy Roundup]. Certain libraries cannot be automatically downloaded so they must be downloaded manually. Follow the instructions [http://code.google.com/p/ivyroundup/wiki/ManuallyDownloadedSoftware here] to download *javamail 1.4.3* and *jta 1.1*. You can download other versions of these packages but will need to change ivy.xml to reflect these different version numbers. 
+===Download a source release===
+Go to the Citrine [http://code.google.com/p/citrine-scheduler/downloads/list download page] and select the release labelled "Source Release" that you are interested in. This contains all the source code as well as required third party jar files etc.
 
+==Install Ivy==
+Citrine uses Ivy to manage the 3rd party libraries it uses. This needs to be downloaded and set up according to the instructions on the [http://ant.apache.org/ivy Ivy website] (in a nutshell you need to put ivy.jar on your classpath or somewhere like /usr/share/ant/lib).
+
+By default the Citrine build will retrieve all required 3rd party libraries from [http://code.google.com/p/ivyroundup/ Ivy Roundup]. Certain libraries cannot be automatically downloaded so they must be downloaded manually. Follow the instructions [http://code.google.com/p/ivyroundup/wiki/ManuallyDownloadedSoftware here] to download *javamail 1.4.3* and *jta 1.1*. You can download other versions of these packages but will need to change ivy.xml to reflect these different version numbers. 
+
+==Building from source==
 You should then be able to run
 {{{
 ant build-war
@@ -35,6 +44,7 @@ If you are doing many build operations and you know the 3rd party libraries aren
 {{{
 ant -Divy.skip.retrieve=true -Divy.initialised=true build-war
 }}}
+This should also work if you download the source tgz release and want to build Citrine without setting up Ivy.
 
 ==Additional build targets==
 
