@@ -1,0 +1,43 @@
+#GENERIC HIBERNATE CONNECTION SETTINGS
+hibernate.connection.driver_class=com.mysql.jdbc.Driver
+hibernate.connection.url=jdbc:mysql://127.0.0.1:3306/citrine_unittest?jdbcCompliantTruncation=false
+hibernate.connection.username=root
+hibernate.connection.password=
+hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
+hibernate.show_sql=false
+
+#Maximum number of checked-out database connections
+hibernate.dbcp.maxActive=8
+#Maximum number of idle database connections for connection pool
+hibernate.dbcp.maxIdle=8
+#Maximum idle time for connections in connection pool (expressed in ms).Set to -1 to turn off
+hibernate.dbcp.maxWait=-1
+#Validate connection when borrowing connection from pool (defaults to true)
+hibernate.dbcp.testOnBorrow=true 
+#Validate connection when returning connection to pool (optional, true, or false)
+hibernate.dbcp.testOnReturn=true
+#Query to execute for connection validation (optional, requires either hibernate.dbcp.testOn Borrow or hibernate.dbcp.testOnReturn)
+hibernate.dbcp.validationQuery=SELECT 1+1
+
+##MAIL SETTINGS
+#smtp.host=smtp.int.last.fm
+#smtp.password=
+#mail.from=
+#mail.to=
+
+###QUARTZ SCHEDULER SETTINGS
+org.quartz.scheduler.instanceName = DefaultQuartzScheduler
+org.quartz.scheduler.rmi.export = false
+org.quartz.scheduler.rmi.proxy = false
+org.quartz.scheduler.wrapJobExecutionInUserTransaction = false
+org.quartz.threadPool.class = org.quartz.simpl.SimpleThreadPool
+org.quartz.threadPool.threadCount = 10
+org.quartz.threadPool.threadPriority = 5
+org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread = true
+org.quartz.jobStore.misfireThreshold = 60000
+org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore
+
+##OTHER SETTINGS
+sysexec.logpath=/tmp/
+sysexec.logpattern=%d{ISO8601} %p %m%n
+sysexec.tailbytes=5000
