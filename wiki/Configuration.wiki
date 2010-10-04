@@ -64,11 +64,11 @@ org.quartz.jobStore.misfireThreshold = 60000
 org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore
 }}}
 
-= SysExec Settings =
-Most Citrine tasks involve firing off a command line call (e.g. to a script), the handling of which is done by Citrine's "SysExecBean". This logs its output to files which can be viewed in Citrine. The following properties are available to configure various aspects of the logging.
+= !SysExec Settings =
+Most Citrine tasks involve firing off a command line call (e.g. to a script), the handling of which is done by Citrine's "!SysExecBean". This logs its output to files which can be viewed in Citrine. The following properties are available to configure various aspects of the logging.
 {{{
 ##SYSEXEC SETTINGS
-#this MUST be the FULL_PATH_TO/TOMCAT_HOME/webapps/citrine/logs/
+#This MUST be the FULL_PATH_TO/TOMCAT_HOME/webapps/citrine/logs/
 sysexec.logpath=/user/local/tomcat/webapps/citrine/logs/
 #The pattern to use for logging. This uses the log4j format. For more information, see http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html.
 sysexec.logpattern=%d{ISO8601} %m%n
