@@ -1,5 +1,5 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-4.1.0 (2010-10-03)
+4.1.0 (2010-10-04)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=29 (size of thread pool is now configurable)
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=32 (reading from an empty sys out/err stream generates an exception)
