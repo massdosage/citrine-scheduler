@@ -1,24 +1,77 @@
 #summary Configuring Citrine.
 <wiki:toc max_depth="2" />
 
-The configuration file for Citrine can be found in TOMCAT_HOME/lib/citrine.properties.war
+Citrine is configured via the use of a properties file called *citrine.properties* that needs to be located somewhere on Tomcat's classpath (e.g. $TOMCAT_HOME/lib/citrine.properties). This contains a number of configuration options which are discussed in more detail below by section. An example of the latest properties file is kept in Subversion here: http://code.google.com/p/citrine-scheduler/source/browse/trunk/src/conf/citrine.properties.example.
 
-= Generic Hibernate Connection Settings =
-Refer to http://www.hibernate.org/ for more information on these settings.
+= Hibernate Database Connection Settings =
+Refer to http://www.hibernate.org/ for more information on these settings. Replace USERNAME and PASSWORD as appropriate.
+{{{
+##HIBERNATE DATABASE CONNECTION SETTINGS
+hibernate.connection.driver_class=com.mysql.jdbc.Driver
+hibernate.dialect=org.hibernate.dialect.MySQLDialect
+hibernate.connection.url=jdbc:mysql://127.0.0.1:3306/citrine?jdbcCompliantTruncation=false
+hibernate.connection.username=USERNAME
+hibernate.connection.password=PASSWORD
+hibernate.show_sql=false
+#hibernate.hbm2ddl.auto=auto
+}}}
 
 = Commons DBCP =
-Refer to the comments in the document and http://commons.apache.org/dbcp/ for more information.
+Refer to http://commons.apache.org/dbcp/ for more information.
+{{{
+##COMMONS DBCP
+#Maximum number of checked-out database connections
+hibernate.dbcp.maxActive=8
+#Maximum number of idle database connections for connection pool
+hibernate.dbcp.maxIdle=8
+#Maximum idle time for connections in connection pool (expressed in ms).Set to -1 to turn off
+hibernate.dbcp.maxWait=-1
+#Validate connection when borrowing connection from pool (defaults to true)
+hibernate.dbcp.testOnBorrow=true 
+#Validate connection when returning connection to pool (optional, true, or false)
+hibernate.dbcp.testOnReturn=true
+#Query to execute for connection validation (optional, requires either hibernate.dbcp.testOn Borrow or hibernate.dbcp.testOnReturn)
+hibernate.dbcp.validationQuery=SELECT 1+1
+}}}
 
 = Mail Settings =
-These settings must be set in order to use email notifications for tasks. 
-This assumes that you have a mail server set up. 
-  * smtp.host - hostname or ip address of the mail server
-  * smtp.password - password needed to log onto the server to send email
-  * mail.from - email sender for all email notifications
-  * mail.to - default email that all email notifications will be sent to if no other email addresses are entered when creating/editing a task.
+These properties must be set in order to use e-mail notifications for tasks. A SMTP mail server is obviously a prerequisite.
+{{{
+##MAIL SETTINGS
+#hostname or IP address of the mail server
+smtp.host=
+#password needed to log onto the server to send email
+smtp.password=
+#email sender for all email notifications
+mail.from=
+#default address to which job notifications will get sent if no value is set on the job itself
+mail.to=
+}}}
 
-= Other Settings =
+= Quartz Scheduler Settings =
+Citrine uses [http://www.quartz-scheduler.org Quartz] to perform the scheduling of tasks. Quartz is highly configurable and its configurations properties may be added to directly to citrine.properties. A full reference of Quartz's properties is here: http://www.quartz-scheduler.org/docs/configuration/
+{{{
+###QUARTZ SCHEDULER SETTINGS
+org.quartz.scheduler.instanceName = DefaultQuartzScheduler
+org.quartz.scheduler.rmi.export = false
+org.quartz.scheduler.rmi.proxy = false
+org.quartz.scheduler.wrapJobExecutionInUserTransaction = false
+org.quartz.threadPool.class = org.quartz.simpl.SimpleThreadPool
+org.quartz.threadPool.threadCount = 100
+org.quartz.threadPool.threadPriority = 5
+org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread = true
+org.quartz.jobStore.misfireThreshold = 60000
+org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore
+}}}
 
-  * sysexec.logpath MUST be FULL_PATH_TO/TOMCAT_HOME/webapps/citrine/logs/
-  * sysexec.logpattern is written in log4j format. For more information, see http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html
-  * sysexec.tailbytes is the last X bytes of the log when the log is viewed in HTML view.
+= SysExec Settings =
+Most Citrine tasks involve firing off a command line call (e.g. to a script), the handling of which is done by Citrine's "SysExecBean". This logs its output to files which can be viewed in Citrine. The following properties are available to configure various aspects of the logging.
+{{{
+##SYSEXEC SETTINGS
+#this MUST be the FULL_PATH_TO/TOMCAT_HOME/webapps/citrine/logs/
+sysexec.logpath=/user/local/tomcat/webapps/citrine/logs/
+#The pattern to use for logging. This uses the log4j format. For more information, see http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html.
+sysexec.logpattern=%d{ISO8601} %m%n
+#Controls how many bytes of the log are displayed when the log is viewed in HTML view.
+sysexec.tailbytes=5000
+}}}
