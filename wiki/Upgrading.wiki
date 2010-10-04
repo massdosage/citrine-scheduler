@@ -1,0 +1,11 @@
+#summary How to upgrade from a previous version of Citrine
+<wiki:toc max_depth="2" />
+
+For information on Installing Citrine from scratch see [Installation].
+
+=Upgrading from 4.0.x to 4.1.0=
+ # Edit the *citrine.properties* configuration file and add the Quartz properties described in the [Configuration] wiki page.
+ # Shut Citrine down (see [Usage#Safely_shutdown_Citrine]).
+ # Shut Tomcat down.
+ # Replace TOMCAT_HOME/webapps/citrine.war with the new citrine.war file.
+ # Restart Tomcat
