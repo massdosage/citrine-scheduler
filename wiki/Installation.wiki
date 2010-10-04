@@ -46,6 +46,8 @@ jdbc:mysql://127.0.0.1:3306/citrine?jdbcCompliantTruncation=false
   # Set the property "hibernate.connection.password" to the password you added above.
   # Set the property "sysexec.logpath" to TOMCAT_HOME/webapps/citrine/logs (replace TOMCAT_HOME with the *full* path to wherever you installed Tomcat).
 
+Above is the bare minimum configuration changes needed to get up and running with Citrine. For more information see [Configuration].
+
 == Starting Citrine ==
   # Start Tomcat.
   # Copy citrine.war to TOMCAT_HOME/webapps
