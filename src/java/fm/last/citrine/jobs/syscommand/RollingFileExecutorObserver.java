@@ -25,7 +25,7 @@ import org.apache.log4j.PatternLayout;
 import org.apache.log4j.RollingFileAppender;
 import org.apache.log4j.spi.RootLogger;
 
-import fm.last.io.FileUtils;
+import fm.last.commons.io.LastFileUtils;
 import fm.last.syscommand.SysExecutorObserver;
 
 /**
@@ -122,7 +122,7 @@ public class RollingFileExecutorObserver implements SysExecutorObserver {
     String returnValue = appender.getFile();
     if (tailBytes > 0) {
       try {
-        returnValue += ":\n" + FileUtils.tail(new File(appender.getFile()), tailBytes);
+        returnValue += ":\n" + LastFileUtils.tail(new File(appender.getFile()), tailBytes);
       } catch (IOException e) {
         log.error("Error getting output", e);
       }

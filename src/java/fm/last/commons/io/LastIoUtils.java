@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Last.fm
+ * Copyright 2009 Last.fm
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -13,18 +13,19 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package fm.last.io;
+package fm.last.commons.io;
 
 import java.io.IOException;
 import java.io.ObjectOutput;
 import java.io.RandomAccessFile;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.channels.SocketChannel;
+import java.nio.channels.Channel;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.management.remote.JMXConnector;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
@@ -33,9 +34,9 @@ import org.apache.log4j.Logger;
 /**
  * Utility class for performing IO-related activities.
  */
-public class IOUtils extends org.apache.commons.io.IOUtils {
+public class LastIoUtils {
 
-  private static Logger log = Logger.getLogger(IOUtils.class);
+  private static Logger log = Logger.getLogger(LastIoUtils.class);
 
   /**
    * Close the passed socket, logging an IOExceptions but not re-throwing them.
@@ -83,14 +84,14 @@ public class IOUtils extends org.apache.commons.io.IOUtils {
   }
 
   /**
-   * Close the passed SocketChannel, logging any IOExceptions but not re-throwing them.
+   * Close the passed Channel, logging any IOExceptions but not re-throwing them.
    * 
-   * @param sc SocketChannel to be closed (can be null).
+   * @param channel Channel to be closed (can be null).
    */
-  public static void closeQuietly(SocketChannel sc) {
-    if (sc != null) {
+  public static void closeQuietly(Channel channel) {
+    if (channel != null) {
       try {
-        sc.close();
+        channel.close();
       } catch (IOException e) {
         log.error(e);
       }
@@ -152,6 +153,21 @@ public class IOUtils extends org.apache.commons.io.IOUtils {
       try {
         streamReader.close();
       } catch (XMLStreamException e) {
+        log.error(e);
+      }
+    }
+  }
+
+  /**
+   * Close the passed JMXConnector, logging any XMLIOExceptions but not re-throwing them.
+   * 
+   * @param connector JMXConnector to be closed (can be null).
+   */
+  public static void closeQuietly(JMXConnector connector) {
+    if (connector != null) {
+      try {
+        connector.close();
+      } catch (IOException e) {
         log.error(e);
       }
     }

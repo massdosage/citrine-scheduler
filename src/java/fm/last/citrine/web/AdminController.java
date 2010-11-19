@@ -31,7 +31,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import fm.last.citrine.scheduler.SchedulerManager;
 import fm.last.citrine.service.TaskManager;
-import fm.last.io.FileUtils;
+import fm.last.commons.io.LastFileUtils;
 
 /**
  * Controller for the admin page.
@@ -50,7 +50,7 @@ public class AdminController extends MultiActionController {
   public AdminController() {
     Manifest manifest;
     try {
-      manifest = FileUtils.getManifest(this.getClass());
+      manifest = LastFileUtils.getManifest(this.getClass());
       Attributes attributes = manifest.getMainAttributes();
       buildVersion = attributes.getValue("Build-Version");
       buildDateTime = attributes.getValue("Build-DateTime");

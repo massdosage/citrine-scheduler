@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Last.fm
+ * Copyright 2009 Last.fm
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package fm.last.io;
+package fm.last.commons.io;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
@@ -30,14 +30,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.jar.Manifest;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 /**
  * File related utilities.
  */
-public class FileUtils extends org.apache.commons.io.FileUtils {
+public class LastFileUtils {
 
-  private static Logger log = Logger.getLogger(FileUtils.class);
+  private static Logger log = Logger.getLogger(LastFileUtils.class);
 
   /**
    * Appends the passed string to the passed file.
@@ -94,11 +96,11 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
     String classFileName = className + ".class";
     String classFilePath = someClass.getPackage().toString().replace('.', '/') + "/" + className;
     String pathToThisClass = someClass.getResource(classFileName).toString();
-    String pathToManifest = (new StringBuilder()).append(
-        pathToThisClass.substring(0, (pathToThisClass.length() + 2)
-            - (new StringBuilder()).append("/").append(classFilePath).toString().length() - removePath.length()))
-        .append("/META-INF/MANIFEST.MF").toString();
-    Manifest manifest = new Manifest((new URL(pathToManifest)).openStream());
+    String pathToManifest = new StringBuilder().append(
+        pathToThisClass.substring(0, pathToThisClass.length() + 2
+            - new StringBuilder().append("/").append(classFilePath).toString().length() - removePath.length())).append(
+        "/META-INF/MANIFEST.MF").toString();
+    Manifest manifest = new Manifest(new URL(pathToManifest).openStream());
     return manifest;
   }
 
@@ -139,7 +141,7 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
       raFile = new RandomAccessFile(file, "r");
       long length = raFile.length();
       if (bytes >= length) {
-        return readFileToString(file);
+        return FileUtils.readFileToString(file);
       } else {
         raFile.seek(length - bytes);
         tail = new StringBuffer((int) bytes);
@@ -153,7 +155,7 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
         }
       }
     } finally {
-      IOUtils.closeQuietly(raFile);
+      LastIoUtils.closeQuietly(raFile);
     }
     return tail.toString();
   }
@@ -238,7 +240,7 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
    */
   public static void moveFileSafely(File srcFile, File destFile) throws IOException {
     File partFile = new File(destFile.getParentFile(), destFile.getName() + ".part");
-    moveFile(srcFile, partFile);
+    FileUtils.moveFile(srcFile, partFile);
     if (!partFile.renameTo(destFile)) {
       throw new IOException("Error renaming " + partFile.getAbsolutePath() + " to " + destFile.getAbsolutePath());
     }
@@ -267,6 +269,10 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
       throw new FileNotFoundException("Destination directory '" + destDir + "' does not exist");
     }
     moveFileSafely(srcFile, new File(destDir, srcFile.getName()));
+  }
+
+  public static boolean canRead(File file) {
+    return file != null && file.exists() && file.canRead();
   }
 
 }

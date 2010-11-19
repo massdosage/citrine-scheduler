@@ -44,7 +44,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 
 import fm.last.citrine.model.Task;
-import fm.last.io.FileUtils;
+import fm.last.commons.io.LastFileUtils;
 
 /**
  * Manager class that is responsible for handling scheduling of Tasks.
@@ -67,7 +67,7 @@ public class SchedulerManager implements BeanFactoryAware {
    */
   public SchedulerManager(Scheduler scheduler, String jobClassName) {
     try {
-      Manifest manifest = FileUtils.getManifest(this.getClass());
+      Manifest manifest = LastFileUtils.getManifest(this.getClass());
       Attributes attributes = manifest.getMainAttributes();
       log.info("Citrine Build-Version: " + attributes.getValue("Build-Version"));
       log.info("Citrine Build-DateTime: " + attributes.getValue("Build-DateTime"));
