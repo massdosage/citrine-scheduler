@@ -53,6 +53,7 @@
   <path id="compile-classpath">
     <fileset refid="lib.fileset" />
     <fileset dir="${lib.dir}">
+      <include name="mockito*.jar" />
       <include name="servlet*.jar" />
     </fileset>
   </path>

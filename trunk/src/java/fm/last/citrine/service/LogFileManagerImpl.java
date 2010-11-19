@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.AgeFileFilter;
 import org.apache.commons.io.filefilter.AndFileFilter;
 import org.apache.commons.io.filefilter.FileFileFilter;
@@ -29,7 +30,7 @@ import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.SuffixFileFilter;
 import org.joda.time.DateTime;
 
-import fm.last.io.FileUtils;
+import fm.last.commons.io.LastFileUtils;
 
 /**
  * Log file manager implementation which processes files written to disk under a configured folder location.
@@ -75,7 +76,7 @@ public class LogFileManagerImpl implements LogFileManager {
   @Override
   public String tail(String logFileName, long tailBytes) throws IOException {
     File logFile = new File(baseLogFolder, logFileName);
-    return FileUtils.tail(logFile, tailBytes);
+    return LastFileUtils.tail(logFile, tailBytes);
   }
 
   /**

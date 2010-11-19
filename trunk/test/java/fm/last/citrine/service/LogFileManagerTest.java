@@ -26,7 +26,7 @@ import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
-import fm.last.test.LastTestCase;
+import fm.last.commons.test.LastTestCase;
 
 /**
  * Unit test case for the LogFileManager.
