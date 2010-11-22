@@ -30,6 +30,8 @@ import fm.last.citrine.service.LogFileManager;
  * Controller that is responsible for listing log files and displaying their contents.
  */
 public class DisplayLogsController extends MultiActionController {
+  
+  protected static final String PARAM_LOG_FILE = "logFile";
 
   private LogFileManager logFileManager;
 
@@ -59,7 +61,7 @@ public class DisplayLogsController extends MultiActionController {
    * @throws Exception
    */
   public ModelAndView display(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    String logFileName = request.getParameter("logFile");
+    String logFileName = request.getParameter(PARAM_LOG_FILE);
     String contents = logFileManager.tail(logFileName, tailBytes);
     Map<String, Object> model = new HashMap<String, Object>();
     model.put("contents", contents);
