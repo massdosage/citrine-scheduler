@@ -42,7 +42,7 @@
     <dependency org="metastuff" name="dom4j" rev="1.6.1" transitive="false" />
     <dependency org="mysql" name="mysql-connector-java" rev="5.1.7" transitive="false" />
     <dependency org="objectweb" name="asm" rev="3.1" conf="default" transitive="false" />
-    <dependency org="opensymphony" name="quartz" rev="1.8.3" conf="*-&gt;all"/>
+    <dependency org="opensymphony" name="quartz" rev="1.8.3" conf="*-&gt;all" />
     <dependency org="sf.net" name="cglib" rev="2.2" transitive="false" conf="*-&gt;dist" />
     <dependency org="sf.net" name="displaytag" rev="1.2" />
     <dependency org="spring" name="spring" conf="default" rev="2.5.6" transitive="false" />
