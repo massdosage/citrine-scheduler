@@ -2,7 +2,6 @@
 TBA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Moved various util and ancillary classes to use lastcommons equivalents.
-- TODO: tests now depend on jmock - non last.fm version uses 1.6, should add 1.8.3 version to ivy roundup.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 4.1.0 (2010-10-04)
