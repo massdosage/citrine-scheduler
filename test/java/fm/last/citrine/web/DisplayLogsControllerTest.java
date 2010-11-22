@@ -19,6 +19,8 @@ package fm.last.citrine.web;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
@@ -49,6 +51,19 @@ public class DisplayLogsControllerTest {
   }
 
   @Test
+  public void testNoLoList() throws Exception {
+    List<String> logFiles = new ArrayList<String>();
+    logFiles.add("log1.log");
+    logFiles.add("log2.log");
+    when(mockLogFileManager.findAllLogFiles()).thenReturn(logFiles);
+    ModelAndView modelAndView = displayLogsController.list(mockRequest, mockResponse);
+    assertEquals("logs_list", modelAndView.getViewName());
+    Map<String, Object> model = modelAndView.getModel();
+    assertEquals(1, model.size());
+    assertEquals(logFiles, model.get("logFiles"));
+  }
+
+  @Test
   public void testDisplay() throws Exception {
     String fileContent = "bla";
     String logFileName = "log000.log";
@@ -61,6 +76,12 @@ public class DisplayLogsControllerTest {
     assertEquals(fileContent, model.get("contents"));
     assertEquals(null, model.get("taskId")); // didn't pass one in for this test
     assertEquals(null, model.get("selectedGroupName")); // didn't pass one in for this test
+  }
+
+  @Test
+  public void setSetTailBytes() {
+    displayLogsController.setTailBytes(500);
+    assertEquals(500, displayLogsController.getTailBytes());
   }
 
 }
