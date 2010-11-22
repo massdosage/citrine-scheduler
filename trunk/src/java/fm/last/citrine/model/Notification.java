@@ -108,22 +108,29 @@ public class Notification {
    */
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
+    if (this == obj) {
       return true;
-    if (obj == null)
+    }
+    if (obj == null) {
       return false;
-    if (!(obj instanceof Notification))
+    }
+    if (!(obj instanceof Notification)) {
       return false;
+    }
     Notification other = (Notification) obj;
-    if (notifyOnFailure != other.notifyOnFailure)
+    if (notifyOnFailure != other.notifyOnFailure) {
       return false;
-    if (notifyOnSuccess != other.notifyOnSuccess)
+    }
+    if (notifyOnSuccess != other.notifyOnSuccess) {
       return false;
+    }
     if (recipients == null) {
-      if (other.recipients != null)
+      if (other.recipients != null) {
         return false;
-    } else if (!recipients.equals(other.recipients))
+      }
+    } else if (!recipients.equals(other.recipients)) {
       return false;
+    }
     return true;
   }
 }
