@@ -189,51 +189,66 @@ public class TaskRun {
    */
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
+    if (this == obj) {
       return true;
-    if (obj == null)
+    }
+    if (obj == null) {
       return false;
-    if (!(obj instanceof TaskRun))
+    }
+    if (!(obj instanceof TaskRun)) {
       return false;
+    }
     TaskRun other = (TaskRun) obj;
     if (endDate == null) {
-      if (other.endDate != null)
+      if (other.endDate != null) {
         return false;
+      }
     } else if (!(endDate.getTime() / 1000 == other.endDate.getTime() / 1000)) {
       // only check dates to a granularity of a second as saving to db often nukes this
       return false;
     }
     if (stackTrace == null) {
-      if (other.stackTrace != null)
+      if (other.stackTrace != null) {
         return false;
-    } else if (!stackTrace.equals(other.stackTrace))
+      }
+    } else if (!stackTrace.equals(other.stackTrace)) {
       return false;
+    }
     if (startDate == null) {
-      if (other.startDate != null)
+      if (other.startDate != null) {
         return false;
+      }
     } else if (!(startDate.getTime() / 1000 == other.startDate.getTime() / 1000)) {
       // only check dates to a granularity of a second as saving to db often nukes this
       return false;
     }
     if (status == null) {
-      if (other.status != null)
+      if (other.status != null) {
         return false;
-    } else if (!status.equals(other.status))
+      }
+    } else if (!status.equals(other.status)) {
       return false;
+    }
     if (sysErr == null) {
-      if (other.sysErr != null)
+      if (other.sysErr != null) {
         return false;
-    } else if (!sysErr.equals(other.sysErr))
+      }
+    } else if (!sysErr.equals(other.sysErr)) {
       return false;
+    }
     if (sysOut == null) {
-      if (other.sysOut != null)
+      if (other.sysOut != null) {
         return false;
-    } else if (!sysOut.equals(other.sysOut))
+      }
+    } else if (!sysOut.equals(other.sysOut)) {
       return false;
-    if (taskId != other.taskId)
+    }
+    if (taskId != other.taskId) {
       return false;
-    if (version != other.version)
+    }
+    if (version != other.version) {
       return false;
+    }
     return true;
   }
 
