@@ -21,7 +21,7 @@ import java.util.Set;
 import fm.last.citrine.model.Task;
 
 /**
- * Data transfer object for configuring relationships between a Job and its children.
+ * Data transfer object for configuring relationships between a Task and its children.
  */
 public class TaskChildCandidatesDTO {
 
