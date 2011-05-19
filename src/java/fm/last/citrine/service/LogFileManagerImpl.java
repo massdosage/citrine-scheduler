@@ -27,7 +27,7 @@ import org.apache.commons.io.filefilter.AgeFileFilter;
 import org.apache.commons.io.filefilter.AndFileFilter;
 import org.apache.commons.io.filefilter.FileFileFilter;
 import org.apache.commons.io.filefilter.IOFileFilter;
-import org.apache.commons.io.filefilter.SuffixFileFilter;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.joda.time.DateTime;
 
 import fm.last.commons.io.LastFileUtils;
@@ -38,7 +38,7 @@ import fm.last.commons.io.LastFileUtils;
 public class LogFileManagerImpl implements LogFileManager {
 
   private File baseLogFolder = new File(System.getProperty("java.io.tmpdir"));
-  private IOFileFilter logFileFilter = new AndFileFilter(new SuffixFileFilter(".log"), FileFileFilter.FILE);
+  private IOFileFilter logFileFilter = new AndFileFilter(new WildcardFileFilter("*.log*"), FileFileFilter.FILE);
 
   /**
    * Creates a new instance which will read log files under the base log path (java tmp dir by default).

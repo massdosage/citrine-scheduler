@@ -1,6 +1,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TBA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=35 - now deletes log files ending in .log* instead of .log
 - Moved various util and ancillary classes to use lastcommons equivalents.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
