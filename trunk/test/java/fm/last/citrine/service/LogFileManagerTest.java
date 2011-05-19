@@ -38,9 +38,12 @@ public class LogFileManagerTest extends LastTestCase {
   @Test
   public void testFindAll() {
     List<String> logFiles = logFileManager.findAllLogFiles();
-    assertEquals(2, logFiles.size());
+    assertEquals(5, logFiles.size());
     // only the two FILES ending in .log should match
     assertTrue(logFiles.contains("808.log"));
+    assertTrue(logFiles.contains("808.log.1"));
+    assertTrue(logFiles.contains("808.log.2"));
+    assertTrue(logFiles.contains("808.log.gz"));
     assertTrue(logFiles.contains("303.log"));
   }
 
