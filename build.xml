@@ -33,17 +33,20 @@
     <include name="*dom4j*.jar" />
     <include name="*freemarker*.jar" />
     <include name="*hibernate*.jar" />
-    <include name="*joda-time*.jar" />
+    <include name="*jakarta*.jar" />
+    <include name="*joda*.jar" />
     <include name="*jstl*.jar" />
     <include name="*jta*.jar" />
     <include name="*log4j*.jar" />
     <include name="*mail*.jar" />
     <include name="*mysql*.jar" />
+    <include name="*oro*.jar" />
     <include name="*persistence-api*.jar" />
     <include name="*quartz*.jar" />
     <include name="*slf4j*.jar" />
     <include name="*spring*.jar" />
     <include name="*standard*.jar" />
+    <include name="*transaction*.jar" />
   </fileset>
 
   <path id="additional-test-classpath">

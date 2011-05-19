@@ -15,6 +15,8 @@
  */
 package fm.last.citrine.notification;
 
+import org.apache.commons.lang.StringUtils;
+
 import fm.last.citrine.model.Notification;
 import fm.last.citrine.model.Status;
 import fm.last.citrine.model.TaskRun;
@@ -23,6 +25,32 @@ import fm.last.citrine.model.TaskRun;
  * Base class for Notifier implementations.
  */
 public abstract class BaseNotifier implements Notifier {
+
+  // not great that this is hardcoded here, not sure how to make this configurable
+  private static final String VIEW_LOG_PATH = "logs.do?action=display&logFile=$.log";
+  protected String baseCitrineUrl;
+
+  public String getBaseCitrineUrl() {
+    return baseCitrineUrl;
+  }
+
+  public void setBaseCitrineUrl(String baseCitrineUrl) {
+    baseCitrineUrl = StringUtils.trimToNull(baseCitrineUrl);
+    if (baseCitrineUrl == null) {
+      return;
+    }
+    if (!baseCitrineUrl.endsWith("/")) {
+      baseCitrineUrl += "/";
+    }
+    this.baseCitrineUrl = baseCitrineUrl;
+  }
+
+  protected String getDisplayLogUrl(TaskRun taskRun) {
+    if (StringUtils.trimToNull(baseCitrineUrl) == null) {
+      return null;
+    }
+    return baseCitrineUrl + VIEW_LOG_PATH.replace("$", String.valueOf(taskRun.getId()));
+  }
 
   /**
    * Returns whether a notification should be sent or not.
