@@ -15,6 +15,7 @@
  */
 package fm.last.citrine.notification;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -86,6 +87,64 @@ public class BaseNotifierTest {
     for (Status status : Status.values()) {
       assertTrue(notifier.shouldNotify(notification, status));
     }
+  }
+
+  @Test
+  public void testSetBaseCitrineUrlNull() {
+    notifier.setBaseCitrineUrl(null);
+    assertEquals(null, notifier.getBaseCitrineUrl());
+  }
+
+  @Test
+  public void testSetBaseCitrineUrlEmptyString() {
+    notifier.setBaseCitrineUrl("");
+    assertEquals(null, notifier.getBaseCitrineUrl());
+  }
+
+  @Test
+  public void testSetBaseCitrineUrlBlankString() {
+    notifier.setBaseCitrineUrl("   ");
+    assertEquals(null, notifier.getBaseCitrineUrl());
+
+  }
+
+  @Test
+  public void testSetBaseCitrineUrl() {
+    String baseUrl = "http://test.com/citrine/";
+    notifier.setBaseCitrineUrl(baseUrl);
+    assertEquals(baseUrl, notifier.getBaseCitrineUrl());
+  }
+
+  @Test
+  public void testSetBaseCitrineUrlPadded() {
+    String baseUrl = "  http://test.com/citrine/  ";
+    notifier.setBaseCitrineUrl(baseUrl);
+    assertEquals(baseUrl.trim(), notifier.getBaseCitrineUrl());
+  }
+
+  @Test
+  public void testSetBaseCitrineUrlWithoutClosingSlash() {
+    String baseUrl = "http://test.com/citrine";
+    notifier.setBaseCitrineUrl(baseUrl);
+    assertEquals(baseUrl + "/", notifier.getBaseCitrineUrl());
+  }
+
+  @Test
+  public void testGetDisplayLogUrlNoBaseUrl() {
+    notifier.setBaseCitrineUrl(null);
+    TaskRun taskRun = new TaskRun();
+    taskRun.setId(1);
+    assertEquals(null, notifier.getDisplayLogUrl(taskRun));
+  }
+
+  @Test
+  public void testGetDisplayLogUrl() {
+    String baseUrl = "http://test.com/citrine/";
+    notifier.setBaseCitrineUrl(baseUrl);
+    TaskRun taskRun = new TaskRun();
+    taskRun.setId(1);
+    // bit of a lame assertion but don't want to expose too much of the URL internals
+    assertTrue(notifier.getDisplayLogUrl(taskRun).contains(String.valueOf(taskRun.getId())));
   }
 
 }

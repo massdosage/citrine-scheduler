@@ -28,6 +28,7 @@
   </bean>
 
   <bean id="emailNotifier" class="fm.last.citrine.notification.EMailNotifier">
+    <property name="baseCitrineUrl" value="${base.citrine.url:}" />
     <property name="mailSender" ref="mailSender" />
     <property name="templateMessage" ref="templateMessage" />
   </bean>

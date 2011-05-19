@@ -31,6 +31,11 @@ mail.from=
 #default address to which job notifications will get sent if no value is set on the job itself
 mail.to=
 
+## NOTIFICATION SETTINGS
+#base url to citrine web interface. Optional. Only needs to be set if you want full paths to log files in notification e-mails.
+#should be set to something like http://yourhost:port/citrine/
+#base.citrine.url=
+
 ##QUARTZ SCHEDULER SETTINGS
 org.quartz.scheduler.instanceName = DefaultQuartzScheduler
 org.quartz.scheduler.rmi.export = false

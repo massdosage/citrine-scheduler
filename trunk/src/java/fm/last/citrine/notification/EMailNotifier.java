@@ -63,18 +63,26 @@ public class EMailNotifier extends BaseNotifier {
     }
     msg.setSubject("[citrine] '" + taskName + "' finished with Status " + taskRun.getStatus() + " for TaskRun "
         + taskRun.getId());
-    StringBuffer messageText = new StringBuffer();
+    StringBuilder messageText = new StringBuilder();
 
+    String logUrl = getDisplayLogUrl(taskRun);
+    if (logUrl!=null) {
+      messageText.append("\nSee: ").append(logUrl).append("\n");
+    }
+    
     if (!StringUtils.isEmpty(taskRun.getStackTrace())) {
-      messageText.append("\nStackTrace:\n" + taskRun.getStackTrace() + "\n");
+      messageText.append("\nStackTrace:\n").append(taskRun.getStackTrace()).append("\n");
     }
     if (!StringUtils.isEmpty(taskRun.getSysErr())) {
-      messageText.append("\nSysErr:\n" + taskRun.getSysErr() + "\n");
+      messageText.append("\nSysErr:\n").append(taskRun.getSysErr()).append("\n");
     }
     if (!StringUtils.isEmpty(taskRun.getSysOut())) {
-      messageText.append("\nSysOut:\n" + taskRun.getSysOut() + "\n");
+      messageText.append("\nSysOut:\n").append(taskRun.getSysOut()).append("\n");
     }
     msg.setText(messageText.toString());
+
+    log.warn(messageText.toString());
+
     return msg;
   }
 
