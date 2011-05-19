@@ -43,7 +43,7 @@
     <dependency org="net.sourceforge.cglib" name="cglib" rev="2.2" transitive="false" />
     <dependency org="net.sourceforge.freemarker" name="freemarker" rev="2.3.15" transitive="false" />
     <dependency org="org.aopalliance" name="aopalliance" rev="1.0" transitive="false" />
-    <dependency org="org.springframework" name="spring" conf="*-&gt;default" rev="2.5.6" transitive="false" />
+    <dependency org="org.springframework" name="spring" conf="*-&gt;default" rev="3.0.5" transitive="false" />
 
     <!--  see http://code.google.com/p/ivyroundup/wiki/ManuallyDownloadedSoftware for below -->
     <dependency org="javax.mail" name="javamail" rev="1.4.3" transitive="false" />
@@ -53,7 +53,7 @@
     <dependency org="com.puppycrawl" name="checkstyle" rev="5.1" />
     <dependency org="net.bluecow" name="ant-googlecode" rev="0.0.2" />
     <dependency org="net.sourceforge.cobertura" name="cobertura" rev="1.9.3" transitive="true" conf="*-&gt;default" />
-    <dependency org="org.junit" name="junit" rev="4.4" transitive="false" />
+    <dependency org="org.junit" name="junit" rev="4.5" transitive="false" />
 
   </dependencies>
 </ivy-module>
