@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+  <!-- ========================= GENERAL DEFINITIONS ========================= -->
+  <!--
+    - The message source for this servlet, loaded from localized "example-messages_xx" - classpath files, i.e.
+    "/WEB-INF/classes/example-messages.properties". - - "getMessage" calls to this context will use this source first,
+    falling back to - the root context's. This means that this child context inherits all messages - from the parent's
+    source, but is able to define new messages and override ones - defined in the parent's source.
+  -->
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basenames">
+      <list>
+        <value>messages</value>
+        <!--value>errors</value-->
+      </list>
+    </property>
+  </bean>
+
+  <!-- ========================= MAPPING DEFINITIONS ========================= -->
+
+  <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    <property name="mappings">
+      <value>
+        /task_children.do=childTasksController
+        /task_edit.do=taskFormController
+        /tasks.do=taskController
+        /task_runs.do=taskRunController
+        /display.do=displayTaskRunMessageController
+        /logs.do=displayLogsController
+        /admin.do=adminController
+      </value>
+    </property>
+  </bean>
+
+  <bean id="taskDTOValidator" class="fm.last.citrine.web.TaskDTOValidator" />
+
+  <!-- View Resolver for JSPs -->
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+    <property name="prefix" value="/WEB-INF/jsp/" />
+    <property name="suffix" value=".jsp" />
+  </bean>
+
+  <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+    <property name="defaultErrorView" value="error" />
+  </bean>
+
+  <bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+    <property name="paramName" value="action" />
+    <property name="defaultMethodName" value="list" />
+  </bean>
+
+  <!-- ========================= CONTROLLER DEFINITIONS ========================= -->
+
+  <bean id="adminController" class="fm.last.citrine.web.AdminController">
+    <property name="methodNameResolver" ref="methodNameResolver" />
+    <property name="schedulerManager" ref="schedulerManager" />
+    <property name="taskManager" ref="taskManager" />
+  </bean>
+
+  <bean id="childTasksController" class="fm.last.citrine.web.ChildTasksFormController">
+    <property name="commandName" value="taskChildDTO" />
+    <property name="taskManager" ref="taskManager" />
+  </bean>
+
+  <bean id="displayLogsController" class="fm.last.citrine.web.DisplayLogsController">
+    <property name="methodNameResolver" ref="methodNameResolver" />
+    <property name="logFileManager" ref="logFileManager" />
+  </bean>
+
+  <bean id="displayTaskRunMessageController" class="fm.last.citrine.web.DisplayTaskRunMessageController">
+    <property name="taskRunManager" ref="taskRunManager" />
+    <property name="methodNameResolver" ref="methodNameResolver" />
+  </bean>
+
+  <bean id="taskController" class="fm.last.citrine.web.TaskController">
+    <property name="taskManager" ref="taskManager" />
+    <property name="taskRunManager" ref="taskRunManager" />
+    <property name="schedulerManager" ref="schedulerManager" />
+    <property name="methodNameResolver" ref="methodNameResolver" />
+  </bean>
+
+  <bean id="taskFormController" class="fm.last.citrine.web.TaskFormController">
+    <property name="taskManager" ref="taskManager" />
+    <property name="commandName" value="taskDTO" />
+    <property name="commandClass" value="fm.last.citrine.web.TaskDTO" />
+    <property name="validator" ref="taskDTOValidator" />
+  </bean>
+
+  <bean id="taskRunController" class="fm.last.citrine.web.TaskRunController">
+    <property name="logFileManager" ref="logFileManager" />
+    <property name="taskManager" ref="taskManager" />
+    <property name="taskRunManager" ref="taskRunManager" />
+    <property name="methodNameResolver" ref="methodNameResolver" />
+    <property name="pageSize" value="20" />
+  </bean>
+
+</beans>

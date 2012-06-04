@@ -1,0 +1,135 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TBA TODO: before releasing this, update wiki/docs with new base.citrine.url property
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=35 - now deletes log files ending in .log* instead of .log
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=6 - ability to add full http path to log to e-mail notification
+- Upgraded to Spring 3.0.5
+- Moved various util and ancillary classes to use lastcommons equivalents.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4.1.0 (2010-10-04)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=29 (size of thread pool is now configurable)
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=32 (reading from an empty sys out/err stream generates an exception)
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=30 (upgraded to Quartz 1.8.3)
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=15 (got cobertura working using roundup repository)
+- Upgraded to cglib 2.2, asm 3.1, checkstyle 5.1, cobertura 1.9.3, commons-pool 1.5.4, commons-dbcp 1.3
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=1 (js confirmation popup when deleting a task)
+- Minor change to add missing "/" on sysexec.logpath if not specified.
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=19 (added ant googlecode to ivy and fixed  gc upload build target).
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=13 (add Apache license to javadoc footer).
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=21 (Add Apache 2.0 license to root of project and add to .tgz)
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=20 (Add changelog to tgz, contributed by benjsec)
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=26 (Create a src .gzip in addition to dist .gzip)
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=28 (notifyOnFailure is null in default data)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4.0.1 (2010-04-16)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Upgraded to javamail 1.4.3.
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=9 (add DDL to zip).
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4.0.0 (2009-11-09 12:02:24)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Moved to Google code.
+- Fixed bug where editing a task cleared its subtasks
+- Moved to using ivy roundup.
+- Upgraded to quartz 1.6.5.
+- Upgraded to antlr 2.7.7.
+- Upgraded to log4j 1.2.15.
+- Upgraded to commons-io 1.4, commons-lang 2.4, commons-logging 1.1.1, commons-pool 1.4.
+- Upgraded to hibernate 3.2.6, hibernate-annotations 3.3.1, hibernate-tools 3.2.4.
+- Upgraded to mysql connector 5.1.7.
+- Upgraded to Spring 2.5.6.
+- Upgraded to Javamail 1.4.1.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3.3.1 (2009-06-09 09:57:03)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Made Log File Cleaner an AdminJob instead of shell script.
+- Removed link from Status field to log file view in TaskRuns view for running task.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3.3.0 (2009-06-03 18:31:57)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Added an admin job to cleans up log files older than 30 days.
+- Added an admin job to clean up task runs older than 30 days.
+- Added ability to filter Task View by group names (and propagate this through entire GUI).
+- Fixed bug where deleting task via GUI did not update parent/child relationships. 
+- Made priority value of Task an Integer (so can now be set to blank when editing a Task via GUI).
+- Added error message for priority value in Task Edit View.
+- In Task Overview view, only display description up to first ".".
+- Changed description field in Task Edit view -> text area and column type in DB to TEXT.
+- Added index on task runs for task id and start date (speeds up loading of Task View).
+- Added "prepare for shutdown" and current status to admin view (https://bugs.last.fm/browse/CITRINE-1).
+- Upgraded to javalib 2.14.1 (changed sys exec stuff).
+- Close log appender file handler in observers (https://bugs.last.fm/browse/CITRINE-6).
+- Made sysExecJob default bean name for new Tasks (can be configured via tasks-servlet.xml).
+- Added some null checks in controllers for edge cases to prevent NullPointerExceptions.
+- Modified default log pattern for rolling file executor observer output (for existing instances, change: [sysexec.logpattern=%d{ISO8601} %m%n] to match this). 
+- Fixed bug introduced in 3.2.0 where back link from HTML log view threw an exception.
+- Made all bound variable names use camelCase instead of "_".
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3.2.0 (2009-05-05 09:32:45)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Made candidate child tasks distinct, also changed types of child/parent collections to Set instead of List to prevent duplicates.
+- Removed task id and task run id from Task Run List view, added taskName to header.
+- Made name column of Task not null.
+- Fixed back link in "in progress" log view.
+- Tasks overview refreshes every 30 seconds.
+- Fixed bug introduced in 3.1.0 where "Start" link is clickable from Tasks overview when Task is running.
+- Added a "reset" action which can be used when Quartz throws ObjectAlreadyExistsException.
+- Replaced "version" page with an admin page which also displays what scheduler thinks is currently running.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3.1.0 (2009-05-01 11:43:51)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- https://bugs.last.fm/browse/JAVA-893 - If a child task is still running when the parent finishes again, it is aborted.
+- https://bugs.last.fm/browse/JAVA-891 - Added ability to specify whether to send notifications on success/failure of a task run.
+- https://bugs.last.fm/browse/JAVA-892 - Sort by group and then by name by default (using displaytable taglib).
+- Modified e-mail subject line.
+- Refactored various common variables and methods into Util classes.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+3.0 (2008-12-17 10:13:19)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+- Added ability to specify whether starting a Task when it is already running should create an aborted 
+  TaskRun, or silently abort.
+- Changed tables to innoDB instead of MyISAM.
+- Added validation on timer schedule field of Task.
+- Refactored Task constructors.
+- Improved JSP error page. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+2.1 (2008-12-15 14:05:55)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+- Fixed null pointer bug bug in scheduling first task after tomcat startup.
+- Implemented a custom JSP error page. 
+- Added display of version info in web view. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+2.0 (2008-12-09 16:23:48)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+- Renamed (non-Quartz) Jobs to Tasks.
+- Improved cancelling of running jobs.
+- Added validation for saving jobs.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1.1 (2008-12-08 11:45:42)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+- Added ability to stop running jobs.
+- Added a null job which doesn't do anything.
+- Upgraded to Quartz 1.6.4.
+- Upgraded to javalib 1.35.
+- Replaced citrine classes in war with citrine.jar.
+- Replaced commons-logging with log4j.
+- Outputs version number on startup.
+- Upgraded to latest project skeleton common.xml, checkstyle etc.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1.0 (2008-12-04 16:32:36)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+- Upgraded to javalib 1.25.
+- Moved SysCommandExecutor into javalib (and made some modifications to it).

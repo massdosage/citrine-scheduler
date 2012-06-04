@@ -1,0 +1,37 @@
+### IVY PROPERTIES ###
+## The version number of Citrine, used when publishing
+#version=
+## Whether to overwrite an existing publication or not. 
+#publish.overwrite=false
+## Whether to skip retrieving Ivy artifacts.
+#ivy.skip.retrieve=false
+## Folder containing ivysettings.xml, default uses Ivy roundup, change only if you have your own repository
+ivysettings.dir=.
+# Folder containing ivy-common-targets.xml
+ivy.commontargets.dir=.
+# Below file contains ivy dependencies as layed out in ivy roundup, change if you need a different layout
+ivy.file.name=ivy.xml
+
+### IVYSVN PROPERTIES (only needed if IvySvn is being used instead of default Ivy Roundup (http://code.google.com/p/ivysvn/) ###
+## Subversion User name 
+#svn.user.name=adrian
+## Subversion password
+#svn.user.password=
+## or path to private keyfile
+#ssh.keyfile=/home/USER/.ssh/id_rsa
+
+### JUNIT PROPERTIES ###
+# Only set this property if you want to limit which unit tests are run from ant
+#junit.includes=**/*SchedulerManagerTest.java
+
+### CITRINE BUILD PROPERTIES
+## Local path to deploy .wawr file to
+#war.deploy.dir=/usr/local/tomcat/webapps
+
+### GOOGLE CODE PROPERTIES (only needed to upload new versions of Citrine to google code project home)
+##googlecode username
+#gc.username=USERNAME
+##googlecode password (available via googlecode profile page)
+#gc.password=PASSWORD
+
+

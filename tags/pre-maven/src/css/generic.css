@@ -1,0 +1,106 @@
+a:link {color: #660066}
+a:visited {color: #333366}
+a:hover {color: #CC99FF}
+a:active {color: #BBBBBB}
+
+body {
+	font-family: verdana, arial, sans-serif;
+	background-color: #FFFFFF
+}
+
+table {
+	border: 0px solid;
+	empty-cells: show;
+}
+
+table.outlined {
+	border: 1px solid;
+	empty-cells: show;
+}
+
+th {
+	background-color: #D9B3FF;
+	border: 1px solid;
+	padding: 4px;
+}
+
+.initialising {
+  border: 1px solid;
+	background-color: #e7e7e7;
+}
+
+.running {
+  border: 1px solid;
+	background-color: #FFFF66;
+}
+
+.cancelled {
+  border: 1px solid;
+	background-color: #9CCAF2;
+}
+
+.cancelling {
+  border: 1px solid;
+	background-color: #C9E2F8;
+}
+
+.interrupted {
+  border: 1px solid;
+	background-color: #E79146;
+}
+
+.aborted {
+  border: 1px solid;
+	background-color: #F6A165;
+}
+
+.failed {
+  border: 1px solid;
+	background-color: #FF3333;
+}
+
+.success {
+  border: 1px solid;
+	background-color: #9FFF80;
+}
+
+.unknown {
+  border: 1px solid;
+	background-color: #FFFFFF;
+}
+ 
+td {
+	border: 0px solid;
+	padding: 2px
+}
+
+td.outlined {
+	border: 1px solid;
+	padding: 2px;
+}
+
+.error {
+	color:#FF0000;
+	font-weight: bold;
+}
+
+.fieldError {
+	color:#FF0000;
+}
+
+.displayBlock {
+	  display : block;
+}
+
+.displayNone {
+	  display: none;
+}
+
+.code {
+  font-family: Courier, sans-serif;
+}
+
+.reference {
+  font-size: 60%;
+  vertical-align: super;
+}

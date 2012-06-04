@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <param name="Threshold" value="DEBUG"/>
+    <param name="Target" value="System.out"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"  value="%d{ISO8601} %p %l %m%n"/>
+    </layout>
+  </appender>
+  
+  <!-- note that debug messages from AbstractFormController and MultiActionController are because Spring uses
+    getClass() to get its logger, to turn these messages off you need to turn the logging level of *your* 
+    (not Spring's) controllers to INFO --> 
+  
+  <logger name="org.springframework">
+    <level value="INFO"/>
+  </logger>
+  
+  <logger name="org.displaytag">
+    <level value="INFO"/>
+  </logger>
+  
+  <logger name="org.apache">
+    <level value="INFO"/>
+  </logger>
+  
+  <logger name="org.hibernate.SQL">
+    <level value="INFO"/>
+  </logger>
+  
+  <logger name="org.hibernate">
+    <level value="INFO"/>
+  </logger>
+  
+  <logger name="org.springframework">
+    <level value="INFO"/>
+  </logger>
+  
+  <logger name="org.quartz">
+    <level value="INFO"/>
+  </logger>
+  
+  <logger name="fm.last.citrine.jobs.syscommand.RollingFileSysCommandObserver">
+    <level value="ERROR"/>
+  </logger>
+  
+  <root>
+    <level value="DEBUG"/>
+    <appender-ref ref="CONSOLE"/>
+  </root>
+  
+</log4j:configuration>
