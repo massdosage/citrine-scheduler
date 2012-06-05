@@ -15,7 +15,8 @@
  */
 package fm.last.citrine.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,13 +52,11 @@ public class LogFileManagerTest {
   @Test
   public void testFindAll() {
     List<String> logFiles = logFileManager.findAllLogFiles();
-    assertEquals(5, logFiles.size());
-    // only the two FILES ending in .log should match
+    assertEquals(4, logFiles.size());
     assertTrue(logFiles.contains("808.log"));
     assertTrue(logFiles.contains("808.log.1"));
     assertTrue(logFiles.contains("808.log.2"));
     assertTrue(logFiles.contains("808.log.gz"));
-    assertTrue(logFiles.contains("303.log"));
   }
 
   @Test
@@ -69,7 +68,7 @@ public class LogFileManagerTest {
 
   @Test
   public void testTail() throws IOException {
-    String tail = logFileManager.tail("303.log", 143);
+    String tail = logFileManager.tail("808.log", 142);
     assertEquals(
         "2008-01-14 18:25:54,757 fm.last.citrine.jobs.syscommand.RollingFileSysCommandObserver.sysOut(RollingFileSysCommandObserver.java:72) version.sh",
         tail);
