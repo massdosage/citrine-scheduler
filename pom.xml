@@ -1,6 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>fm.last</groupId>
   <artifactId>citrine</artifactId>
   <packaging>war</packaging>
@@ -9,14 +11,12 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <springVersion>3.1.0.RELEASE</springVersion>
   </properties>
 
-  <!-- we should move from google code to github. 
   <scm>
-    <connection>scm:git:git@github.com:lastfm/citrine.git</connection>
-    <developerConnection>scm:git:git@github.com:lastfm/citrine.git</developerConnection>
+    <connection>scm:svn:https://citrine-scheduler.googlecode.com/svn/trunk/</connection>
   </scm>
-  -->
 
   <dependencies>
     <dependency>
@@ -43,6 +43,7 @@
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
       <version>2.5</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -94,24 +95,16 @@
       <artifactId>commons-pool</artifactId>
       <version>1.6</version>
     </dependency>
-    
-    <!-- may need one of these?
-    <dependency>
-      <groupId>org.apache.jakarta.taglibs</groupId>
-      <artifactId>standard</artifactId>
-      <version>1.1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.jakarta.taglibs</groupId>
-      <artifactId>standard</artifactId>
-      <version>1.1.2</version>
-    </dependency>
-     -->
+
+    <!-- may need one of these? <dependency> <groupId>org.apache.jakarta.taglibs</groupId> 
+      <artifactId>standard</artifactId> <version>1.1.2</version> </dependency> 
+      <dependency> <groupId>org.apache.jakarta.taglibs</groupId> <artifactId>standard</artifactId> 
+      <version>1.1.2</version> </dependency> -->
 
     <dependency>
-    	<groupId>displaytag</groupId>
-    	<artifactId>displaytag</artifactId>
-    	<version>1.2</version>
+      <groupId>displaytag</groupId>
+      <artifactId>displaytag</artifactId>
+      <version>1.2</version>
     </dependency>
 
     <dependency>
@@ -140,12 +133,6 @@
       <version>2.1</version>
     </dependency>
     <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
-      <version>1.9.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>asm</groupId>
       <artifactId>asm</artifactId>
       <version>3.3.1</version>
@@ -168,28 +155,22 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>3.0.5.RELEASE</version>
+      <version>${springVersion}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
-      <version>3.0.5.RELEASE</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-test</artifactId>
-      <version>3.0.5.RELEASE</version>
-      <scope>test</scope>
+      <version>${springVersion}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>3.0.5.RELEASE</version>
+      <version>${springVersion}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
-      <version>3.0.5.RELEASE</version>
+      <version>${springVersion}</version>
     </dependency>
     <dependency>
       <groupId>javax.mail</groupId>
@@ -201,12 +182,26 @@
       <artifactId>jta</artifactId>
       <version>1.1</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${springVersion}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.10</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>1.9.0</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -223,6 +218,38 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1.1</version>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Build-Version>${project.version}</Build-Version>
+              <Build-DateTime>${buildNumber}</Build-DateTime>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>buildnumber-maven-plugin</artifactId>
+        <version>1.0</version>
+        <configuration>
+          <format>{0,time,yyyy-MM-dd'T'HH:mm:ssz}</format>
+          <items>
+            <item>timestamp</item>
+          </items>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>create</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
