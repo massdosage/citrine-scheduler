@@ -9,7 +9,7 @@ import java.io.IOException;
 import org.junit.Test;
 
 public class RootSqlFolderTest {
-  
+
   @Test
   public void getRootFolder() throws IOException {
     RootSqlFolder sqlFolder = new RootSqlFolder();
@@ -20,6 +20,6 @@ public class RootSqlFolderTest {
   @Test(expected = FileNotFoundException.class)
   public void getNonExistentSubFolder() throws IOException {
     RootSqlFolder sqlFolder = new RootSqlFolder("sub");
-    File folder = sqlFolder.getFolder();
+    sqlFolder.getFolder();
   }
 }
