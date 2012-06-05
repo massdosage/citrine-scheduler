@@ -15,12 +15,13 @@
  */
 package fm.last.citrine.web;
 
-import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,7 +32,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import fm.last.citrine.scheduler.SchedulerManager;
 import fm.last.citrine.service.TaskManager;
-import fm.last.commons.io.LastFileUtils;
 
 /**
  * Controller for the admin page.
@@ -47,14 +47,18 @@ public class AdminController extends MultiActionController {
 
   private String buildDateTime;
 
-  public AdminController() {
-    Manifest manifest;
+  @Override
+  protected void initServletContext(ServletContext servletContext) {
+    super.initServletContext(servletContext);
     try {
-      manifest = LastFileUtils.getManifest(this.getClass());
+      InputStream inputStream = servletContext.getResourceAsStream("/META-INF/MANIFEST.MF");
+      Manifest manifest = new Manifest(inputStream);
       Attributes attributes = manifest.getMainAttributes();
       buildVersion = attributes.getValue("Build-Version");
       buildDateTime = attributes.getValue("Build-DateTime");
-    } catch (IOException e) {
+      log.info("Citrine Build-Version: " + attributes.getValue("Build-Version"));
+      log.info("Citrine Build-DateTime: " + attributes.getValue("Build-DateTime"));
+    } catch (Exception e) {
       log.error("Error determining build version", e);
     }
   }
@@ -70,19 +74,13 @@ public class AdminController extends MultiActionController {
 
   public ModelAndView prepareForShutdown(HttpServletRequest request, HttpServletResponse response) throws Exception {
     schedulerManager.prepareForShutdown();
-    return new ModelAndView(new RedirectView("admin.do")); 
+    return new ModelAndView(new RedirectView("admin.do"));
   }
 
-  /**
-   * @param taskManager the taskManager to set
-   */
   public void setTaskManager(TaskManager taskManager) {
     this.taskManager = taskManager;
   }
 
-  /**
-   * @param schedulerManager the schedulerManager to set
-   */
   public void setSchedulerManager(SchedulerManager schedulerManager) {
     this.schedulerManager = schedulerManager;
   }

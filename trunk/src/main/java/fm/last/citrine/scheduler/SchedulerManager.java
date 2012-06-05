@@ -20,12 +20,9 @@ import static fm.last.citrine.scheduler.SchedulerConstants.TASK_BEAN_NAME;
 import static fm.last.citrine.scheduler.SchedulerConstants.TASK_COMMAND;
 import static fm.last.citrine.scheduler.SchedulerConstants.TASK_ID;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.jar.Attributes;
-import java.util.jar.Manifest;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -44,7 +41,6 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 
 import fm.last.citrine.model.Task;
-import fm.last.commons.io.LastFileUtils;
 
 /**
  * Manager class that is responsible for handling scheduling of Tasks.
@@ -66,15 +62,6 @@ public class SchedulerManager implements BeanFactoryAware {
    * @param jobClassName Job class name as a String.
    */
   public SchedulerManager(Scheduler scheduler, String jobClassName) {
-    try {
-      Manifest manifest = LastFileUtils.getManifest(this.getClass());
-      Attributes attributes = manifest.getMainAttributes();
-      log.info("Citrine Build-Version: " + attributes.getValue("Build-Version"));
-      log.info("Citrine Build-DateTime: " + attributes.getValue("Build-DateTime"));
-    } catch (IOException e) {
-      log.warn("Error getting Citrine version info: " + e.getMessage());
-    }
-
     try {
       this.scheduler = scheduler;
       jobClass = (Class<Task>) Class.forName(jobClassName);
@@ -155,8 +142,8 @@ public class SchedulerManager implements BeanFactoryAware {
       if (task.isEnabled() && !StringUtils.isEmpty(task.getTimerSchedule())) {
         JobDetail jobDetail = createJobDetail(task);
         log.info("Scheduling task with id " + task.getId() + " and schedule: " + task.getTimerSchedule());
-        CronTrigger cronTrigger = new CronTrigger(String.valueOf(task.getId()), task.getGroupName(), task
-            .getTimerSchedule());
+        CronTrigger cronTrigger = new CronTrigger(String.valueOf(task.getId()), task.getGroupName(),
+            task.getTimerSchedule());
         scheduler.scheduleJob(jobDetail, cronTrigger);
       }
     } catch (SchedulerException e) {

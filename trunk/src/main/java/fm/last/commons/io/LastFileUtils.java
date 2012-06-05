@@ -28,7 +28,6 @@ import java.io.RandomAccessFile;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
-import java.util.jar.Manifest;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -81,49 +80,6 @@ public class LastFileUtils {
       IOUtils.closeQuietly(fis);
     }
     IOUtils.closeQuietly(fos);
-  }
-
-  /**
-   * Gets the manifest associated with the passed class.
-   * 
-   * @param someClass Class to find manifest for.
-   * @param removePath Path to remove from path used when searching for manifest.
-   * @return The manifest.
-   * @throws IOException If the manifest could not be found.
-   */
-  public static Manifest getManifest(Class<?> someClass, String removePath) throws IOException {
-    String className = someClass.getSimpleName();
-    String classFileName = className + ".class";
-    String classFilePath = someClass.getPackage().toString().replace('.', '/') + "/" + className;
-    String pathToThisClass = someClass.getResource(classFileName).toString();
-    String pathToManifest = new StringBuilder().append(
-        pathToThisClass.substring(0, pathToThisClass.length() + 2
-            - new StringBuilder().append("/").append(classFilePath).toString().length() - removePath.length())).append(
-        "/META-INF/MANIFEST.MF").toString();
-    Manifest manifest = new Manifest(new URL(pathToManifest).openStream());
-    return manifest;
-  }
-
-  /**
-   * Gets the manifest associated with the passed class.
-   * 
-   * @param someClass Class to find manifest for.
-   * @return The manifest.
-   * @throws IOException If the manifest could not be found.
-   */
-  public static Manifest getManifest(Class<?> someClass) throws IOException {
-    return getManifest(someClass, "");
-  }
-
-  /**
-   * Gets the manifest associated with the passed class by looking in classes/WEB-INF/ for it.
-   * 
-   * @param someClass Class to find manifest for.
-   * @return The manifest.
-   * @throws IOException If the manifest could not be found.
-   */
-  public static Manifest getWebManifest(Class<?> someClass) throws IOException {
-    return getManifest(someClass, "classes/WEB-INF/");
   }
 
   /**
