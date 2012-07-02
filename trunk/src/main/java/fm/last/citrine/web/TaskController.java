@@ -44,12 +44,16 @@ import fm.last.citrine.service.TaskRunManager;
  */
 public class TaskController extends MultiActionController {
 
+  static final String TASK_STATUS_DISABLED = "disabled";
+
   private static Logger log = Logger.getLogger(TaskController.class);
 
   private TaskManager taskManager;
   private TaskRunManager taskRunManager;
 
   private SchedulerManager schedulerManager;
+
+  private LastRunPeriodFormatter periodFormatter = new LastRunPeriodFormatter();
 
   /**
    * Fetches a List of tasks and adds group-related entries to the model based on the passed group name.
@@ -91,6 +95,7 @@ public class TaskController extends MultiActionController {
    */
   private void processTasks(List<Task> tasks, Map<String, Object> model) {
     Map<Long, String> taskRunStatus = new HashMap<Long, String>();
+    Map<Long, String> lastRun = new HashMap<Long, String>();
     for (Task task : tasks) {
 
       // limit the description text based in the gui (we could also do this via displaytag)
@@ -104,12 +109,18 @@ public class TaskController extends MultiActionController {
 
       // get the most recent status for each task
       TaskRun mostRecentTaskRun = taskRunManager.getMostRecent(task.getId());
-      if (mostRecentTaskRun != null && mostRecentTaskRun.getStatus() != null) {
-        taskRunStatus.put(task.getId(), mostRecentTaskRun.getStatus().toString().toLowerCase());
+      if (task.isEnabled()) {
+        if (mostRecentTaskRun != null && mostRecentTaskRun.getStatus() != null) {
+          taskRunStatus.put(task.getId(), mostRecentTaskRun.getStatus().toString().toLowerCase());
+        } else {
+          taskRunStatus.put(task.getId(), Status.UNKNOWN.toString().toLowerCase());
+        }
       } else {
-        taskRunStatus.put(task.getId(), Status.UNKNOWN.toString().toLowerCase());
+        taskRunStatus.put(task.getId(), TASK_STATUS_DISABLED);
       }
+      lastRun.put(task.getId(), periodFormatter.printLastRun(mostRecentTaskRun));
     }
+    model.put("lastRun", lastRun);
     model.put("recentStatus", taskRunStatus);
     model.put("tasks", tasks);
   }
