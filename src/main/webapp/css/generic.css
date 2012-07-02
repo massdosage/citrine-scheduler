@@ -68,6 +68,11 @@ th {
   border: 1px solid;
 	background-color: #FFFFFF;
 }
+
+.disabled {
+  border: 1px solid;
+	background-color: #AFAFAF;
+}
  
 td {
 	border: 0px solid;

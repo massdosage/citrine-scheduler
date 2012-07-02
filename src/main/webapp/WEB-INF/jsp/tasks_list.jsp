@@ -25,9 +25,7 @@
       </display:column>
       <display:column property="groupName" title="Group" class="${recentStatus[task.id]}" sortable="true"/>
       <display:column property="description" class="${recentStatus[task.id]}"/>
-      <display:column property="beanName" class="${recentStatus[task.id]}"/>
       <display:column property="timerSchedule" class="${recentStatus[task.id]}"/>
-      <display:column property="enabled" class="${recentStatus[task.id]}"/>
       <display:column title="Task Runs" class="${recentStatus[task.id]}">
         <a href="task_runs.do?action=list&taskId=${task.id}&selectedGroupName=${selectedGroupName}">Task Runs</a>
       </display:column>
@@ -38,6 +36,9 @@
           </c:if>
         </c:if>
         <a href="tasks.do?action=reset&taskId=${task.id}&selectedGroupName=${selectedGroupName}">Reset</a>
+      </display:column>
+      <display:column title="last run" class="${recentStatus[task.id]}">
+      	<c:out value="${lastRun[task.id]}"></c:out>
       </display:column>
     </display:table>
     <p><a href="index.html">&lt; Back</a></p>
