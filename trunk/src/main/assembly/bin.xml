@@ -1,0 +1,25 @@
+<assembly>
+  <id>bin</id>
+  <formats>
+    <format>tar.gz</format>
+  </formats>
+  <fileSets>
+
+    <fileSet>
+      <outputDirectory></outputDirectory>
+      <includes>
+        <include>changelog.txt</include>
+        <include>LICENSE*</include>
+        <include>src/main/conf/citrine.properties.example</include>
+        <include>src/main/sql/*</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+  <files>
+    <file>
+      <source>target/${artifactId}-${version}.war</source>
+      <destName>citrine.war</destName>
+    </file>
+  </files>
+
+</assembly>
