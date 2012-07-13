@@ -28,6 +28,7 @@
         /task_edit.do=taskFormController
         /tasks.do=taskController
         /task_runs.do=taskRunController
+        /task_runs.json=taskRunController
         /display.do=displayTaskRunMessageController
         /logs.do=displayLogsController
         /admin.do=adminController
@@ -42,6 +43,22 @@
     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
     <property name="prefix" value="/WEB-INF/jsp/" />
     <property name="suffix" value=".jsp" />
+  </bean>
+  
+  <!-- Content Negotiating View Resolver -->
+  <bean id="contentNegotiatingViewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    <property name="mediaTypes">
+      <map>
+        <entry key="html" value="text/html" />
+        <entry key="json" value="application/json" />
+      </map>
+    </property>
+    <property name="defaultViews">
+      <list>
+        <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+        </bean>
+      </list>
+    </property>
   </bean>
 
   <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">

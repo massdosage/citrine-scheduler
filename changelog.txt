@@ -1,6 +1,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TBA TODO: before releasing this, update wiki/docs with new base.citrine.url property
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- added json view for TaskRuns
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=39 - disabled task now display as grey and the disabled column is removed
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=40 - add "last run" column to the task overview page showing the the task was last run
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=41 - removed beanName column from the overview page
