@@ -9,6 +9,7 @@ TBA TODO: before releasing this, update wiki/docs with new base.citrine.url prop
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=6 - ability to add full http path to log to e-mail notification
 - Switched build system to maven, updated a lot of dependencies to newer versions.
 - Moved various util and ancillary classes to use lastcommons equivalents.
+- Added more debug logging related to deleting of old log files.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 4.1.0 (2010-10-04)
