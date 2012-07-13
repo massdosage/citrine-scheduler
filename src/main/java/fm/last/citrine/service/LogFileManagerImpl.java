@@ -28,6 +28,7 @@ import org.apache.commons.io.filefilter.AndFileFilter;
 import org.apache.commons.io.filefilter.FileFileFilter;
 import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 
 import fm.last.commons.io.LastFileUtils;
@@ -37,8 +38,10 @@ import fm.last.commons.io.LastFileUtils;
  */
 public class LogFileManagerImpl implements LogFileManager {
 
+  private static Logger log = Logger.getLogger(LogFileManagerImpl.class);
+
   private File baseLogFolder = new File(System.getProperty("java.io.tmpdir"));
-  private IOFileFilter logFileFilter = new AndFileFilter(new WildcardFileFilter("*.log*"), FileFileFilter.FILE);
+  private final IOFileFilter logFileFilter = new AndFileFilter(new WildcardFileFilter("*.log*"), FileFileFilter.FILE);
 
   /**
    * Creates a new instance which will read log files under the base log path (java tmp dir by default).
@@ -79,18 +82,19 @@ public class LogFileManagerImpl implements LogFileManager {
     return LastFileUtils.tail(logFile, tailBytes);
   }
 
-  /**
-   * @param baseLogPath the baseLogPath to set
-   */
   public void setBaseLogPath(String baseLogPath) {
     this.baseLogFolder = new File(baseLogPath);
   }
 
   @Override
   public void deleteBefore(DateTime deleteBefore) throws IOException {
+    log.debug("Deleting log files older than " + deleteBefore + " from " + baseLogFolder);
     File[] filesToDelete = baseLogFolder.listFiles((FileFilter) new AndFileFilter(logFileFilter, new AgeFileFilter(
         deleteBefore.toDate())));
     for (File fileToDelete : filesToDelete) {
+      if (log.isDebugEnabled()) {
+        log.debug("Deleting " + fileToDelete);
+      }
       FileUtils.forceDelete(fileToDelete);
     }
   }
