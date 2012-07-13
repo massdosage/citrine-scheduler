@@ -7,9 +7,8 @@ TBA TODO: before releasing this, update wiki/docs with new base.citrine.url prop
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=41 - removed beanName column from the overview page
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=35 - now deletes log files ending in .log* instead of .log
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=6 - ability to add full http path to log to e-mail notification
-- Upgraded to Spring 3.0.5
+- Switched build system to maven, updated a lot of dependencies to newer versions.
 - Moved various util and ancillary classes to use lastcommons equivalents.
-- Switched build system to maven, updated quite a lot of dependencies.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 4.1.0 (2010-10-04)
