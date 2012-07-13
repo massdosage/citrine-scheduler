@@ -29,22 +29,23 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.HtmlUtils;
 
 import fm.last.citrine.model.TaskRun;
 import fm.last.citrine.service.TaskRunManager;
 
 public class DisplayTaskRunMessageControllerTest {
 
-  private DisplayTaskRunMessageController displayTaskRunMessageController = new DisplayTaskRunMessageController();
+  private final DisplayTaskRunMessageController displayTaskRunMessageController = new DisplayTaskRunMessageController();
 
   @Mock
   private TaskRunManager mockTaskRunManager;
 
-  private MockHttpServletRequest mockRequest = new MockHttpServletRequest();
+  private final MockHttpServletRequest mockRequest = new MockHttpServletRequest();
 
-  private MockHttpServletResponse mockResponse = new MockHttpServletResponse();
+  private final MockHttpServletResponse mockResponse = new MockHttpServletResponse();
 
-  private TaskRun taskRun = new TaskRun();
+  private final TaskRun taskRun = new TaskRun();
 
   @Before
   public void setUp() {
@@ -84,6 +85,18 @@ public class DisplayTaskRunMessageControllerTest {
   }
 
   @Test
+  public void testDisplayStackContainingHtml() throws Exception {
+    String strackTrace = "<b>stack trace</b>";
+    taskRun.setStackTrace(strackTrace);
+
+    mockRequest.addParameter(Constants.PARAM_TASK_RUN_ID, String.valueOf(taskRun.getId()));
+    ModelAndView modelAndView = displayTaskRunMessageController.displayStack(mockRequest, mockResponse);
+    Map<String, Object> model = modelAndView.getModel();
+    String escapedTrace = HtmlUtils.htmlEscape(strackTrace);
+    assertEquals(escapedTrace, model.get("message"));
+  }
+
+  @Test
   public void testDisplaySysOut() throws Exception {
     mockRequest.addParameter(Constants.PARAM_TASK_RUN_ID, String.valueOf(taskRun.getId()));
     ModelAndView modelAndView = displayTaskRunMessageController.displaySysOut(mockRequest, mockResponse);
@@ -91,6 +104,17 @@ public class DisplayTaskRunMessageControllerTest {
     Map<String, Object> model = modelAndView.getModel();
     assertEquals(1, model.size());
     assertEquals(taskRun.getSysOut(), model.get("message"));
+  }
+
+  @Test
+  public void testDisplaySysOutContaingHtml() throws Exception {
+    String sysOut = "<b>sys out</b>";
+    taskRun.setSysOut(sysOut);
+    mockRequest.addParameter(Constants.PARAM_TASK_RUN_ID, String.valueOf(taskRun.getId()));
+    ModelAndView modelAndView = displayTaskRunMessageController.displaySysOut(mockRequest, mockResponse);
+    Map<String, Object> model = modelAndView.getModel();
+    String escapedSysOut = HtmlUtils.htmlEscape(sysOut);
+    assertEquals(escapedSysOut, model.get("message"));
   }
 
   @Test
@@ -103,5 +127,15 @@ public class DisplayTaskRunMessageControllerTest {
     assertEquals(taskRun.getSysErr(), model.get("message"));
   }
 
+  @Test
+  public void testDisplaySysErrContaingHtml() throws Exception {
+    String sysErr = "<b>sys err</b>";
+    taskRun.setSysErr(sysErr);
+    mockRequest.addParameter(Constants.PARAM_TASK_RUN_ID, String.valueOf(taskRun.getId()));
+    ModelAndView modelAndView = displayTaskRunMessageController.displaySysErr(mockRequest, mockResponse);
+    Map<String, Object> model = modelAndView.getModel();
+    String escapedSysErr = HtmlUtils.htmlEscape(sysErr);
+    assertEquals(escapedSysErr, model.get("message"));
+  }
 
 }

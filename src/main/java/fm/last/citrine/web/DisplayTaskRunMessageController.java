@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+import org.springframework.web.util.HtmlUtils;
 
 import fm.last.citrine.model.TaskRun;
 import fm.last.citrine.service.TaskRunManager;
@@ -54,6 +55,10 @@ public class DisplayTaskRunMessageController extends MultiActionController {
     }
   }
 
+  private ModelAndView newEscapedMessageModelAndView(String message) {
+    return new ModelAndView("display_task_run_message", "message", HtmlUtils.htmlEscape(message));
+  }
+
   /**
    * Display a TaskRun's stack trace.
    * 
@@ -66,7 +71,7 @@ public class DisplayTaskRunMessageController extends MultiActionController {
     long taskRunId = getTaskRunId(request);
     TaskRun taskRun = taskRunManager.get(taskRunId);
     String message = taskRun.getStackTrace();
-    return new ModelAndView("display_task_run_message", "message", message);
+    return newEscapedMessageModelAndView(message);
   }
 
   /**
@@ -81,7 +86,7 @@ public class DisplayTaskRunMessageController extends MultiActionController {
     long jobRunId = getTaskRunId(request);
     TaskRun taskRun = taskRunManager.get(jobRunId);
     String message = taskRun.getSysOut();
-    return new ModelAndView("display_task_run_message", "message", message);
+    return newEscapedMessageModelAndView(message);
   }
 
   /**
@@ -96,7 +101,7 @@ public class DisplayTaskRunMessageController extends MultiActionController {
     long taskRunId = getTaskRunId(request);
     TaskRun taskRun = taskRunManager.get(taskRunId);
     String message = taskRun.getSysErr();
-    return new ModelAndView("display_task_run_message", "message", message);
+    return newEscapedMessageModelAndView(message);
   }
 
   public TaskRunManager getTaskRunManager() {

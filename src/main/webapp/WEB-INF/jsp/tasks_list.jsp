@@ -21,7 +21,7 @@
     </p>
     <display:table name="${tasks}" id="task" class="outlined" requestURI="tasks.do" defaultsort="2">
       <display:column title="Name" class="${recentStatus[task.id]}" sortable="true">
-        <a href="task_edit.do?id=${task.id}&selectedGroupName=${selectedGroupName}">${task.name}</a>
+        <a id="task-${task.id}" href="task_edit.do?id=${task.id}&selectedGroupName=${selectedGroupName}">${task.name}</a>
       </display:column>
       <display:column property="groupName" title="Group" class="${recentStatus[task.id]}" sortable="true"/>
       <display:column property="description" class="${recentStatus[task.id]}"/>
