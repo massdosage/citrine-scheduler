@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+import org.springframework.web.util.HtmlUtils;
 
 import fm.last.citrine.service.LogFileManager;
 
@@ -30,7 +31,7 @@ import fm.last.citrine.service.LogFileManager;
  * Controller that is responsible for listing log files and displaying their contents.
  */
 public class DisplayLogsController extends MultiActionController {
-  
+
   protected static final String PARAM_LOG_FILE = "logFile";
 
   private LogFileManager logFileManager;
@@ -64,7 +65,7 @@ public class DisplayLogsController extends MultiActionController {
     String logFileName = request.getParameter(PARAM_LOG_FILE);
     String contents = logFileManager.tail(logFileName, tailBytes);
     Map<String, Object> model = new HashMap<String, Object>();
-    model.put("contents", contents);
+    model.put("contents", HtmlUtils.htmlEscape(contents));
     // task id will only be set if we activate this controller from the task runs view
     Long taskId = RequestUtils.getLongValue(request, Constants.PARAM_TASK_ID, false);
     model.put("taskId", taskId);
@@ -80,9 +81,6 @@ public class DisplayLogsController extends MultiActionController {
     this.tailBytes = tailBytes;
   }
 
-  /**
-   * @param logFileManager the logFileManager to set
-   */
   public void setLogFileManager(LogFileManager logFileManager) {
     this.logFileManager = logFileManager;
   }

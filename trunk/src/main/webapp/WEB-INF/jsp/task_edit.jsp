@@ -24,7 +24,7 @@
           </td>
         </tr>
         <tr>
-          <td align="right">Timer Schedule<span class="reference"><a href="http://www.opensymphony.com/quartz/wikidocs/CronTriggers Tutorial.html" target="_blank">[?]</a></span>:</td>
+          <td align="right">Timer Schedule<span class="reference"><a href="http://quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger" target="_blank">[?]</a></span>:</td>
           <td>
             <form:input path="task.timerSchedule"/>
             <span class="error"><form:errors path="task.timerSchedule" /></span>

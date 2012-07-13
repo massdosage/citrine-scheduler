@@ -30,19 +30,20 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.HtmlUtils;
 
 import fm.last.citrine.service.LogFileManager;
 
 public class DisplayLogsControllerTest {
 
-  private DisplayLogsController displayLogsController = new DisplayLogsController();
+  private final DisplayLogsController displayLogsController = new DisplayLogsController();
 
   @Mock
   private LogFileManager mockLogFileManager;
 
-  private MockHttpServletRequest mockRequest = new MockHttpServletRequest();
+  private final MockHttpServletRequest mockRequest = new MockHttpServletRequest();
 
-  private MockHttpServletResponse mockResponse = new MockHttpServletResponse();
+  private final MockHttpServletResponse mockResponse = new MockHttpServletResponse();
 
   @Before
   public void setUp() {
@@ -82,6 +83,19 @@ public class DisplayLogsControllerTest {
   public void setSetTailBytes() {
     displayLogsController.setTailBytes(500);
     assertEquals(500, displayLogsController.getTailBytes());
+  }
+
+  @Test
+  public void escapeHtmlInDisplay() throws Exception {
+    String fileContent = "<br/><b>bla</b>";
+    String logFileName = "log000.log";
+    when(mockLogFileManager.tail(logFileName, displayLogsController.getTailBytes())).thenReturn(fileContent);
+    mockRequest.setParameter(DisplayLogsController.PARAM_LOG_FILE, logFileName);
+    ModelAndView modelAndView = displayLogsController.display(mockRequest, mockResponse);
+    assertEquals("log_display", modelAndView.getViewName());
+    String escapedContent = HtmlUtils.htmlEscape(fileContent);
+    Map<String, Object> model = modelAndView.getModel();
+    assertEquals(escapedContent, model.get("contents"));
   }
 
 }

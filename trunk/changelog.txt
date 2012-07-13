@@ -7,6 +7,9 @@ TBA TODO: before releasing this, update wiki/docs with new base.citrine.url prop
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=41 - removed beanName column from the overview page
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=35 - now deletes log files ending in .log* instead of .log
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=6 - ability to add full http path to log to e-mail notification
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=42 - escape strings in html views
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=43 - Add HTML id attributes to job rows in Citrine
+- fixed url to cron trigger tutorial.
 - Switched build system to maven, updated a lot of dependencies to newer versions.
 - Moved various util and ancillary classes to use lastcommons equivalents.
 - Added more debug logging related to deleting of old log files.
