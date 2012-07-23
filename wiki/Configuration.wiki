@@ -39,13 +39,16 @@ These properties must be set in order to use e-mail notifications for tasks. A S
 {{{
 ##MAIL SETTINGS
 #hostname or IP address of the mail server
-smtp.host=
+smtp.host=smtp.yourhost.com
 #password needed to log onto the server to send email
 smtp.password=
 #email sender for all email notifications
-mail.from=
+mail.from=noreplay@yourhost.com
 #default address to which job notifications will get sent if no value is set on the job itself
-mail.to=
+mail.to=default@yourhost.com
+#base url to citrine web interface. Optional. Only needs to be set if you want full paths to log files in notification e-mails.
+#should be set to something like http://yourhost:port/citrine/
+base.citrine.url=http://yourhost.com:8080/citrine/
 }}}
 
 = Quartz Scheduler Settings =
