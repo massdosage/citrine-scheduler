@@ -14,59 +14,12 @@ If you want to modify the source code based on the current trunk version you sho
 ===Download a source release===
 Go to the Citrine [http://code.google.com/p/citrine-scheduler/downloads/list download page] and select the release labelled "Source Release" that you are interested in. This contains all the source code as well as required third party jar files etc.
 
-==Install Ivy==
-Citrine uses Ivy to manage the 3rd party libraries it uses. This needs to be downloaded and set up according to the instructions on the [http://ant.apache.org/ivy Ivy website] (in a nutshell you need to put ivy.jar on your classpath or somewhere like /usr/share/ant/lib).
-
-By default the Citrine build will retrieve all required 3rd party libraries from [http://code.google.com/p/ivyroundup/ Ivy Roundup]. Certain libraries cannot be automatically downloaded so they must be downloaded manually. Follow the instructions [http://code.google.com/p/ivyroundup/wiki/ManuallyDownloadedSoftware here] to download *javamail 1.4.3* and *jta 1.1*. You can download other versions of these packages but will need to change ivy.xml to reflect these different version numbers. 
+==Install Maven==
+Citrine is built using [http://maven.apache.org/ Maven] so you will need this set up and installed.
 
 ==Building from source==
 You should then be able to run
 {{{
-ant build-war
+mvn package
 }}}
 to compile all the classes and build the Citrine.war file ready for deployment.
-
-==Customising the build==
-
-===Modifying build properties===
-Various aspects of the build can be configured. To do this copy the file in the project root folder
-{{{
-build.properties.example
-}}}
-to 
-{{{
-build.properties
-}}}
-This file is commented and explains the various properties that are commonly changed.
-
-===Skipping retrieval of Ivy artifacts===
-If you are doing many build operations and you know the 3rd party libraries aren't changing you can speed up the build by skipping the Ivy retrieval like so:
-{{{
-ant -Divy.skip.retrieve=true -Divy.initialised=true build-war
-}}}
-This should also work if you download the source tgz release and want to build Citrine without setting up Ivy.
-
-==Additional build targets==
-
-===Checkstyle===
-To generate a [http://checkstyle.sourceforge.net/ Checkstyle] report (which checks that the code is properly formatted etc.) run 
-{{{
-ant checkstyle
-}}}
-the report will be generated in 
-{{{
-build/checkstyle/
-}}}
-
-===Findbugs===
-To generate a [http://findbugs.sourceforge.net/ FingBugs] report you first need to download it and install it to 
-{{{
-/usr/local/findbugs
-}}}
-If you install it somewhere else then modify your build.properties file to point to the location:
-{{{
-findbugs.home.dir=/some/other/path/findbugs
-}}}
-
-===Cobertura and JUnit===
-These are discussed in more detail under UnitTestSetup.
