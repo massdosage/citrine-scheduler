@@ -10,7 +10,7 @@
 
   <groupId>fm.last</groupId>
   <artifactId>citrine</artifactId>
-  <version>4.2.0</version>
+  <version>4.2.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>Citrine Scheduler</name>
   <description>A web GUI replacement for cron with extra functionality</description>
@@ -24,9 +24,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:svn:https://citrine-scheduler.googlecode.com/svn/tags/citrine-4.2.0</connection>
-    <developerConnection>scm:svn:https://citrine-scheduler.googlecode.com/svn/tags/citrine-4.2.0</developerConnection>
-    <url>http://citrine-scheduler.googlecode.com/svn/tags/citrine-4.2.0</url>
+    <connection>scm:svn:https://citrine-scheduler.googlecode.com/svn/trunk/</connection>
+    <developerConnection>scm:svn:https://citrine-scheduler.googlecode.com/svn/trunk/</developerConnection>
+    <url>http://citrine-scheduler.googlecode.com/svn/trunk/</url>
   </scm>
 
   <developers>
