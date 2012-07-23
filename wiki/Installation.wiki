@@ -5,14 +5,14 @@
 = Installing Citrine =
 These instructions cover installing Citrine for production use from a Binary Release downloaded from [http://code.google.com/p/citrine-scheduler/downloads/list here]. Unpack the .tgz file which should contain the following files:
  * citrine.war - the Citrine web application.
- * citrine-ddl-mysql.sql - SQL DDL for creating the Citrine database.
- * base_data.sql - SQL which loads various default values into Citrine.
- * citrine.properties.example - Example Citrine configuration file.
+ * src/main/sql/citrine-ddl-mysql.sql - SQL DDL for creating the Citrine database.
+ * src/main/sql/base_data.sql - SQL which loads various default values into Citrine.
+ * src/main/conf/citrine.properties.example - Example Citrine configuration file.
 The steps below will describe how to use these files to get up and running with Citrine.
 
 == Prerequisites ==
  # Java 6.x installed.
- # Tomcat 6.x installed to $TOMCAT_HOME.
+ # Tomcat 6.x or 7.x installed to $TOMCAT_HOME.
  # !MySql 5.x installed.
 
 == Setting up the Citrine database ==
