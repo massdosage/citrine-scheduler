@@ -1,5 +1,5 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TBA TODO: before releasing this, update wiki/docs with new base.citrine.url property
+4.2.0 (2012-07-23)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - added json view for TaskRuns
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=39 - disabled task now display as grey and the disabled column is removed
