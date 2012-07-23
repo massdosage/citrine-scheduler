@@ -3,6 +3,9 @@
 
 For information on Installing Citrine from scratch see [Installation].
 
+=Upgrading from 4.1.0 to 4.2.0=
+ # There are no extra steps required other than replacing the war file.
+
 =Upgrading from 4.0.x to 4.1.0=
  # Edit the *citrine.properties* configuration file and add the Quartz properties described in the [Configuration] wiki page.
  # Shut Citrine down (see [Usage#Safely_shutdown_Citrine]).
