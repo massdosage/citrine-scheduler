@@ -15,7 +15,9 @@
  */
 package fm.last.commons.io;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,7 +31,7 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Rule;
 import org.junit.Test;
 
-import fm.last.commons.test.TestAssert;
+import fm.last.commons.test.LastAssertions;
 import fm.last.commons.test.file.ClassDataFolder;
 import fm.last.commons.test.file.TemporaryFolder;
 
@@ -239,7 +241,7 @@ public class LastFileUtilsTest {
     File destination = new File(tempFolder.getRoot(), "merged");
     File file1 = dataFolder.getFile("file1.txt");
     LastFileUtils.appendFiles(destination, file1);
-    TestAssert.assertFileEquals(file1, destination);
+    LastAssertions.assertFileEquals(file1, destination);
   }
 
   @Test
@@ -248,7 +250,7 @@ public class LastFileUtilsTest {
     File file1 = dataFolder.getFile("file1.txt");
     File file2 = dataFolder.getFile("file2.txt");
     LastFileUtils.appendFiles(destination, file1, file2);
-    TestAssert.assertFileEquals(dataFolder.getFile("file1-2.txt"), destination);
+    LastAssertions.assertFileEquals(dataFolder.getFile("file1-2.txt"), destination);
   }
 
   @Test
@@ -258,7 +260,7 @@ public class LastFileUtilsTest {
     File file2 = dataFolder.getFile("file2.txt");
     File file3 = dataFolder.getFile("file3.txt");
     LastFileUtils.appendFiles(destination, file1, file2, file3);
-    TestAssert.assertFileEquals(dataFolder.getFile("file1-2-3.txt"), destination);
+    LastAssertions.assertFileEquals(dataFolder.getFile("file1-2-3.txt"), destination);
   }
 
   @Test
@@ -269,6 +271,6 @@ public class LastFileUtilsTest {
     files.add(dataFolder.getFile("file2.txt"));
     files.add(dataFolder.getFile("file3.txt"));
     LastFileUtils.appendFiles(destination, files);
-    TestAssert.assertFileEquals(dataFolder.getFile("file1-2-3.txt"), destination);
+    LastAssertions.assertFileEquals(dataFolder.getFile("file1-2-3.txt"), destination);
   }
 }
