@@ -211,6 +211,12 @@
     </dependency>
 
     <dependency>
+      <groupId>fm.last.commons</groupId>
+      <artifactId>lastcommons-test</artifactId>
+      <version>5.0.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
       <version>${springVersion}</version>
