@@ -32,4 +32,21 @@
     <url-pattern>/logs/*</url-pattern>
   </servlet-mapping>
 
+  <servlet-mapping>   
+     <servlet-name>default</servlet-name>
+  <url-pattern>/javascript/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>   
+    <servlet-name>default</servlet-name>
+    <url-pattern>/css/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>   
+    <servlet-name>default</servlet-name>
+    <url-pattern>/logs/*</url-pattern>
+   </servlet-mapping>
+  <servlet-mapping>   
+    <servlet-name>default</servlet-name>
+    <url-pattern>/index.html</url-pattern>
+  </servlet-mapping>
+
 </web-app>
