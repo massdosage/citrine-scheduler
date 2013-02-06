@@ -11,16 +11,16 @@
 
   <groupId>fm.last</groupId>
   <artifactId>citrine</artifactId>
-  <version>4.2.1</version>
+  <version>4.2.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>Citrine Scheduler</name>
   <description>A web GUI replacement for cron with extra functionality</description>
   <url>http://code.google.com/p/citrine-scheduler/</url>
 
   <scm>
-    <connection>scm:svn:https://citrine-scheduler.googlecode.com/svn/tags/citrine-4.2.1</connection>
-    <developerConnection>scm:svn:https://citrine-scheduler.googlecode.com/svn/tags/citrine-4.2.1</developerConnection>
-    <url>http://citrine-scheduler.googlecode.com/svn/tags/citrine-4.2.1</url>
+    <connection>scm:svn:https://citrine-scheduler.googlecode.com/svn/trunk/</connection>
+    <developerConnection>scm:svn:https://citrine-scheduler.googlecode.com/svn/trunk/</developerConnection>
+    <url>http://citrine-scheduler.googlecode.com/svn/trunk/</url>
   </scm>
 
   <developers>
@@ -243,9 +243,9 @@
           <artifactId>maven-release-plugin</artifactId>
           <version>2.1</version>
            <configuration>
-            <mavenExecutorId>invoker</mavenExecutorId>
-            <useReleaseProfile>true</useReleaseProfile>
-            <arguments>-DskipTests</arguments>
+            <!-- mavenExecutorId>invoker</mavenExecutorId>
+            <useReleaseProfile>true</useReleaseProfile--> 
+            <arguments>${arguments} -Psonatype-oss-release</arguments>
           </configuration>
         </plugin>
       </plugins>
@@ -256,13 +256,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
       </plugin-->
-
-      <plugin>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.1</version>
-      </plugin>
-
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
