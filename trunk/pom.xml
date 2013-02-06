@@ -38,6 +38,7 @@
 
   <properties>
     <springVersion>3.1.0.RELEASE</springVersion>
+    <arguments></arguments>
   </properties>
 
   <dependencies>
@@ -243,8 +244,6 @@
           <artifactId>maven-release-plugin</artifactId>
           <version>2.1</version>
            <configuration>
-            <!-- mavenExecutorId>invoker</mavenExecutorId>
-            <useReleaseProfile>true</useReleaseProfile--> 
             <arguments>${arguments} -Psonatype-oss-release</arguments>
           </configuration>
         </plugin>
