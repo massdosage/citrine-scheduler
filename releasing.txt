@@ -1,0 +1,11 @@
+To deploy war file to Maven Central (if you have rights):
+
+1. Set the version number and date in the changelog.txt.
+2. mvn release:prepare
+3. mvn release:perform
+
+To build and deploy the .gz files to Google Code:
+
+1. Follow the steps above.
+2. Run mvn package
+3. Upload target/citrine-4.2.1-bin.tar.gz and target/citrine-4.2.1-src.tar.gz
