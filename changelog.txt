@@ -1,5 +1,5 @@
 TBA
-
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=47 - static index.html css and java script is not accessible (in Tomcat 7) (trsell).
 - Moved test code out into lastcommons-test.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
