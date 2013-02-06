@@ -9,7 +9,6 @@
     <version>1.1.0</version>
   </parent>
 
-  <groupId>fm.last</groupId>
   <artifactId>citrine</artifactId>
   <version>4.2.1-SNAPSHOT</version>
   <packaging>war</packaging>
@@ -38,7 +37,7 @@
 
   <properties>
     <springVersion>3.1.0.RELEASE</springVersion>
-    <arguments></arguments>
+    <arguments />
   </properties>
 
   <dependencies>
@@ -235,15 +234,9 @@
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>com.googlecode.maven-gcu-plugin</groupId>
-          <artifactId>maven-gcu-plugin</artifactId>
-          <version>1.0</version>
-        </plugin>
-
-        <plugin>
           <artifactId>maven-release-plugin</artifactId>
           <version>2.1</version>
-           <configuration>
+          <configuration>
             <arguments>${arguments} -Psonatype-oss-release</arguments>
           </configuration>
         </plugin>
@@ -251,10 +244,6 @@
     </pluginManagement>
 
     <plugins>
-      <!-- plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-deploy-plugin</artifactId>
-      </plugin-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
@@ -296,6 +285,14 @@
             <descriptor>src/main/assembly/src.xml</descriptor>
           </descriptors>
         </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>assembly</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
@@ -304,36 +301,6 @@
         <configuration>
           <contextPath>/</contextPath>
           <scanIntervalSeconds>2</scanIntervalSeconds>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>com.googlecode.maven-gcu-plugin</groupId>
-        <artifactId>maven-gcu-plugin</artifactId>
-        <configuration>
-          <!-- default: googlecode -->
-          <!--serverId>gcode</serverId-->
-          <failsOnError>true</failsOnError>
-          <projectName>citrine-scheduler</projectName>
-          <uploads>
-            <upload>
-              <file>${project.build.directory}/${project.artifactId}-${project.version}-src.tar.gz</file>
-              <summary>${project.name} ${project.version} source release</summary>
-              <labels>
-                <label>Featured</label>
-                <label>Type-Archive</label>
-                <label>OpSys-All</label>
-              </labels>
-            </upload>
-            <upload>
-              <file>${project.build.directory}/${project.artifactId}-${project.version}-bin.tar.gz</file>
-              <summary>${project.name} ${project.version} binary release</summary>
-              <labels>
-                <label>Featured</label>
-                <label>Type-Archive</label>
-                <label>OpSys-All</label>
-              </labels>
-            </upload>
-          </uploads>
         </configuration>
       </plugin>
     </plugins>
