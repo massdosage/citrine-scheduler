@@ -1,6 +1,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 4.2.1 (2013-02-06)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Updated to lastfm oss parent pom.
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=47 - static index.html css and java script is not accessible (in Tomcat 7) (trsell).
 - Moved test code out into lastcommons-test.
 
