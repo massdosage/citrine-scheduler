@@ -238,6 +238,16 @@
   </dependencies>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.googlecode.maven-gcu-plugin</groupId>
+          <artifactId>maven-gcu-plugin</artifactId>
+          <version>1.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -300,7 +310,7 @@
             <descriptor>src/main/assembly/src.xml</descriptor>
           </descriptors>
         </configuration>
-      </plugin>      
+      </plugin>
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>maven-jetty-plugin</artifactId>
@@ -314,6 +324,36 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.0</version>
+      </plugin>
+      <plugin>
+        <groupId>com.googlecode.maven-gcu-plugin</groupId>
+        <artifactId>maven-gcu-plugin</artifactId>
+        <configuration>
+          <!-- default: googlecode -->
+          <!--serverId>gcode</serverId-->
+          <failsOnError>true</failsOnError>
+          <projectName>citrine-scheduler</projectName>
+          <uploads>
+            <upload>
+              <file>${project.build.directory}/${project.artifactId}-${project.version}-src.tar.gz</file>
+              <summary>${project.name} ${project.version} source release</summary>
+              <labels>
+                <label>Featured</label>
+                <label>Type-Archive</label>
+                <label>OpSys-All</label>
+              </labels>
+            </upload>
+            <upload>
+              <file>${project.build.directory}/${project.artifactId}-${project.version}-bin.tar.gz</file>
+              <summary>${project.name} ${project.version} binary release</summary>
+              <labels>
+                <label>Featured</label>
+                <label>Type-Archive</label>
+                <label>OpSys-All</label>
+              </labels>
+            </upload>
+          </uploads>
+        </configuration>
       </plugin>
     </plugins>
   </build>
