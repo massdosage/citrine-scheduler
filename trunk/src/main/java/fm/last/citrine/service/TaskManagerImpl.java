@@ -35,8 +35,8 @@ import fm.last.citrine.scheduler.SchedulerManager;
  */
 public class TaskManagerImpl implements TaskManager, BeanFactoryAware {
 
-  private SchedulerManager schedulerManager;
-  private TaskDAO taskDAO;
+  private final SchedulerManager schedulerManager;
+  private final TaskDAO taskDAO;
   private TaskRunDAO taskRunDAO;
 
   public TaskManagerImpl(TaskDAO taskDAO, SchedulerManager schedulerManager) throws SchedulerException, ParseException {
@@ -60,6 +60,7 @@ public class TaskManagerImpl implements TaskManager, BeanFactoryAware {
    * @param id Task id.
    * @return Task identified by the passed id.
    */
+  @Override
   public Task get(long id) {
     return taskDAO.get(id);
   }
@@ -69,6 +70,7 @@ public class TaskManagerImpl implements TaskManager, BeanFactoryAware {
    * 
    * @param task Task to save.
    */
+  @Override
   public void save(Task task) {
     taskDAO.save(task);
     schedulerManager.scheduleTask(task, true);
@@ -79,6 +81,7 @@ public class TaskManagerImpl implements TaskManager, BeanFactoryAware {
    * 
    * @return List of all Tasks in storage.
    */
+  @Override
   public List<Task> getTasks() {
     return taskDAO.getTasks();
   }
@@ -121,6 +124,7 @@ public class TaskManagerImpl implements TaskManager, BeanFactoryAware {
    * 
    * @param task Task to delete;
    */
+  @Override
   public void delete(Task task) {
     schedulerManager.unscheduleTask(task);
     taskRunDAO.deleteByTaskId(task.getId()); // manually manage this association

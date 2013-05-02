@@ -85,7 +85,7 @@ public class SchedulerManager implements BeanFactoryAware {
     if (beanFactory == null) {
       throw new IllegalStateException("Bean factory is null");
     }
-    JobDetail jobDetail = new JobDetail(String.valueOf(task.getId()), task.getGroupName(), jobClass);
+    JobDetail jobDetail = new JobDetail(String.valueOf(task.getId()), Scheduler.DEFAULT_GROUP, jobClass);
     JobDataMap jobDataMap = jobDetail.getJobDataMap();
     jobDataMap.put(TASK_ID, task.getId());
     jobDataMap.put(TASK_COMMAND, task.getCommand());
@@ -104,7 +104,7 @@ public class SchedulerManager implements BeanFactoryAware {
   public void unscheduleTask(Task task) {
     try {
       log.info("Unscheduling task with id " + task.getId());
-      scheduler.unscheduleJob(String.valueOf(task.getId()), task.getGroupName());
+      scheduler.unscheduleJob(String.valueOf(task.getId()), Scheduler.DEFAULT_GROUP);
     } catch (SchedulerException e) {
       throw new ScheduleException("Error unscheduling task with id " + task.getId(), e);
     }
@@ -142,7 +142,7 @@ public class SchedulerManager implements BeanFactoryAware {
       if (task.isEnabled() && !StringUtils.isEmpty(task.getTimerSchedule())) {
         JobDetail jobDetail = createJobDetail(task);
         log.info("Scheduling task with id " + task.getId() + " and schedule: " + task.getTimerSchedule());
-        CronTrigger cronTrigger = new CronTrigger(String.valueOf(task.getId()), task.getGroupName(),
+        CronTrigger cronTrigger = new CronTrigger(String.valueOf(task.getId()), Scheduler.DEFAULT_GROUP,
             task.getTimerSchedule());
         scheduler.scheduleJob(jobDetail, cronTrigger);
       }
@@ -179,8 +179,8 @@ public class SchedulerManager implements BeanFactoryAware {
   public void resetTask(Task task) {
     log.info("Resetting task with id " + task.getId());
     try {
-      scheduler.deleteJob(String.valueOf(task.getId()), task.getGroupName() + SUFFIX_IMMEDIATE);
-      scheduler.deleteJob(String.valueOf(task.getId()), task.getGroupName());
+      scheduler.deleteJob(String.valueOf(task.getId()), Scheduler.DEFAULT_GROUP + SUFFIX_IMMEDIATE);
+      scheduler.deleteJob(String.valueOf(task.getId()), Scheduler.DEFAULT_GROUP);
       scheduleTask(task, true);
     } catch (SchedulerException e) {
       throw new ScheduleException("Error resetting task with id " + task.getId(), e);

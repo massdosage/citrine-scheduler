@@ -41,7 +41,7 @@ import fm.last.test.BaseSpringTestCase;
  */
 public class TaskManagerTest extends BaseSpringTestCase {
 
-  private String defaultTimerSchedule = "0 15 10 ? * 6L 3002-3005"; // a timer schedule string that should never run
+  private final String defaultTimerSchedule = "0 15 10 ? * 6L 3002-3005"; // a timer schedule string that should never
 
   private static Logger log = Logger.getLogger(TaskManagerTest.class);
 
@@ -229,5 +229,4 @@ public class TaskManagerTest extends BaseSpringTestCase {
     assertEquals(1, tasks.size());
     assertEquals(task, tasks.get(0));
   }
-
 }

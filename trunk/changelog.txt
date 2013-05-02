@@ -1,4 +1,5 @@
 TBA
+- http://code.google.com/p/citrine-scheduler/issues/detail?id=48 - Fixed issue where renaming the group cause job to be scheduled twice
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 4.2.1 (2013-02-06)
