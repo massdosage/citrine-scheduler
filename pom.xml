@@ -13,20 +13,20 @@
   <packaging>war</packaging>
   <name>Citrine Scheduler</name>
   <description>A web GUI replacement for cron with extra functionality</description>
-  <url>http://code.google.com/p/citrine-scheduler/</url>
+  <url>https://github.com/massdosage/citrine-scheduler</url>
 
   <scm>
-    <connection>scm:svn:https://citrine-scheduler.googlecode.com/svn/trunk/</connection>
-    <developerConnection>scm:svn:https://citrine-scheduler.googlecode.com/svn/trunk/</developerConnection>
-    <url>http://citrine-scheduler.googlecode.com/svn/trunk/</url>
+    <connection>scm:git:git@github.com:massdosage/citrine-scheduler.git</connection>
+    <developerConnection>scm:git:git@github.com:massdosage/citrine-scheduler.git</developerConnection>
+    <url>https://github.com/massdosage/citrine-scheduler</url>
+    <tag>HEAD</tag>
   </scm>
 
   <developers>
     <developer>
       <name>Adrian Woodhead</name>
-      <organization>Last.fm</organization>
-      <organizationUrl>http://www.last.fm/</organizationUrl>
-      <url>http://www.last.fm/user/massdosage</url>
+      <id>massdosage</id>
+      <url>http://massdosage.co.za</url>
       <roles>
         <role>Documentation</role>
         <role>Java Developer</role>
