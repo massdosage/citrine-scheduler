@@ -1,0 +1,86 @@
+
+
+# Tasks #
+The tasks page is where all tasks are created, edited, run, viewed, or deleted
+
+## Create a new Task ##
+
+To create a new Citrine task, click the 'Create New Task' link. You will be brought to a webform for creating the task.
+
+![http://citrine-scheduler.googlecode.com/files/edit_details.png](http://citrine-scheduler.googlecode.com/files/edit_details.png)
+
+The fields are (Fields in **bold** are required fields):
+  * **Name** - create a descriptive name
+  * Description - Create a description of what the task is meant to do and when it is meant to run
+  * Timer Schedule - Set the times that the task is meant to run. These times are written in chron format. Click the **?** to view the [chron trigger tutorial](http://www.quartz-scheduler.org/docs/tutorials/crontrigger.html)
+  * Command - Enter the command that should be run when the task is triggered. This would typically be a shell script which would look like:
+```
+full/path/to/script.sh
+```
+  * Bean Name - (Will be removed. Default to sysExecJob.)
+  * Priority - (Under Construction - not yet implemented in the backend.)
+  * **Group Name** - Create a group or assign this task to a group.
+  * Enabled - If ticked, this task will run. If unticked, the task will not be run.
+  * Stop On Error - If ticked, should the task fail it will NOT trigger tasks that would run at its completion. If unticked, should this parent task fail, its children tasks will still run.
+  * Error if Running - If ticked, should an instance of this task exist, it will raise an error and will not run the task. If unticked, it will run another instance of the task.
+  * Notification Recipients - Enter a comma-separated list of email addresses of persons who should be notified.
+    * NB: Before notifications can be set up, MAIL SETTINGS in the TOMCAT\_HOME/lib/citrine.properties file needs to be edited and settings included.
+  * Notify on success - If ticked, an email will be sent to notification recipients when the task is completed successfully.
+  * Notify on failure - If ticked, an email will be sent to notification recipients when the task fails.
+
+## Create a child task ##
+
+  1. Create a parent task and the child task as stand-alone tasks.
+  1. Open the task webform of the parent task.
+  1. Click the 'Manage Child Tasks' at the bottom left of the page
+  1. Tick the boxes of all the child tasks.
+    * NB: A child task must be in the same group as the parent. Available children will not include those which are already set as children of the parents. The parent task cannot also be its own child or grandchild.
+  1. Click the 'Update' button to confirm your selection. You will be redirected to the Tasks Overview list.
+
+## Edit an existing Task ##
+
+To edit an existing task, click the task name. You will be brought to the webform containing the details for the task. This webform is the same as appears in the **Create New Task**.
+
+## Disable an existing Task ##
+
+To disable an existing task, click the task name as if editing the task. You will be brought to the webform containing the details for the task. This webform is the same as appears in the **Create New Task**.
+
+Untick the 'Enabled' box.
+
+## Run a Task ##
+In the 'Actions' column on the Tasks Overview page, click the "Start" link.
+You will be directed to the Task Runs page for that task. See the section on **View Task Run Results** for more information on the Task Runs page.
+
+
+## View Task Run results ##
+
+To view the Task Run results from the Tasks Overview page, click the 'Tasks Run' link in the Task Runs column for the task you want to view.
+
+![http://citrine-scheduler.googlecode.com/files/tasks_overview.png](http://citrine-scheduler.googlecode.com/files/tasks_overview.png)
+
+Different colours denote the status of the task:
+  * Yellow - currently running
+  * Green - successfully completed
+  * Red - failed
+  * Light blue - cancelling
+  * Dark blue - cancelled
+  * Tan - aborted (example: A task takes 5 minutes and is set to run once a minute but the 'Error if Running' box is ticked in the task webform)
+  * Dark tan (orange) - interrupted (example: The server has lost power and all tasks in the process of running were interrupted)
+
+# Task Run Logs #
+The Task Run Logs allows you to view the logs for all Task Runs. There are two different ways to view the logs:
+  * HTML view - view the logs formatted in HTML
+  * Raw view - view the raw log files in the browser or open in a text editor depending on the browser settings.
+
+# Administering Citrine #
+
+## Safely shutdown Citrine ##
+
+The administration page is used primarily for safely shutting down Citrine.
+  1. When Citrine is running, the current status will be 'Started'. There will also be a link which reads 'Prepare for Shutdown'. Click this list to shut down Citrine.
+  1. When shutting down, the status of Citrine will be 'Preparing for Shutdown'. Any jobs running when the 'Prepare for Shutdown' link was clicked will continue to run but no new tasks will be started.
+  1. When all running tasks have started, the status of Citrine will be 'Ready for Shutdown'. The link will change to 'Shutdown'. Click this link to fully stop Citrine.
+  1. TomCat can now safely be stopped
+
+## About Citrine Info ##
+At the bottom of the Citrine Administration page will be the current version of Citrine and the last build.

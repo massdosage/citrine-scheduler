@@ -1,0 +1,35 @@
+
+
+# Unit testing #
+This page assumes you have already followed the steps described in BuildingFromSource and can successfully build the citrine.war file.
+
+## Prerequisites ##
+  1. MySql 5.x installed.
+  1. Java 6.x installed.
+  1. Ant >=1.6 installed.
+
+## Create a test database ##
+The steps below are for MySql (currently the only supported DB).
+  1. Create a unit test database, this example will use the name "citrine\_unittest" but you can call it whatever you want.
+```
+create database citrine_unittest;
+```
+  1. Load the SQL DDL file that will create the necessary tables. Run the following command from the root of the Citrine project checkout
+```
+mysql -u username citrine_unittest < src/main/sql/citrine-ddl-mysql.sql
+```
+  1. If necessary create a user that can read and write from all the tables in the citrine\_unittest database that will be used by the unit tests. We will assume the user is called "testuser" and their password is "testpassword".
+
+## Configure Citrine for testing ##
+To run the unit tests you may need to edit the test Citrine configuration file, although it's preferable if you leave this as is and rather set up your test database to match the settings described below.
+  1. Edit test/resources/citrine.properties.
+  1. Set the property "hibernate.connection.url" and set the host, port and database name that you added above.
+  1. Set the property "hibernate.connection.username" to the username you added above.
+  1. Set the property "hibernate.connection.password" to the password you added above.
+  1. Set the property "sysexec.logpath" to some folder the tests have write access to (e.g. "/tmp/")
+
+## Run the unit tests ##
+Run the tests using Maven:
+```
+mvn test
+```
