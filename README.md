@@ -1,5 +1,9 @@
 **Citrine** is a Java web application which can be used to configure, manage and monitor the running of various tasks (typically, but not limited to, shell scripts). It can be thought of as a GUI replacement for cron with extra functionality. It can also be thought of as a GUI for the [Java Quartz Scheduler](http://quartz-scheduler.org/) ("citrine" is a type of quartz).
 
+Citrine can be [downloaded here](https://code.google.com/p/citrine-scheduler/downloads/list).
+
+Please refer to the project's [Wiki](https://github.com/massdosage/citrine-scheduler/wiki) for usage and other information.
+
 **Latest news**
 * **Project moved from Google Code to Github** (2015-06-31) - with Google Code's [impending closure] (http://google-opensource.blogspot.co.uk/2015/03/farewell-to-google-code.html) 
 Citrine has been moved to a new home in Github. Citrine isn't actively maintained any more but at least the code is still available for future reference or forking. 
