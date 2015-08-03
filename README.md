@@ -6,7 +6,7 @@ Please refer to the project's [Wiki](https://github.com/massdosage/citrine-sched
 
 **Latest news**
 * **Project moved from Google Code to Github** (2015-06-31) - with Google Code's [impending closure] (http://google-opensource.blogspot.co.uk/2015/03/farewell-to-google-code.html) 
-Citrine has been moved to a new home in Github. Citrine isn't actively maintained any more but at least the code is still available for future reference or forking. 
+Citrine has been moved to a new home in Github. Citrine isn't actively developed any more but the code is still available here for future reference, forking or the consideration of pull requests.
 * **4.2.1 release available** (2013-02-06) - Fixed issues with static files not being downloaded in Tomcat 7. [Download it](http://code.google.com/p/citrine-scheduler/downloads/list) and report any issues to the [Citrine group](http://groups.google.com/group/citrine-scheduler)
 
 #Legal
