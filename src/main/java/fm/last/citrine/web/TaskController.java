@@ -69,7 +69,10 @@ public class TaskController extends MultiActionController {
       tasks = taskManager.getTasks();
       // no need to query for group names as we have all tasks, so just iterate thru them
       for (Task task : tasks) {
-        groupNames.add(task.getGroupName());
+        String groupName = task.getGroupName();
+        if (groupName != null) {
+          groupNames.add(groupName);
+        }
       }
       selectedGroupName = Constants.GROUP_NAME_ALL;
     } else {
