@@ -1,4 +1,5 @@
 TBA
+- Upgraded commons-collection dependency to 3.2.2.
 - Fixed NPE when viewing tasks with no group name using Java >=7.
 - http://code.google.com/p/citrine-scheduler/issues/detail?id=48 - Fixed issue where renaming the group cause job to be scheduled twice
 
